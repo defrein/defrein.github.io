@@ -13,7 +13,7 @@ getCodeBtn.onclick = () => {
     let theCode = getCodeInput.value;
     if (theCode === "petrichor") {
         secretBtn.classList.add("appear");
-        secretBtn.setAttribute('href', "https:defrein.github.io/assets/mx27082020/ily.html");
+        secretBtn.setAttribute('href', "https://defrein.github.io/assets/mx27082021/ily.html");
         secretP.classList.remove("appear");
     } else {
         secretP.classList.add("appear");
