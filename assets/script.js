@@ -6,6 +6,7 @@ let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 console.log(width);
 if (width < 800) {
     alert("This site doesn't support mobile devices!");
+    document.querySelector(".hidden").classList.add("hideElement");
     window.close();
 }
 
