@@ -12,7 +12,7 @@ if (width < 800) {
 
 getCodeBtn.onclick = () => {
     let theCode = getCodeInput.value;
-    if (theCode === "petrichor") {
+    if (theCode === "petrichor" || theCode === "starry") {
         secretBtn.classList.add("appear");
         secretBtn.setAttribute('href', "https://defrein.github.io/assets/mx27082021/ily.html");
         secretP.classList.remove("appear");
