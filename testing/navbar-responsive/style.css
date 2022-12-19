@@ -6,8 +6,8 @@
     box-sizing: border-box;
 }
 
-
-html, body {
+html,
+body {
     overflow-x: hidden;
 }
 
@@ -33,7 +33,7 @@ nav {
     align-items: center;
     padding: 20px 0;
     color: #fff;
-    position: reltive;
+    position: relative;
 }
 
 nav ul {
