@@ -6,13 +6,16 @@
     box-sizing: border-box;
 }
 
-html,
+
+/* html,
 body {
     overflow-x: hidden;
-}
+} */
 
 body {
     font-family: 'Sora', sans-serif;
+    overflow-x: hidden;
+    /* background-color: orchid; */
 }
 
 .logo h4 {
@@ -32,7 +35,6 @@ nav {
     align-items: center;
     padding: 20px 0;
     color: #fff;
-    position: relative;
 }
 
 nav ul {
@@ -67,7 +69,7 @@ nav ul li a {
     top: -5px;
     opacity: 0;
     cursor: pointer;
-    z-index: 10;
+    z-index: 1;
 }
 
 .menu-toggle span {
@@ -155,7 +157,7 @@ nav ul li a {
         align-items: center;
         justify-content: space-evenly;
         background: #336699a5;
-        z-index: -10;
+        z-index: -1;
         transform: translateX(100%);
         -webkit-transform: translateX(100%);
         -moz-transform: translateX(100%);
