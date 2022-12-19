@@ -7,14 +7,13 @@
 }
 
 
-/* html {
+html, body {
     overflow-x: hidden;
-} */
+}
 
 body {
     font-family: 'Sora', sans-serif;
     background-color: #ccc;
-    overflow-x: hidden;
 }
 
 .logo h4 {
@@ -34,6 +33,7 @@ nav {
     align-items: center;
     padding: 20px 0;
     color: #fff;
+    position: reltive;
 }
 
 nav ul {
