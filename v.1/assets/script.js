@@ -14,11 +14,11 @@ getCodeBtn.onclick = () => {
     let theCode = getCodeInput.value;
     if (theCode === "petrichor") {
         secretBtn.classList.add("appear");
-        secretBtn.setAttribute('href', "https://defrein.github.io/assets/mx27082021/ily.html");
+        secretBtn.setAttribute('href', "https://defrein.github.io/v.1/assets/mx27082021/ily.html");
         secretP.classList.remove("appear");
     } else if (theCode === "starrysky") {
         secretBtn.classList.add("appear");
-        secretBtn.setAttribute('href', "https://defrein.github.io/assets/qx12092021/hbd.html");
+        secretBtn.setAttribute('href', "https://defrein.github.io/v.1/assets/qx12092021/hbd.html");
         secretP.classList.remove("appear");
     } else {
         secretP.classList.add("appear");
