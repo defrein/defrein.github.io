@@ -3,561 +3,90 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DEFREIN</title>
-    <link rel="icon" href="/assets/img/thumbnail/d8p.png" type="image/png">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/timeline.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
-
+    <style>
+        body,
+        html {
+            margin: 0;
+            height: 100%;
+            text-align: center;
+            font-family: 'Oxygen Mono', monospace;
+            color: #999;
+        }
+        
+        h1 {
+            text-transform: uppercase;
+            letter-spacing: 1pt;
+            font-size: 30pt;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            text-align: left;
+            margin: 0;
+            text-transform: lowercase;
+            font-size: 15pt;
+            font-weight: 900;
+            width: 50%;
+            display: none;
+        }
+        
+        #table {
+            display: table;
+            width: 100%;
+            height: 100%;
+            background-color: #e5e5e5;
+        }
+        
+        #centeralign {
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 
 <body>
-    <nav>
-        <div class="logo">
-            <h4>DEF<span>rein</span></h4>
+    <div id="table">
+        <div id="centeralign">
+            <h1>Hi! I'm DEF!</h1>
+            <p> I'm a passionate and enthusiastic person with an obsession in learning about technology. Currently, I'm learning Web Development, Robotics, and Computer Vision. I would love to work with others and share my passion for technology. So let's
+                team up and explore together!🚀</p>
         </div>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact Me</a></li>
-        </ul>
-        <div class="menu-toggle">
-            <input type="checkbox" name="" id="">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
-    <main>
-        <section id="main-header" class="scroll-animate">
-            <div class="main-header-wrapper">
-                <div class="intro">
-                    <h3>Greetings!</h3>
-                    <h2><span>I'm</span> Wahni Adnani</h2>
-                    <span>(also known as DEF)</span>
-                    <p>a Software Engineer</p>
-                    <div class="mybtn">
-                        <a href="#projects" class="myworks">See my works</a>
-                        <a href="/assets/pdf/CV_WahniAdnani_July_2024.pdf" class="cv" data-fancybox data-caption="CV Wahni Adnani">
-                            <!-- <span class="download-cv"></span> -->
-                            <span>CV</span>
-                        </a>
-                    </div>
-                    <div class="mysocial">
-                        <a href="https://www.linkedin.com/in/wahni-adnani/" class="social-link" target="_blank"><span class="linkedin"></span></a>
-                        <a href="https://github.com/defrein" target="_blank" class="social-link"><span class="github"></span></a>
-                        <a href="https://www.instagram.com/adnani.wa/" class="social-link" target="_blank"><span class="instagram"></span></a>
-                    </div>
-                </div>
-                <div class="image-header">
-                    <img src="assets/img/def-profile.png" alt="">
-                </div>
-            </div>
-        </section>
-        <section id="about" class="scroll-animate">
-            <div class="header-container kiri">
-                <header>
-                    <h2>About Me</h2>
-                </header>
-            </div>
-            <div class="content">
-                <div class="paragraf">
-                    <p>Hello! I'm Wahni Adnani, also known as DEF, and I thrive as a software engineer, diving into the realm of technology to craft innovative solutions. My journey in the world of programming began in 2020 with a curiosity for how things
-                        work in the digital realm, and that curiosity has blossomed into a fulfilling career.</p>
-                </div>
-                <div class="more-me">
-                    <div class="myeducation">
-                        <h3>Education</h3>
-                        <table>
-                            <tr>
-                                <td>Politeknik Negeri Banjarmasin</td>
-                            </tr>
-                            <tr>
-                                <td>Informatics Engineering</td>
-                            </tr>
-                            <tr>
-                                <td>Oct 2020 - Sep 2023</td>
-                            </tr>
-                            <tr>
-                                <td>GPA 3.84/4</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="myskills">
-                        <h3>Skills</h3>
-                        <table>
-                            <tr>
-                                <td class="kolom1">Web Development</td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="full-star"></span></td>
-                            </tr>
-                            <tr>
-                                <td>Robotics</td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="outline-star"></span></td>
-                            </tr>
-                            <tr>
-                                <td>Artificial intelligence</td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="outline-star"></span></td>
-                                <td><span class="outline-star"></span></td>
-                            </tr>
-                            <tr>
-                                <td>UI/UX Design</td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="full-star"></span></td>
-                                <td><span class="outline-star"></span></td>
-                                <td><span class="outline-star"></span></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+    </div>
+    <script>
+        function typeEffect(element, speed) {
+            var text = element.innerHTML;
+            element.innerHTML = "";
 
-                <div class="my-journey">
-                    <h3>Here, Welcome to My Programming Journey</h3>
-                    <div class="btn-skip-to-service"><a href="#services">SKIP >>></a></div>
-                    <div class="timeline">
-                        <ul>
-                            <li>
-                                <div class="timeline-item">
-                                    <time>2020</time>
-                                    <div class="timelines-item">
-                                        <div class="sub-timeline">
-                                            <span class="timeline-tag">#training</span>
-                                            <h3 class="activity-title">Women Digital Development Skill Up Project</h3>
-                                            <p class="activity-description">
-                                                I confidently took this training with only basic HTML and CSS skills :)</p>
-                                            <div class="activity-media">
-                                                <a href='assets/pdf/sertifikat_women-digital-dev-skill-up.pdf' data-fancybox data-caption="Certificate of Completion" class="pdf-wrap">
-                                                    <span class="pdf"></span>
-                                                    <p>Certificate of Completion</p>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-item">
-                                    <time>2021</time>
-                                    <div class="timelines-item">
-                                        <div class="sub-timeline">
-                                            <span class="timeline-tag">#courses</span>
-                                            <h3 class="activity-title">Progate, Sololearn, Dicoding</h3>
-                                            <p class="activity-description">
-                                                I completed multiple courses to further my knowledge in web programming</p>
-                                            <div class="activity-media">
-                                                <a class="img-wrap" href='/assets/img/certificate/progate_html-css_sertifikat_page-0001.jpg' data-fancybox data-caption="Progate Course Completion">
-                                                    <img src="/assets/img/thumbnail/progate_html-css_sertifikat_page-0001_thumb.jpg" alt="">
-                                                    <span>HTML & CSS</span>
-                                                </a>
-                                                <a class="img-wrap" href='/assets/img/certificate/progate_javascript_sertifikat_page-0001.jpg' data-fancybox data-caption="Progate Course Completion">
-                                                    <img src="/assets/img/thumbnail/progate_javascript_sertifikat_page-0001_thumb.gif" alt="">
-                                                    <span>Javascript</span>
-                                                </a>
-                                                <a class="img-wrap" href='/assets/img/certificate/progate_node-js_sertifikat_page-0001.jpg' data-fancybox data-caption="Progate Course Completion">
-                                                    <img src="/assets/img/thumbnail/progate_node-js_sertifikat_page-0001_thumb.gif" alt="">
-                                                    <span>Node JS</span>
-                                                </a>
-                                                <a class="img-wrap" href='/assets/img/certificate/progate_sql_sertifikat_page-0001.jpg' data-fancybox data-caption="Progate Course Completion">
-                                                    <img src="/assets/img/thumbnail/progate_sql_sertifikat_page-0001_thumb.jpg" alt="">
-                                                    <span>SQL</span>
-                                                </a>
+            var i = 0;
+            var timer = setInterval(function() {
+                if (i < text.length) {
+                    element.append(text.charAt(i));
+                    i++;
+                } else {
+                    clearInterval(timer);
+                }
+            }, speed);
+        }
 
-                                                <a class="img-wrap" href='/assets/img/certificate/sololearn_css_sertifikat.png' data-fancybox data-caption="Sololearn Course Completion">
-                                                    <img src="/assets/img/thumbnail/sololearn_css_sertifikat_thumb.png" alt="">
-                                                    <span>CSS</span>
-                                                </a>
-                                                <a class="img-wrap" href='/assets/img/certificate/dicoding_dasar-pemrograman-web_sertifikat_pages-to-jpg-0001.jpg' data-fancybox data-caption="Dicoding Course Completion">
-                                                    <img src="/assets/img/thumbnail/dicoding_dasar-pemrograman-web_sertifikat_pages-to-jpg-0001_thumb.jpg" alt="">
-                                                    <span>Dasar Web</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-item">
-                                    <time>2022</time>
-                                    <div class="timelines-item">
-                                        <div class="sub-timeline">
-                                            <span class="timeline-tag">#courses</span>
-                                            <h3 class="activity-title">Dicoding</h3>
-                                            <p class="activity-description">
-                                                Go deeper into web development</p>
-                                            <div class="activity-media">
-                                                <a class="img-wrap" href='/assets/img/certificate/dicoding_dasar-javascript_sertifikat_page-0001.jpg' data-fancybox data-caption="Dicoding Course Completion">
-                                                    <img src="/assets/img/thumbnail/dicoding_dasar-javascript_sertifikat_page-0001_thumb.jpg" alt="">
-                                                    <span>Javascript</span>
-                                                </a>
-                                                <a class="img-wrap" href='/assets/img/certificate/dicoding_front-end-web-pemula_sertifikat_page-0001.jpg' data-fancybox data-caption="Dicoding Course Completion">
-                                                    <img src="/assets/img/thumbnail/dicoding_front-end-web-pemula_sertifikat_page-0001_thumb.jpg" alt="">
-                                                    <span>Front-End Web</span>
-                                                </a>
-                                                <a class="img-wrap" href='/assets/img/certificate/dicoding_meniti-karir-sebagai-software-dev_sertifikat_page-0001.jpg' data-fancybox data-caption="Dicoding Course Completion">
-                                                    <img src="/assets/img/thumbnail/dicoding_meniti-karir-sebagai-software-dev_sertifikat_page-0001_thumb.jpg" alt="">
-                                                    <span>Software Development</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-item">
-                                    <time>2022</time>
-                                    <div class="timelines-item">
-                                        <div class="sub-timeline">
-                                            <span class="timeline-tag">#community</span>
-                                            <h3 class="activity-title">Robotic Team Poliban</h3>
-                                            <p class="activity-description">
-                                                I joined the Robotic Team Community on my campus because I am also interested in robotics. Just watching how robots move amazes me.</p>
-                                            <div class="activity-media">
-                                                <a class="img-wrap" href='/assets/img/activity/Robotik_poliban_2022.jpg' data-fancybox data-caption="Robotic Team Poliban">
-                                                    <img src="/assets/img/thumbnail/Robotik_poliban_2022_thumb.jpg" alt="">
-                                                    <span>Robotik Poliban</span>
-                                                </a>
-                                                <a class="img-wrap" href='/assets/img/activity/Tim-KRSRI-Poliban-2022.jpg' data-fancybox data-caption="Robotic Team Poliban">
-                                                    <img src="/assets/img/thumbnail/Tim-KRSRI-Poliban-2022_thumb.jpg" alt="">
-                                                    <span>Divisi KRSRI</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-item">
-                                    <time>2022</time>
-                                    <div class="timelines-item">
-                                        <div class="sub-timeline">
-                                            <span class="timeline-tag">#achievement</span>
-                                            <h3 class="activity-title">Electrical Innovation Competition</h3>
-                                            <p class="activity-description">My team and I participated in an electrical equipment innovation competition by building a 'Prototype Object Recognition Robot with Voice Recognition Based on Raspberry Pi' and won 3rd place.
-                                            </p>
-                                            <div class="activity-media">
-                                                <a class="img-wrap" href='/assets/img/activity/VIDEF-Pemenang-5-besar-Lomba-Inovasi-PLN-2022_1.jpg' data-fancybox data-caption="Electrical Innovation Competition">
-                                                    <img src="/assets/img/activity/VIDEF-Pemenang-5-besar-Lomba-Inovasi-PLN-2022_1.jpg" alt="">
-                                                    <span>Best 5</span>
-                                                </a>
-                                                <a class="img-wrap" href='/assets/img/activity/videf_3.jpg' data-fancybox data-caption="Electrical Innovation Competition">
-                                                    <img src="/assets/img/activity/videf_3.jpg" alt="">
-                                                    <span>Best 3</span>
-                                                </a>
-                                                <a class="img-wrap" href='/assets/img/activity/robot_pln.jpg' data-fancybox data-caption="Electrical Innovation Competition">
-                                                    <img src="/assets/img/thumbnail/robot_pln_thumb.jpg" alt="">
-                                                    <span>Robot</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="timeline-item">
-                                    <time>2023</time>
-                                    <div class="timelines-item">
-                                        <div class="sub-timeline">
-                                            <span class="timeline-tag">#achievement</span>
-                                            <h3 class="activity-title">Kontes Robot Indonesia Nasional 2023</h3>
-                                            <p class="activity-description">My team and I from the Robotic Team Poliban participated in the Kontes Robot Indonesia 2023 in the KRSRI division and successfully became finalists at the national level.
-                                            </p>
-                                            <div class="activity-media">
-                                                <a class="img-wrap" href='/assets/img/activity/krsri_tim_1.jpg' data-fancybox data-caption="Kontes Robot Indonesia 2023">
-                                                    <img src="/assets/img/thumbnail/krsri_tim_1_thumb.jpg" alt="">
-                                                    <span>Tim Divisi KRSRI</span>
-                                                </a>
-                                                <a class="img-wrap" href='/assets/img/activity/krsri_tim_2.jpg' data-fancybox data-caption="Kontes Robot Indonesia 2023">
-                                                    <img src="/assets/img/thumbnail/krsri_tim_2_thumb.jpg" alt="">
-                                                    <span>Tim Divisi KRSRI</span>
-                                                </a>
-                                                <a class="img-wrap" href='/assets/img/activity/robot_krsri.jpg' data-fancybox data-caption="Kontes Robot Indonesia 2023">
-                                                    <img src="/assets/img/thumbnail/robot_krsri_thumb.jpg" alt="">
-                                                    <span>Robot KRSRI</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <li>
-                                    <div class="timeline-item">
-                                        <time>2023</time>
-                                        <div class="timelines-item">
-                                            <div class="sub-timeline">
-                                                <span class="timeline-tag">#training</span>
-                                                <h3 class="activity-title">Junior Web Developer Training</h3>
-                                                <p class="activity-description">I completed a Junior Web Developer training program where I gained hands-on experience in web development, learning essential skills and best practices for creating dynamic and responsive websites.
-                                                </p>
-                                                <div class="activity-media">
-                                                    <a href='assets/pdf/Sertifikat_WAHNI-ADNANI_Junior-Web-Developer.pdf' data-fancybox data-caption="Certificate of Completion" class="pdf-wrap">
-                                                        <span class="pdf"></span>
-                                                        <p>Certificate of Completion</p>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-item">
-                                        <time>2023</time>
-                                        <div class="timelines-item">
-                                            <div class="sub-timeline">
-                                                <span class="timeline-tag">#certification</span>
-                                                <h3 class="activity-title">Programmer Certification</h3>
-                                                <p class="activity-description">I earned a programmer certification from BNSP, validating my skills and knowledge in programming. This certification demonstrates my competence in software development practices and my ability to apply them
-                                                    effectively in real-world scenarios.
-                                                </p>
-                                                <div class="activity-media">
-                                                    <a href='assets/pdf/SerKom_Programmer.pdf' data-fancybox data-caption="Programmer Certification" class="pdf-wrap">
-                                                        <span class="pdf"></span>
-                                                        <p>Programmer Certification</p>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-item">
-                                        <time>Now</time>
-                                        <div class="timelines-item">
-                                            <div class="sub-timeline">
-                                                <span class="timeline-tag">#employment</span>
-                                                <h3 class="activity-title">Software Engineer at OpenSynergic</h3>
-                                                <p class="activity-description">As a Software Engineer at OpenSynergic, I contributed to developing and maintaining software solutions, collaborating with cross-functional teams to deliver high-quality applications and enhance user experiences.
-                                                </p>
-                                                <div class="activity-media">
-                                                    <a class="img-wrap" href='/assets/img/activity/employment_2.jpg' data-fancybox data-caption="Software Engineer at OpenSynergic">
-                                                        <img src="/assets/img/thumbnail/employment_2_thumb.jpg" alt="">
-                                                        <span>1</span>
-                                                    </a>
-                                                    <a class="img-wrap" href='/assets/img/activity/employment_3.jpg' data-fancybox data-caption="Software Engineer at OpenSynergic">
-                                                        <img src="/assets/img/thumbnail/employment_3_thumb.jpg" alt="">
-                                                        <span>2</span>
-                                                    </a>
-                                                    <a class="img-wrap" href='/assets/img/activity/employment_1.jpg' data-fancybox data-caption="Software Engineer at OpenSynergic">
-                                                        <img src="/assets/img/thumbnail/employment_1_thumb.jpg" alt="">
-                                                        <span>3</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="services" class="scroll-animate">
-            <div class="header-container kanan">
-                <header>
-                    <h2>Services</h2>
-                </header>
-            </div>
-            <div class="services-container">
-                <div class="services-item">
-                    <img src="assets/img/services-webdev.svg" alt="Web Development">
-                    <h4>Web Development</h4>
-                    <p>Web development is the work involved in developing a Web site for the Internet or an intranet.
-                    </p>
-                </div>
-                <div class="services-item">
-                    <img src="assets/img/service-robotics.svg" alt="robotics">
-                    <h4>Robotics</h4>
-                    <p>Creating intelligent machines and automated systems to enhance various operations and processes.
-                    </p>
-                </div>
-                <div class="services-item">
-                    <img src="assets/img/service-ai.svg" alt="artificial-intelligence">
-                    <h4>Artificial Intelligence</h4>
-                    <p>Implementing advanced algorithms and machine learning models to automate tasks, enhance decision-making, and improve efficiencies.
-                    </p>
-                </div>
 
-            </div>
-        </section>
-        <section id="projects" class="scroll-animate">
-            <div class="header-container kiri">
-                <header>
-                    <h2>Projects</h2>
-                </header>
-            </div>
-            <div class="project-container">
-                <div class="project-item">
-                    <div class="project-tags">
-                        <span>Robotics</span>
-                    </div>
-                    <div class="project-img">
-                        <img src="/assets/img/project/project_krai_2024.png" alt="">
-                    </div>
-                    <div class="project-title">
-                        <h4>Automated KRAI Robot for KRI 2024</h4>
-                    </div>
-                    <div class="project-link">
-                        <a href="#">See on GitHub</a>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-tags">
-                        <span>Robotics</span>
-                    </div>
-                    <div class="project-img">
-                        <img src="/assets/img/project/project_krsri_robot.jpeg" alt="">
-                    </div>
-                    <div class="project-title">
-                        <h4>KRSRI Robot for KRI 2023</h4>
-                    </div>
-                    <div class="project-link">
-                        <a href="#">See on GitHub</a>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-tags">
-                        <span>Web Development</span>
-                    </div>
-                    <div class="project-img">
-                        <img src="/assets/img/project/project_digital_printing_web.png" alt="">
-                    </div>
-                    <div class="project-title">
-                        <h4>Web-Based Digital Printing Information System</h4>
-                    </div>
-                    <div class="project-link">
-                        <a href="https://github.com/GinChn/percetakan">See on GitHub</a>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-tags">
-                        <span>Robotics</span>
-                    </div>
-                    <div class="project-img">
-                        <img src="/assets/img/project/project_robot_pln_2.jpg" alt="">
-                    </div>
-                    <div class="project-title">
-                        <h4>Prototype Object-Tracking Robot with Voice Recognition based on Raspberry Pi.</h4>
-                    </div>
-                    <div class="project-link">
-                        <a href="https://github.com/defrein/videf-object-detection-and-voice-recognition-robot">See on GitHub</a>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-tags">
-                        <span>Web Development</span>
-                    </div>
-                    <div class="project-img">
-                        <img src="/assets/img/project/project_bakeshop-web.png" alt="">
-                    </div>
-                    <div class="project-title">
-                        <h4>Bakeshop Website: An Online Catalog Showcasing Bakery Products</h4>
-                    </div>
-                    <div class="project-link">
-                        <a href="https://github.com/defrein/bakeshop-ci4">See on GitHub</a>
-                    </div>
-                </div>
-                <div class="project-item">
-                    <div class="project-tags">
-                        <span>Web Development</span>
-                        <span>AI</span>
-                    </div>
-                    <div class="project-img">
-                        <img src="/assets/img/project/project-web-prediksi-buku.png" alt="">
-                    </div>
-                    <div class="project-title">
-                        <h4>Book Production Quantity Prediction System using Tsukamoto's Fuzzy Logic Algorithm</h4>
-                    </div>
-                    <div class="project-link">
-                        <a href="https://github.com/defrein/prediksi_buku">See on GitHub</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="contact">
-            <div class="header-container kanan">
-                <header>
-                    <h2>Contact Me</h2>
-                </header>
-            </div>
-            <div class="form-title">
-                <h3>Let's Talk About Everything!</h3>
-            </div>
-            <div class="form-container">
-                <form action="https://formsubmit.co/wahni5588@gmail.com" method="POST">
-                    <div class="form-control">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="name">Your Email</label>
-                        <input type="email" id="name" name="name" required>
-                    </div>
-                    <div class="form-control">
-                        <label for="name">Your Message</label>
-                        <textarea name="message" id="message" required></textarea>
-                    </div>
-                    <input type="hidden" name="_subject" value="Pesan Baru!">
-                    <input type="hidden" name="_template" value="box">
-                    <button type="submit">Send</button>
-                </form>
-            </div>
-        </section>
-    </main>
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>DEFrein</h3>
-            </div>
-            <div class="footer-column">
-                <h3>Contact</h3>
-                <ul>
-                    <li>
-                        <a href="https://wa.me/6289636327090" target="_blank">+6289636327090</a></li>
-                    <li><a href="mailto:adnaniwahni@gmail.com">adnaniwahni@gmail.com</a></li>
-                    <li>Banjarmasin, Indonesia</li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Explore</h3>
-                <ul>
-                    <li><a href="#about">About Me</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Connect</h3>
-                <ul>
-                    <li><a href="https://www.linkedin.com/in/wahni-adnani/" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://github.com/defrein" target="_blank">GitHub</a></li>
-                    <li><a href="https://www.instagram.com/adnani.wa/" target="_blank">Instagram</a></li>
-                </ul>
-            </div>
-        </div>
-        <button id="toTopBtn" title="Go to top">Top</button>
-        <div class="footer-bottom">
-            &copy; 2024 DEFrein. All rights reserved.
-        </div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        // application
+        var speed = 75;
+        var h1 = document.querySelector('h1');
+        var p = document.querySelector('p');
+        var delay = h1.innerHTML.length * speed + speed;
 
-    <script src="assets/js/script.js"></script>
+        // type affect to header
+        typeEffect(h1, speed);
+
+
+        // type affect to body
+        setTimeout(function() {
+            p.style.display = "inline-block";
+            typeEffect(p, speed);
+        }, delay);
+    </script>
 </body>
 
 </html>
