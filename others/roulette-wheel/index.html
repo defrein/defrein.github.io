@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glassmorphism Roulette Wheel</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Roulette Wheel</h1>
+
+        <div class="wheel-container glass-card">
+            <div class="wheel" id="wheel">
+                <div class="glass-sheen"></div>
+            </div>
+            <div class="pointer-container">
+                <div class="pointer">
+                    <svg class="pointer-svg" viewBox="0 0 30 40" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15 0 L30 15 L15 40 L0 15 Z" fill="#fff" />
+                        <path d="M15 5 L25 15 L15 30 L5 15 Z" fill="#5271ff" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="wheel-stats-container">
+            <div class="wheel-stats" id="wheelStats"></div>
+        </div>
+
+        <div class="controls glass-card">
+            <div class="input-group">
+                <input type="text" id="sectionInput" placeholder="Enter section value">
+                <button id="addSection" class="btn-add"><i class="fas fa-plus"></i>Add</button>
+            </div>
+
+            <div class="button-container">
+                <button id="spinWheel" class="btn-spin"><i class="fas fa-sync-alt"></i>Spin</button>
+                <button id="resetWheel" class="btn-reset"><i class="fas fa-trash-alt"></i>Reset</button>
+                <button id="clearResults" class="btn-clear"><i class="fas fa-history"></i>Clear Results</button>
+            </div>
+        </div>
+
+        <div class="content-columns">
+            <div class="content-column">
+                <h2><i class="fas fa-list"></i> Current Sections</h2>
+                <div class="glass-card">
+                    <div class="section-list" id="sectionList"></div>
+                </div>
+            </div>
+
+            <div class="content-column">
+                <h2><i class="fas fa-trophy"></i> Results History</h2>
+                <div class="glass-card">
+                    <div class="results" id="results"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confettiContainer"></div>
+    <script src="main.js"></script>
+</body>
+
+</html>
