@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>8 Month Anniversary</title>
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      font-family: 'Courier New', monospace;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+    }
+
+    .message {
+      color: #e94560;
+      font-size: 2rem;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(233, 69, 96, 0.7);
+    }
+
+    .glitch {
+      color: #0f3460;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.6;
+    }
+
+    .ghost {
+      color: #e94560;
+      opacity: 0.2;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="message" id="glitchText">8 Month Anniversary</div>
+  </div>
+
+  <script>
+    const messages=[
+      {delay: 0,text: "8 Month Anniversary"},
+      {delay: 1200,text: "My Love, My Everything"},
+      {delay: 2200,text: "Our Journey Continues"},
+      {delay: 3600,text: "Together Through Every Challenge"},
+      {delay: 5200,text: "Forever and Always ❤️"}
+    ];
+
+    function scramble(element,text,options={}) {
+      const defaults={
+        probability: 0.2,
+        glitches: '-|/\\',
+        blank: '',
+        duration: text.length*40,
+        delay: 0
+      };
+
+      const settings={...defaults,...options};
+      const glitchChars=settings.glitches.split('');
+      const textChars=text.split('');
+
+      function randomGlitch() {
+        return glitchChars[Math.floor(Math.random()*glitchChars.length)];
+      }
+
+      function animateText() {
+        let output=textChars.map((char,index) => {
+          return Math.random()<settings.probability? randomGlitch():char;
+        });
+
+        const animationSteps=textChars.length;
+        let step=0;
+
+        const intervalId=setInterval(() => {
+          if(step<animationSteps) {
+            output[step]=textChars[step];
+            element.innerHTML=`
+                            <span>${output.join('')}</span>
+                            <span class="glitch" style="transform: translate(${Math.random()*5}px, ${Math.random()*5}px)">
+                                ${output.join('')}
+                            </span>
+                        `;
+            step++;
+          } else {
+            clearInterval(intervalId);
+            element.innerHTML=text;
+          }
+        },40);
+      }
+
+      setTimeout(animateText,settings.delay);
+    }
+
+    function init() {
+      const glitchElement=document.getElementById('glitchText');
+
+      messages.forEach((msg,index) => {
+        setTimeout(() => {
+          scramble(glitchElement,msg.text);
+        },msg.delay);
+      });
+    }
+
+    init();
+  </script>
+</body>
+
+</html>
