@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Private Letter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Open+Sans&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #121212;
+      font-family: 'Open Sans', sans-serif;
+      color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .lock-screen, .container {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .lock-screen.active, .container.active {
+      display: flex;
+    }
+
+    .lock-screen h2 {
+      color: #90e0ef;
+      margin-bottom: 1rem;
+    }
+
+    .lock-screen input {
+      padding: 0.7rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #1e1e1e;
+      color: #fff;
+      width: 220px;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .lock-screen button {
+      padding: 0.6rem 1.2rem;
+      background-color: #0077b6;
+      border: none;
+      border-radius: 8px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .lock-screen button:hover {
+      background-color: #90e0ef;
+    }
+
+    .error {
+      color: #ff8b8b;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .container {
+      background-color: #1e1e1e;
+      padding: 3rem 2.5rem;
+      max-width: 750px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(255, 192, 203, 0.05);
+      line-height: 1.8;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .date {
+      font-size: 0.95rem;
+      color: #b0b0b0;
+      margin-bottom: 1.5rem;
+      text-align: right;
+      width: 100%;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      font-weight: normal;
+      font-style: italic;
+      color: #90e0ef;
+      width: 100%;
+    }
+
+    p {
+      margin-bottom: 1.4rem;
+      color: #dcdcdc;
+      text-align: left;
+    }
+
+    .signature {
+      margin-top: 2rem;
+      text-align: right;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: #0077b6;
+      width: 100%;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Lock Screen -->
+  <div class="lock-screen active" id="lockScreen">
+    <h2>This letter is private</h2>
+    <input type="password" id="accessCode" placeholder="Enter access code" />
+    <button onclick="unlock()">Unlock</button>
+    <div class="error" id="errorMsg"></div>
+  </div>
+
+  <!-- Letter Container -->
+  <div class="container" id="letterContainer">
+    <div class="date">May 19, 2025</div>
+    <h1>Dear, my love</h1>
+
+    <p>I’m writing this letter because I feel like I’m trapped in a void.
+    It might sound heavy—I know—but I hope you’ll take a quiet moment to sit with this and read each word slowly, to understand what’s been happening beneath the surface of my mind.</p>
+
+    <p>Most days, I feel like I’m nothing more than an ordinary person—plain, unnoticed.
+    There’s always someone out there better than me, more capable, more sure of themselves. But even so, I’ve always had this fire in me, a desire to be the best version of myself—not for the world, but for me… and for us.</p>
+
+    <p>I’ve tried to learn, to train, to keep pushing. I feed my motivation with hopes and dreams, shaping myself into the person I’ve always wanted to become. But more often than not, I find myself falling into the abyss of disappointment—a void I somehow built with my own hands.</p>
+
+    <p>It feels like I’m never enough. No matter how hard I try, I can never reach the destination I imagined.
+    And the harder I chase it, the further it seems to slip away. It’s exhausting.
+    Sometimes I wonder if I’m just running in circles—if all this effort, all this struggle, is just a way of distracting myself from the truth that maybe... maybe I don’t even know who I truly am anymore.</p>
+
+    <p>My anxiety creeps in quietly and stays longer than it should.
+    It whispers doubts, makes me second-guess my every choice—every word, every step. It makes me feel small, like a shadow of myself. I want to be strong, to hold it all together. But some days, I just can’t.
+    Some days I feel like I’m breaking into pieces, silently, while wearing a smile.</p>
+
+    <p>And yet, in all of this… you.
+    You’re the one constant I hold on to.
+    Your presence calms the storm in me more than you know. But even with you beside me, I struggle to silence the noise inside.
+    I don’t want my darkness to ever dim your light, and I worry—deeply—that one day you’ll grow tired of holding me up when I can’t stand tall on my own.</p>
+
+    <p>This letter isn’t about asking you to fix me.
+    It’s not about answers or solutions.
+    It’s just me, letting you in—because if there’s one person I trust with the fragile parts of me, it’s you.</p>
+
+    <p>I’m scared about the future, love.
+    About the decisions I have to make. About the life I’m trying to build. Sometimes I feel like I’m standing at a crossroads, unsure which path leads to peace and which one leads to more regret.
+    But I promise you this: I’m trying. Every single day, I’m trying to find my way, to grow, to heal, to be whole again.</p>
+
+    <p>Thank you for being patient with me.
+    Thank you for loving me even when I can’t love myself.
+    I just needed you to know what I haven’t been able to say out loud.</p>
+
+    <div class="signature">
+      With all my love,<br>
+      DEF
+    </div>
+  </div>
+
+  <script>
+    function unlock() {
+      const input = document.getElementById('accessCode').value.trim();
+      const correct = "19052025";
+      const error = document.getElementById('errorMsg');
+      if (input === correct) {
+        document.getElementById('lockScreen').classList.remove('active');
+        document.getElementById('letterContainer').classList.add('active');
+      } else {
+        error.textContent = "Incorrect code. Please try again.";
+      }
+    }
+  </script>
+
+</body>
+</html>
