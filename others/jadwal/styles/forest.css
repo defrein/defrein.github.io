@@ -1,0 +1,547 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Merriweather', 'Georgia', serif;
+    background: #e8f5e9 url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #2e7d32;
+    line-height: 1.7;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Soft overlay for readability */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(232, 245, 233, 0.92);
+    z-index: -1;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 
+        0 10px 30px rgba(46, 125, 50, 0.15),
+        inset 0 1px 0 rgba(240, 248, 240, 0.8);
+    border: 1px solid #c8e6c9;
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '🍃';
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    opacity: 0.6;
+    animation: sway 4s ease-in-out infinite;
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.header::after {
+    content: '❀';
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #81c784;
+    font-size: 28px;
+    opacity: 0.7;
+}
+
+.header h1 {
+    font-size: 3.4em;
+    font-weight: 700;
+    color: #1b5e20;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+    text-shadow: 2px 2px 3px rgba(189, 221, 189, 0.5);
+}
+
+.header p {
+    font-size: 1.15em;
+    color: #388e3c;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
+/* Forest Grid */
+.week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 26px;
+    margin-bottom: 40px;
+}
+
+.day-card {
+    background: #f1f8e9;
+    border-radius: 16px;
+    padding: 26px;
+    box-shadow: 
+        0 6px 16px rgba(76, 175, 80, 0.1),
+        inset 0 1px 0 #f9fbe7;
+    border: 1px solid #dcedc8;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.day-card::before {
+    content: '🌿';
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 18px;
+    opacity: 0.4;
+    color: #81c784;
+}
+
+.day-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(76, 175, 80, 0.18);
+    background: #f9fbe7;
+}
+
+/* Day borders with forest colors */
+.senin { border-top: 8px solid #ef5350; } /* warm earth */
+.selasa { border-top: 8px solid #ff9800; } /* sunlight */
+.rabu { border-top: 8px solid #66bb6a; } /* moss */
+.kamis { border-top: 8px solid #43a047; } /* pine */
+.jumat { border-top: 8px solid #2e7d32; } /* deep green */
+.sabtu { border-top: 8px solid #7cb342; } /* leafy */
+.minggu { border-top: 8px solid #388e3c; } /* forest floor */
+
+.day-title {
+    font-size: 1.8em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #2e7d32;
+    position: relative;
+    display: inline-block;
+}
+
+.day-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 55px;
+    height: 3px;
+    background: #81c784;
+    border-radius: 3px;
+}
+
+.day-title::before {
+    content: '⚬';
+    position: absolute;
+    top: -6px;
+    left: -25px;
+    color: #a5d6a7;
+    font-size: 24px;
+}
+
+/* Nature-inspired activity */
+.activity {
+    display: flex;
+    align-items: flex-start;
+    margin: 12px 0;
+    padding: 12px 16px;
+    background: #f9fbe7;
+    border-radius: 10px;
+    font-size: 0.95em;
+    border-left: 5px solid #a5d6a7;
+    transition: all 0.2s ease;
+}
+
+.activity:hover {
+    background: #e8f5e8;
+    transform: translateX(5px);
+}
+
+.time {
+    font-weight: 600;
+    min-width: 85px;
+    color: #558b2f;
+    font-size: 0.95em;
+}
+
+.task {
+    margin-left: 16px;
+    color: #2e7d32;
+}
+
+.highlight {
+    background: #cddc39;
+    color: #33691e;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 18px;
+    font-size: 0.85em;
+    box-shadow: 0 2px 6px rgba(173, 216, 173, 0.3);
+}
+
+/* Forest Activity Types */
+.work { border-left-color: #43a047; background: #e8f5e8; }
+.study { border-left-color: #5d4037; background: #efebe9; } /* bark */
+.exercise { border-left-color: #66bb6a; background: #e8f5e8; } /* moss */
+.rest { border-left-color: #795548; background: #efebe9; } /* wood */
+.meal { border-left-color: #ff9800; background: #fff8e1; } /* sunlight */
+.personal { border-left-color: #388e3c; background: #e8f5e8; }
+
+/* Nature Legend */
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin: 30px 0;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    background: #f1f8e9;
+    border-radius: 20px;
+    font-size: 0.9em;
+    color: #2e7d32;
+    border: 1px solid #dcedc8;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid #a5d6a7;
+}
+
+.sleep-warning {
+    background: #fdecea;
+    border: 1px solid #ff9800;
+    padding: 16px;
+    border-radius: 12px;
+    margin: 30px 0;
+    text-align: center;
+    font-weight: 600;
+    color: #e65100;
+    font-style: italic;
+}
+
+/* Forest Summary */
+.summary {
+    background: #f9fbe7;
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0 6px 18px rgba(76, 175, 80, 0.12);
+    border: 1px solid #dcedc8;
+}
+
+.summary h2 {
+    font-size: 2em;
+    margin-bottom: 25px;
+    color: #2e7d32;
+    position: relative;
+    display: inline-block;
+}
+
+.summary h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 65px;
+    height: 3px;
+    background: #66bb6a;
+    border-radius: 3px;
+}
+
+.summary h2::before {
+    content: '🌱';
+    position: absolute;
+    bottom: -10px;
+    right: -35px;
+    font-size: 24px;
+    opacity: 0.6;
+    animation: sway 3s ease-in-out infinite;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.summary-item {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    border-top: 4px solid #43a047;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.summary-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.15);
+}
+
+.summary-item h3 {
+    font-size: 1.3em;
+    margin-bottom: 10px;
+    color: #2e7d32;
+}
+
+.summary-item p {
+    color: #558b2f;
+    font-size: 0.95em;
+    opacity: 0.8;
+}
+
+/* Leafy Chat Toggle */
+.chat-toggle {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background: #43a047;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    box-shadow: 
+        0 8px 20px rgba(67, 160, 71, 0.3),
+        0 0 20px rgba(139, 195, 74, 0.4);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    font-size: 28px;
+}
+
+.chat-toggle:hover {
+    transform: scale(1.12) rotate(15deg);
+    box-shadow: 
+        0 10px 25px rgba(67, 160, 71, 0.4),
+        0 0 30px rgba(139, 195, 74, 0.6);
+}
+
+/* Chat Container */
+.chat-container {
+    position: fixed;
+    bottom: 120px;
+    right: 30px;
+    width: 380px;
+    height: 550px;
+    background: #f9fbe7;
+    border-radius: 20px;
+    box-shadow: 
+        0 10px 30px rgba(67, 160, 71, 0.2),
+        0 0 30px rgba(139, 195, 74, 0.1);
+    border: 2px solid #c8e6c9;
+    display: none;
+    flex-direction: column;
+    z-index: 999;
+    overflow: hidden;
+    animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.chat-header {
+    background: #43a047;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    border-bottom: 2px solid #66bb6a;
+}
+
+.chat-header h3 {
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.chat-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.chat-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #ffffff;
+}
+
+.quick-buttons {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.quick-btn {
+    background: #e8f5e8;
+    border: 1px solid #c8e6c9;
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.95em;
+    color: #2e7d32;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.quick-btn:hover {
+    background: #c8e6c9;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.1);
+}
+
+.chat-messages {
+    min-height: 180px;
+    max-height: 260px;
+    overflow-y: auto;
+    padding: 10px 0;
+}
+
+.message {
+    margin-bottom: 16px;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.message.user { text-align: right; }
+.message.bot { text-align: left; }
+
+.message-content {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 16px;
+    max-width: 80%;
+    word-wrap: break-word;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.message.user .message-content {
+    background: #43a047;
+    color: white;
+    border-top-right-radius: 5px;
+}
+
+.message.bot .message-content {
+    background: #a5d6a7;
+    color: #1b5e20;
+    border-top-left-radius: 5px;
+}
+
+.current-time {
+    background: #c8e6c9;
+    border: 1px solid #81c784;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #1b5e20;
+    font-style: italic;
+}
+
+/* Responsive Forest */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+    
+    .header h1 {
+        font-size: 2.6em;
+    }
+    
+    .week-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .chat-container {
+        width: 340px;
+        right: 20px;
+        bottom: 100px;
+    }
+    
+    .chat-toggle {
+        width: 60px;
+        height: 60px;
+        right: 20px;
+        bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 2.2em;
+    }
+    
+    .day-title {
+        font-size: 1.6em;
+    }
+    
+    .chat-container {
+        width: 300px;
+    }
+}
