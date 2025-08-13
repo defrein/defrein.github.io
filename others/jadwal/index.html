@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jadwal Harian Mingguan + Chat Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Original Schedule Content (shortened for brevity) -->
+    <div class="container">
+        <div class="header">
+            <h1>📅 Jadwal Harian Mingguan</h1>
+            <p style="color: #4a5568; font-size: 1.1em;">Rutinitas Terstruktur untuk Produktivitas Optimal</p>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color work"></div>
+                <span>Kerja</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color study"></div>
+                <span>Belajar</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color exercise"></div>
+                <span>Olahraga</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color meal"></div>
+                <span>Makan</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color personal"></div>
+                <span>Waktu Pribadi</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color rest"></div>
+                <span>Istirahat</span>
+            </div>
+        </div>
+
+        <div class="week-grid">
+            <!-- SENIN -->
+            <div class="day-card senin">
+                <div class="day-title">🔴 SENIN</div>
+                <div class="activity rest">
+                    <span class="time">05:45</span>
+                    <span class="task">Bangun tidur</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">06:00-06:30</span>
+                    <span class="task">Persiapan berangkat kerja</span>
+                </div>
+                <div class="activity study">
+                    <span class="time">06:30-07:00</span>
+                    <span class="task">📚 Belajar - 30 menit</span>
+                </div>
+                <div class="activity work">
+                    <span class="time">08:00-17:00</span>
+                    <span class="task">💼 Kerja (9 jam)</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">12:15</span>
+                    <span class="task">🍽️ Makan siang</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">12:45-13:15</span>
+                    <span class="task">😴 Tidur siang - 30 menit</span>
+                </div>
+                <div class="activity exercise">
+                    <span class="time">17:30-18:30</span>
+                    <span class="task">🚶‍♂️ Jalan kaki - 30 menit</span>
+                </div>
+                <div class="activity work">
+                    <span class="time">18:30-19:30</span>
+                    <span class="task">📝 Task list kerja - 1 jam</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">19:30-20:00</span>
+                    <span class="task">🍽️ Makan malam</span>
+                </div>
+                <div class="activity exercise">
+                    <span class="time">20:30-20:40</span>
+                    <span class="task">🏃‍♂️ Olahraga - 10 menit</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">21:00-23:00</span>
+                    <span class="task">☕ Waktu lepas + kopi malam</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">00:00</span>
+                    <span class="task">💤 Tidur (5 jam 45 menit)</span>
+                </div>
+            </div>
+
+            <!-- SELASA -->
+            <div class="day-card selasa">
+                <div class="day-title">🟠 SELASA</div>
+                <div class="activity rest">
+                    <span class="time">05:45</span>
+                    <span class="task">Bangun tidur</span>
+                </div>
+                <div class="activity study">
+                    <span class="time">06:30-07:00</span>
+                    <span class="task">📚 Belajar - 30 menit</span>
+                </div>
+                <div class="activity work">
+                    <span class="time">08:00-17:00</span>
+                    <span class="task">💼 Kerja (9 jam)</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">12:15</span>
+                    <span class="task">🍽️ Makan siang + kopi</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">12:45-13:15</span>
+                    <span class="task">😴 Tidur siang - 30 menit</span>
+                </div>
+                <div class="activity exercise">
+                    <span class="time">17:30-18:30</span>
+                    <span class="task">🚶‍♂️ Jalan kaki - 30 menit</span>
+                </div>
+                <div class="activity work">
+                    <span class="time">18:30-19:30</span>
+                    <span class="task">📝 Task list kerja - 1 jam</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">19:30-20:00</span>
+                    <span class="task">🍽️ Makan malam</span>
+                </div>
+                <div class="activity exercise">
+                    <span class="time">20:00-20:10</span>
+                    <span class="task">🏃‍♂️ Olahraga - 10 menit</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">20:40-21:40</span>
+                    <span class="task">👕 Cuci baju (1/2) - 1 jam</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">21:40-22:40</span>
+                    <span class="task">🎮 Waktu lepas - 1 jam</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">23:00</span>
+                    <span class="task">💤 Tidur (6 jam 45 menit)</span>
+                </div>
+            </div>
+
+            <!-- RABU -->
+            <div class="day-card rabu">
+                <div class="day-title">🔵 RABU</div>
+                <div class="activity rest">
+                    <span class="time">05:30</span>
+                    <span class="task">Bangun tidur</span>
+                </div>
+                <div class="activity study">
+                    <span class="time">06:15-06:45</span>
+                    <span class="task">📚 Belajar - 30 menit</span>
+                </div>
+                <div class="activity work">
+                    <span class="time">08:00-17:00</span>
+                    <span class="task">💼 Kerja (9 jam)</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">12:15</span>
+                    <span class="task">🍽️ Makan siang + jus (1/2)</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">12:45-13:05</span>
+                    <span class="task">😴 Tidur siang - 20 menit</span>
+                </div>
+                <div class="activity exercise">
+                    <span class="time">17:30-18:30</span>
+                    <span class="task">🚶‍♂️ Jalan kaki - 30 menit</span>
+                </div>
+                <div class="activity work">
+                    <span class="time">18:30-19:30</span>
+                    <span class="task">📝 Task list kerja - 1 jam</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">19:30-20:00</span>
+                    <span class="task">🍽️ Makan malam + jajan (1/3)</span>
+                </div>
+                <div class="activity exercise">
+                    <span class="time">20:00-20:10</span>
+                    <span class="task">🏃‍♂️ Olahraga - 10 menit</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">20:30-21:30</span>
+                    <span class="task">🎮 Waktu lepas - 1 jam</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">21:30-22:00</span>
+                    <span class="task">🧹 Bersih-bersih kamar - 30 menit</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">01:00</span>
+                    <span class="task">💤 Tidur (4 jam 30 menit) ⚠️</span>
+                </div>
+            </div>
+
+            <!-- KAMIS -->
+            <div class="day-card kamis">
+                <div class="day-title">🔵 KAMIS</div>
+                <div class="activity rest">
+                    <span class="time">06:00</span>
+                    <span class="task">Bangun tidur</span>
+                </div>
+                <div class="activity study">
+                    <span class="time">06:45-07:15</span>
+                    <span class="task">📚 Belajar - 30 menit</span>
+                </div>
+                <div class="activity work">
+                    <span class="time">08:00-17:00</span>
+                    <span class="task">💼 Kerja (9 jam)</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">12:15</span>
+                    <span class="task">🍽️ Makan siang + kopi</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">12:45-13:05</span>
+                    <span class="task">😴 Tidur siang - 20 menit</span>
+                </div>
+                <div class="activity exercise">
+                    <span class="time">17:30-18:30</span>
+                    <span class="task">🚶‍♂️ Jalan kaki - 30 menit</span>
+                </div>
+                <div class="activity work">
+                    <span class="time">18:30-19:30</span>
+                    <span class="task">📝 Task list kerja - 1 jam</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">19:30-20:00</span>
+                    <span class="task">🍽️ Makan malam</span>
+                </div>
+                <div class="activity exercise">
+                    <span class="time">20:00-20:10</span>
+                    <span class="task">🏃‍♂️ Olahraga - 10 menit</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">20:30-21:30</span>
+                    <span class="task">🎮 Waktu lepas + jajan (2/3)</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">22:00</span>
+                    <span class="task">💤 Tidur (5 jam 45 menit)</span>
+                </div>
+                <div class="activity highlight">
+                    <span class="time">02:00-03:00</span>
+                    <span class="task">: ------</span>
+                </div>
+            </div>
+
+            <!-- JUMAT -->
+            <div class="day-card jumat">
+                <div class="day-title">🟣 JUMAT</div>
+                <div class="activity rest">
+                    <span class="time">06:00</span>
+                    <span class="task">Bangun tidur</span>
+                </div>
+                <div class="activity study">
+                    <span class="time">06:45-07:15</span>
+                    <span class="task">📚 Belajar - 30 menit</span>
+                </div>
+                <div class="activity work">
+                    <span class="time">08:00-17:00</span>
+                    <span class="task">💼 Kerja (9 jam)</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">12:15</span>
+                    <span class="task">🍽️ Makan siang + jus (2/2)</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">12:45-13:15</span>
+                    <span class="task">😴 Tidur siang - 30 menit</span>
+                </div>
+                <div class="activity exercise">
+                    <span class="time">17:30-18:30</span>
+                    <span class="task">🚶‍♂️ Jalan kaki - 30 menit</span>
+                </div>
+                <div class="activity work">
+                    <span class="time">18:30-19:30</span>
+                    <span class="task">📝 Task list kerja - 1 jam</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">19:30-20:00</span>
+                    <span class="task">🍽️ Makan malam + jajan (3/3)</span>
+                </div>
+                <div class="activity exercise">
+                    <span class="time">20:00-20:15</span>
+                    <span class="task">🏃‍♂️ Olahraga - 15 menit</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">20:30-22:30</span>
+                    <span class="task">☕ Waktu lepas + kopi malam</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">23:00</span>
+                    <span class="task">💤 Tidur (7 jam)</span>
+                </div>
+            </div>
+
+            <!-- SABTU -->
+            <div class="day-card sabtu">
+                <div class="day-title">🟡 SABTU</div>
+                <div class="activity rest">
+                    <span class="time">05:00</span>
+                    <span class="task">Bangun tidur</span>
+                </div>
+                <div class="activity study">
+                    <span class="time">05:45-06:15</span>
+                    <span class="task">📚 Belajar - 30 menit</span>
+                </div>
+                <div class="activity work">
+                    <span class="time">08:00-17:00</span>
+                    <span class="task">💼 Kerja (9 jam)</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">12:15</span>
+                    <span class="task">🍽️ Makan siang + kopi</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">12:45-13:15</span>
+                    <span class="task">😴 Tidur siang - 30 menit</span>
+                </div>
+                <div class="activity highlight">
+                    <span class="time">17:15-18:45</span>
+                    <span class="task">🏠 Persiapan pulkam (sebulan sekali)</span>
+                </div>
+                <div class="activity highlight">
+                    <span class="time">18:45-19:00</span>
+                    <span class="task">🚗 Berangkat pulkam</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">19:30-21:30</span>
+                    <span class="task">🎮 Waktu lepas (jika tidak pulkam)</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">22:00</span>
+                    <span class="task">💤 Tidur (6 jam)</span>
+                </div>
+            </div>
+
+            <!-- MINGGU -->
+            <div class="day-card minggu">
+                <div class="day-title">🟢 MINGGU</div>
+                <div class="activity rest">
+                    <span class="time">06:00</span>
+                    <span class="task">Bangun tidur (jika tidak pulkam)</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">06:15-07:15</span>
+                    <span class="task">☕ Persiapan + santai</span>
+                </div>
+                <div class="activity study">
+                    <span class="time">07:15-07:45</span>
+                    <span class="task">📚 Belajar - 30 menit</span>
+                </div>
+                <div class="activity exercise">
+                    <span class="time">08:00-08:15</span>
+                    <span class="task">🏃‍♂️ Olahraga - 15 menit</span>
+                </div>
+                <div class="activity work">
+                    <span class="time">08:15-09:15</span>
+                    <span class="task">📝 Task list kerja - 1 jam</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">09:15-12:00</span>
+                    <span class="task">🎮 Waktu lepas bebas</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">12:15</span>
+                    <span class="task">🍽️ Makan siang + kopi</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">12:45-13:15</span>
+                    <span class="task">😴 Tidur siang - 30 menit</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">13:15-15:15</span>
+                    <span class="task">🎮 Waktu lepas bebas - 2 jam</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">15:15-16:15</span>
+                    <span class="task">🧹 Bersih-bersih + cuci baju (2/2)</span>
+                </div>
+                <div class="activity personal">
+                    <span class="time">16:15-18:00</span>
+                    <span class="task">📅 Persiapan minggu depan + santai</span>
+                </div>
+                <div class="activity meal">
+                    <span class="time">18:00-19:00</span>
+                    <span class="task">🍽️ Makan malam</span>
+                </div>
+                <div class="activity rest">
+                    <span class="time">19:00</span>
+                    <span class="task">💤 Tidur bebas (9-11 jam recovery)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sleep-warning">
+            ⚠️ PERHATIAN: Rata-rata tidur hanya 5,5 jam per hari. Disarankan untuk mendapatkan tidur 7-9 jam untuk
+            kesehatan optimal!
+        </div>
+
+        <div class="summary">
+            <h2>📊 Ringkasan Aktivitas Mingguan</h2>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <h3>💤 Tidur</h3>
+                    <p>4-6 jam/hari<br>Rata-rata 5,5 jam</p>
+                </div>
+                <div class="summary-item">
+                    <h3>🏃‍♂️ Olahraga</h3>
+                    <p>10-15 menit/hari<br>7x seminggu</p>
+                </div>
+                <div class="summary-item">
+                    <h3>📚 Belajar</h3>
+                    <p>30 menit/hari<br>7x seminggu</p>
+                </div>
+                <div class="summary-item">
+                    <h3>💼 Task Kerja</h3>
+                    <p>1 jam/hari<br>7x seminggu</p>
+                </div>
+                <div class="summary-item">
+                    <h3>🚶‍♂️ Jalan Kaki</h3>
+                    <p>30 menit/hari<br>5x seminggu</p>
+                </div>
+                <div class="summary-item">
+                    <h3>🍽️ Makan</h3>
+                    <p>2x sehari<br>Siang & Malam</p>
+                </div>
+                <div class="summary-item">
+                    <h3>☕ Konsumsi</h3>
+                    <p>Kopi: 1x/hari<br>Jus: 2x/minggu<br>Jajan: 3x/minggu</p>
+                </div>
+                <div class="summary-item">
+                    <h3>🏠 Pulkam</h3>
+                    <p>Sebulan sekali<br>Sabtu malam</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chat -->
+    <div class="chat-toggle" onclick="toggleChat()">
+        <span style="font-size: 24px;">🤖</span>
+    </div>
+
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header">
+            <h3>🤖 Asisten Jadwal</h3>
+            <button class="chat-close" onclick="toggleChat()">&times;</button>
+        </div>
+
+        <div class="chat-body">
+            <div class="current-time" id="currentTime">
+                Loading...
+            </div>
+
+            <div class="quick-buttons">
+                <button class="quick-btn" onclick="askBot('sekarang')">
+                    🕐 Sekarang harus apa?
+                </button>
+                <button class="quick-btn" onclick="askBot('selanjutnya')">
+                    ⏰ Selanjutnya bersiap apa?
+                </button>
+                <button class="quick-btn" onclick="askBot('hari_ini')">
+                    📅 Jadwal hari ini?
+                </button>
+                <button class="quick-btn" onclick="askBot('besok')">
+                    🌅 Jadwal besok?
+                </button>
+                <button class="quick-btn" onclick="askBot('tips')">
+                    💡 Tips produktivitas?
+                </button>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    <div class="message-content">
+                        Halo! Saya asisten jadwal Anda. Pilih pertanyaan di atas atau tanya apa saja tentang jadwal
+                        Anda! 😊
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
