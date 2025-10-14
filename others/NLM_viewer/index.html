@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NLM Journal Viewer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.min.css" />
+</head>
+<body>
+  <h1>📚 NLM Journal Viewer</h1>
+
+  <div class="toolbar">
+    <button id="settingsBtn">⚙️ Settings</button>
+    <button id="saveBtn">💾 Save JSON</button>
+  </div>
+
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Display Settings</h3>
+      <div id="fieldList"></div>
+      <button id="applySettings">Apply</button>
+      <button id="closeSettings">Close</button>
+    </div>
+  </div>
+
+  <table id="journalTable" class="display"></table>
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.datatables.net/2.0.5/js/dataTables.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
