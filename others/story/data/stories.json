@@ -5,5 +5,12 @@
     "file": "perjalanan_waktu.md",
     "image": "images/perjalanan-waktu.jpg",
     "excerpt": "Kisah perjalanan menemukan bagian diri yang hilang."
+  },
+  {
+    "id": "delay",
+    "title": "Delay",
+    "file": "delay.md",
+    "image": "images/delay.jpg",
+    "excerpt": "Kadang, waktu yang kita pikir masih banyak, ternyata sudah habis."
   }
 ]
