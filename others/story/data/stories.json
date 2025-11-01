@@ -4,13 +4,15 @@
     "title": "Perjalanan Waktu",
     "file": "perjalanan_waktu.md",
     "image": "images/perjalanan-waktu.jpg",
-    "excerpt": "Kisah perjalanan menemukan bagian diri yang hilang."
+    "excerpt": "Kisah perjalanan menemukan bagian diri yang hilang.",
+    "date": "2025-10-21"
   },
   {
     "id": "delay",
     "title": "Delay",
     "file": "delay.md",
     "image": "images/delay.jpg",
-    "excerpt": "Kadang, waktu yang kita pikir masih banyak, ternyata sudah habis."
+    "excerpt": "Kadang, waktu yang kita pikir masih banyak, ternyata sudah habis.",
+    "date": "2025-11-01"
   }
 ]

@@ -12,6 +12,17 @@ function getThemeFromDocument() {
 	return document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light';
 }
 
+function formatDate(dateStr) {
+	if (!dateStr) return '';
+	try {
+		const date = new Date(dateStr);
+		const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+		return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+	} catch (e) {
+		return dateStr;
+	}
+}
+
 function setTheme(theme) {
 	if (theme === 'dark') document.documentElement.classList.add('theme-dark');
 	else document.documentElement.classList.remove('theme-dark');
@@ -88,7 +99,11 @@ function renderList() {
 				if (s.image) {
 					thumb = `<div class="thumb"><img src="${escapeHtml(s.image)}" alt="${escapeHtml(s.title)}" loading="lazy"></div>`;
 				}
-				el.innerHTML = `${thumb}<div class="list-body"><h3>${escapeHtml(s.title)}</h3><p class="excerpt">${escapeHtml(s.excerpt || '')}</p></div>`;
+				let dateStr = '';
+				if (s.date) {
+					dateStr = `<span class="date">${formatDate(s.date)}</span>`;
+				}
+				el.innerHTML = `${thumb}<div class="list-body"><h3>${escapeHtml(s.title)}</h3><p class="excerpt">${escapeHtml(s.excerpt || '')}</p>${dateStr}</div>`;
 				list.appendChild(el);
 		});
 	}).catch(err => {
@@ -102,9 +117,18 @@ function loadStory(id) {
 		const s = stories.find(x => x.id === id);
 		if (!s) { document.getElementById('story-content').textContent = 'Cerita tidak ditemukan.'; return; }
 		document.getElementById('story-title').textContent = s.title;
-		// render header image if available
+		// render header image and date (date should appear above header)
 		const header = document.getElementById('story-header');
+		// remove any existing date element to avoid duplicates
+		const prevDate = document.querySelector('.story-date');
+		if (prevDate) prevDate.remove();
 		if (header) {
+			if (s.date) {
+				const dateEl = document.createElement('div');
+				dateEl.className = 'story-date';
+				dateEl.textContent = formatDate(s.date);
+				header.parentNode.insertBefore(dateEl, header);
+			}
 			if (s.image) header.innerHTML = `<img class="story-header-img" src="${escapeHtml(s.image)}" alt="${escapeHtml(s.title)}">`;
 			else header.innerHTML = '';
 		}
