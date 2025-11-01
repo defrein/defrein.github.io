@@ -119,7 +119,7 @@ function loadStory(id) {
 	});
 }
 
-// very small markdown renderer covering headings, paragraphs, blockquote and hr
+// very small markdown renderer covering headings, paragraphs, blockquote, hr, bold, and italic
 function renderMarkdown(md) {
 	const lines = md.replace(/\r/g, '').split('\n');
 	let out = '';
@@ -129,21 +129,44 @@ function renderMarkdown(md) {
 		if (/^---+$/.test(line)) { out += '<hr>'; return; }
 		if (/^>\s?/.test(line)) {
 			if (!inBlock) { out += '<blockquote>'; inBlock = true; }
-			out += escapeHtml(line.replace(/^>\s?/, '')) + '\n\n';
+			out += processInline(line.replace(/^>\s?/, '')) + '\n\n';
 			return;
 		} else if (inBlock) { out += '</blockquote>'; inBlock = false; }
 
 		const h = line.match(/^(#{1,6})\s+(.*)$/);
-		if (h) { out += `<h${h[1].length}>${escapeHtml(h[2])}</h${h[1].length}>`; inParagraph = false; return; }
+		if (h) { 
+			out += `<h${h[1].length}>${processInline(h[2])}</h${h[1].length}>`; 
+			inParagraph = false; 
+			return; 
+		}
 
-		if (line.trim() === '') { if (inParagraph) { out += '</p>'; inParagraph = false; } return; }
+		if (line.trim() === '') { 
+			if (inParagraph) { out += '</p>'; inParagraph = false; } 
+			return; 
+		}
 
 		if (!inParagraph) { out += '<p>'; inParagraph = true; }
-		out += escapeHtml(line) + '\n';
+		out += processInline(line) + '\n';
 	});
 	if (inParagraph) out += '</p>';
 	if (inBlock) out += '</blockquote>';
 	return out;
+}
+
+// process inline markdown: bold (**text** or __text__) and italic (*text* or _text_)
+function processInline(text) {
+	// escape HTML first
+	let result = escapeHtml(text);
+	
+	// bold: **text** or __text__
+	result = result.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+	result = result.replace(/__(.+?)__/g, '<strong>$1</strong>');
+	
+	// italic: *text* or _text_ (but not inside words)
+	result = result.replace(/\*([^*]+?)\*/g, '<em>$1</em>');
+	result = result.replace(/\b_([^_]+?)_\b/g, '<em>$1</em>');
+	
+	return result;
 }
 
 function escapeHtml(s) {
@@ -153,4 +176,3 @@ function escapeHtml(s) {
 		.replace(/>/g,'&gt;')
 		.replace(/"/g,'&quot;');
 }
-
