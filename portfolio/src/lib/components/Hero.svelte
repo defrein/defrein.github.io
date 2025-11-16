@@ -62,145 +62,98 @@
 		<div class="absolute inset-0 bg-gradient-radial opacity-30"></div>
 	</div>
 	
-	<!-- Animated ocean wave background -->
-	<div class="absolute inset-0 ocean-waves"></div>
+	<!-- Animated ocean wave background - Lighter on mobile -->
+	<div class="absolute inset-0 ocean-waves lighter-animation"></div>
 	
 	<!-- Ocean depth gradient overlay -->
-	<div class="absolute inset-0 ocean-gradient"></div>
+	<div class="absolute inset-0 ocean-gradient lighter-animation"></div>
 	
-	<!-- Animated light rays from surface (multiple rays) - More spread out -->
-	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		{#each Array(6) as _, i}
+	<!-- Animated light rays from surface - Reduced to 3 rays -->
+	<div class="absolute inset-0 overflow-hidden pointer-events-none hidden-on-mobile">
+		{#each Array(3) as _, i}
 			<div 
 				class="light-ray"
 				style="
-					left: {i * 18 - 8}%;
-					animation-delay: {i * 1.5}s;
-					opacity: {0.5 + (i % 3) * 0.15};
-					transform: rotate({-8 + i * 2.5}deg);
+					left: {i * 30 - 5}%;
+					animation-delay: {i * 2}s;
+					opacity: {0.4 + (i % 2) * 0.1};
+					transform: rotate({-5 + i * 3}deg);
 				"
 			></div>
 		{/each}
 	</div>
 	
-	<!-- Floating water bubbles -->
-	<div class="absolute inset-0 overflow-hidden pointer-events-none">
+	<!-- Floating water bubbles - Reduced and hidden on mobile -->
+	<div class="absolute inset-0 overflow-hidden pointer-events-none hidden-on-mobile">
 		<div 
-			class="absolute w-96 h-96 bg-secondary/15 rounded-full blur-3xl animate-float-slow"
-			style="top: 20%; left: 10%; transform: translate({mouseX * 0.3}px, {mouseY * 0.3}px);"
+			class="absolute w-96 h-96 bg-secondary/10 rounded-full blur-3xl animate-float-slow"
+			style="top: 20%; left: 10%;"
 		></div>
 		<div 
-			class="absolute w-80 h-80 bg-highlight/15 rounded-full blur-3xl animate-float-slow"
-			style="top: 60%; right: 10%; animation-delay: 2s; transform: translate({-mouseX * 0.3}px, {-mouseY * 0.3}px);"
-		></div>
-		<div 
-			class="absolute w-72 h-72 bg-accent/15 rounded-full blur-3xl animate-float-slow"
-			style="top: 40%; left: 50%; animation-delay: 4s; transform: translate({mouseX * 0.2}px, {mouseY * 0.2}px);"
+			class="absolute w-80 h-80 bg-highlight/10 rounded-full blur-3xl animate-float-slow"
+			style="top: 60%; right: 10%; animation-delay: 3s;"
 		></div>
 	</div>
 	
-	<!-- Floating bubbles -->
-	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		{#each Array(20) as _, i}
+	<!-- Floating bubbles - Reduced to 8 -->
+	<div class="absolute inset-0 overflow-hidden pointer-events-none hidden-on-mobile">
+		{#each Array(8) as _, i}
 			<div 
 				class="absolute bubble"
 				style="
 					left: {Math.random() * 100}%;
 					top: {Math.random() * 100}%;
-					width: {3 + Math.random() * 8}px;
-					height: {3 + Math.random() * 8}px;
-					animation: bubble-rise {8 + Math.random() * 12}s ease-in infinite;
-					animation-delay: {Math.random() * 8}s;
-					opacity: {0.4 + Math.random() * 0.6};
+					width: {4 + Math.random() * 6}px;
+					height: {4 + Math.random() * 6}px;
+					animation: bubble-rise {10 + Math.random() * 10}s ease-in infinite;
+					animation-delay: {Math.random() * 10}s;
+					opacity: {0.3 + Math.random() * 0.4};
 				"
 			></div>
 		{/each}
 	</div>
 	
-	<!-- Swimming sea creatures -->
-	<div class="absolute inset-0 overflow-hidden pointer-events-none z-20">
-		<!-- Fish swimming left to right - starting at different positions -->
-		{#each Array(3) as _, i}
+	<!-- Swimming sea creatures - Reduced and hidden on mobile -->
+	<div class="absolute inset-0 overflow-hidden pointer-events-none z-20 hidden-on-mobile">
+		<!-- Fish swimming left to right - Reduced to 2 -->
+		{#each Array(2) as _, i}
 			<div 
 				class="sea-creature"
 				style="
-					top: {20 + i * 25}%;
-					animation: swim-right {15 + i * 5}s linear infinite;
-					animation-delay: -{i * 5}s;
-					font-size: {1.5 + i * 0.5}rem;
+					top: {25 + i * 30}%;
+					animation: swim-right {18 + i * 6}s linear infinite;
+					animation-delay: -{i * 8}s;
+					font-size: {1.8 + i * 0.4}rem;
 				"
 			>
 				𓆟
 			</div>
 		{/each}
 		
-		<!-- Fish swimming right to left -->
-		{#each Array(2) as _, i}
-			<div 
-				class="sea-creature"
-				style="
-					top: {35 + i * 30}%;
-					animation: swim-left {18 + i * 6}s linear infinite;
-					animation-delay: -{i * 6 + 3}s;
-					font-size: {1.3 + i * 0.4}rem;
-				"
-			>
-				𓆝
-			</div>
-		{/each}
-		
-		<!-- Turtles swimming slowly -->
-		{#each Array(2) as _, i}
-			<div 
-				class="sea-creature"
-				style="
-					top: {50 + i * 20}%;
-					animation: swim-right {25 + i * 5}s linear infinite;
-					animation-delay: -{i * 10}s;
-					font-size: {1.8 + i * 0.3}rem;
-				"
-			>
-				𓆉
-			</div>
-		{/each}
-		
-		<!-- Small fish group -->
-		<div 
-			class="sea-creature"
-			style="
-				top: 15%;
-				animation: swim-right 12s linear infinite;
-				animation-delay: 0s;
-				font-size: 2rem;
-			"
-		>
-			𓆞
-		</div>
-		
-		<!-- Extra swimming fish -->
+		<!-- Fish swimming right to left - Only 1 -->
 		<div 
 			class="sea-creature"
 			style="
 				top: 50%;
-				animation: swim-right 14s linear infinite;
-				animation-delay: 1s;
-				font-size: 3rem;
-			"
-		>
-			𓆟
-		</div>
-		
-		<!-- Another swimming fish -->
-		<div 
-			class="sea-creature"
-			style="
-				top: 30%;
-				animation: swim-left 16s linear infinite;
-				animation-delay: 2s;
-				font-size: 2.5rem;
+				animation: swim-left 20s linear infinite;
+				animation-delay: -5s;
+				font-size: 1.5rem;
 			"
 		>
 			𓆝
+		</div>
+		
+		<!-- One turtle -->
+		<div 
+			class="sea-creature"
+			style="
+				top: 65%;
+				animation: swim-right 28s linear infinite;
+				animation-delay: -10s;
+				font-size: 2rem;
+			"
+		>
+			𓆟
 		</div>
 		
 		<!-- Visible fish swimming across the hero -->
@@ -264,18 +217,6 @@
 		>
 			𓇼
 		</div>
-		<div 
-			class="sea-creature shell"
-			style="
-				top: 80%;
-				left: 70%;
-				animation: float-shell 10s ease-in-out infinite;
-				animation-delay: 3s;
-				font-size: 1.3rem;
-			"
-		>
-			𓇼
-		</div>
 	</div>
 	
 	<!-- Light rays from surface -->
@@ -291,7 +232,7 @@
 		
 		<!-- Name with advanced animations -->
 		<div class="mb-8 perspective-container">
-			<h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-black tracking-wider">
+			<h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-black tracking-wider name-title">
 				{#each letters as letter, i}
 					{#if letter === ' '}
 						<span class="inline-block w-3 sm:w-4 md:w-6"></span>
@@ -1014,5 +955,122 @@
 	/* Perspective for 3D effects */
 	.perspective-container {
 		perspective: 1000px;
+	}
+	
+	/* Mobile & Tablet Optimization - Performance improvements */
+	@media (max-width: 1024px) {
+		/* Hide heavy animations on mobile and tablet */
+		.hidden-on-mobile {
+			display: none !important;
+		}
+		
+		/* Disable all animations */
+		* {
+			animation: none !important;
+			transition: none !important;
+		}
+		
+		/* Remove animation from ocean backgrounds */
+		.ocean-waves,
+		.ocean-gradient,
+		.lighter-animation {
+			animation: none !important;
+		}
+		
+		/* Fix WAHNI ADNANI text display on mobile */
+		.name-title {
+			display: block !important;
+		}
+		
+		/* Simplify text - no animation, ensure visibility */
+		.holographic-text {
+			animation: none !important;
+			background: linear-gradient(135deg, #0466c8 0%, #00b4d8 100%) !important;
+			-webkit-background-clip: text !important;
+			-webkit-text-fill-color: transparent !important;
+			background-clip: text !important;
+			color: transparent !important;
+			display: inline-block !important;
+		}
+		
+		:global(.light) .holographic-text {
+			background: linear-gradient(135deg, #023e8a 0%, #0466c8 100%) !important;
+			-webkit-background-clip: text !important;
+			-webkit-text-fill-color: transparent !important;
+			background-clip: text !important;
+			color: transparent !important;
+			display: inline-block !important;
+		}
+		
+		/* No letter animations - reset transform */
+		.letter-float {
+			animation: none !important;
+			transition: none !important;
+			transform: none !important;
+		}
+		
+		.letter-float:hover {
+			transform: none !important;
+		}
+		
+		/* No fade animations */
+		.animate-fade-in,
+		.animate-fade-in-up,
+		.animate-fade-in-down {
+			animation: none !important;
+			opacity: 1 !important;
+		}
+		
+		/* Ensure role text is visible */
+		.role-change {
+			animation: none !important;
+			filter: none !important;
+		}
+		
+		/* Disable icon animations */
+		.animate-pulse {
+			animation: none !important;
+		}
+	}
+	
+	/* Extra optimization for small mobile devices */
+	@media (max-width: 640px) {
+		/* Ensure everything is static */
+		*, *::before, *::after {
+			animation: none !important;
+			transition: none !important;
+		}
+		
+		/* Force static text display */
+		.holographic-text {
+			animation: none !important;
+			background: linear-gradient(135deg, #0466c8 0%, #00b4d8 100%) !important;
+			-webkit-background-clip: text !important;
+			-webkit-text-fill-color: transparent !important;
+			background-clip: text !important;
+			color: transparent !important;
+			transform: none !important;
+		}
+		
+		:global(.light) .holographic-text {
+			background: linear-gradient(135deg, #023e8a 0%, #0466c8 100%) !important;
+			-webkit-background-clip: text !important;
+			-webkit-text-fill-color: transparent !important;
+			background-clip: text !important;
+			color: transparent !important;
+			display: inline-block !important;
+		}
+		
+		/* No ocean animations */
+		.ocean-waves,
+		.ocean-gradient {
+			animation: none !important;
+			opacity: 0.5;
+		}
+		
+		/* Reduce font size for very small screens */
+		.name-title {
+			font-size: 2rem !important;
+		}
 	}
 </style>
