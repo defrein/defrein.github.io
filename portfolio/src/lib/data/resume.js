@@ -1,6 +1,7 @@
 export const resumeData = {
 	personal: {
 		name: "Wahni Adnani",
+        nickname: "DEF",
 		title: "AI Engineer | Software Engineer",
 		phone: "+6289636327090",
 		email: "adnaniwahni@gmail.com",

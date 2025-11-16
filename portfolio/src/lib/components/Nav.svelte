@@ -60,8 +60,7 @@
 		<div class="flex justify-between items-center h-16">
 			<!-- Logo/Name -->
 			<a href="#hero" class="flex items-center space-x-2" onclick={(e) => { e.preventDefault(); handleNavClick('#hero'); }}>
-				<span class="text-2xl font-heading font-bold text-gradient">WA</span>
-				<span class="hidden sm:block text-text font-heading text-lg">{resumeData.personal.name.split(' ')[0]}</span>
+				<span class="text-2xl font-heading font-bold text-gradient">{resumeData.personal.nickname}</span>
 			</a>
 			
 			<!-- Desktop Navigation -->
