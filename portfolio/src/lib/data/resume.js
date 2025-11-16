@@ -68,7 +68,7 @@ export const resumeData = {
 	
 	education: [
 		{
-			institution: "Cyber Asia University",
+			institution: "Asia Cyber University",
 			degree: "Bachelor of Informatics",
 			period: "2025 - 2026",
 			gpa: "3.90/4.00",
@@ -108,38 +108,39 @@ export const resumeData = {
 	interests: ["Robotics", "Internet of Things (IoT)", "Smart Systems", "Bioinformatics"],
 	
 	featuredProjects: [
-		{
-			title: "Smart Robot System - PLN Competition",
-			description: "3rd place winning robot with Computer Vision and Voice Recognition",
-			image: "/projects/pln-robot.jpg",
-			technologies: ["Raspberry Pi", "Python", "OpenCV", "Voice Recognition"],
-			category: "robotics",
-			featured: true,
-			achievement: "3rd Place National"
-		},
-		{
-			title: "Autonomous Navigation Robot - KRI 2023",
-			description: "Self-navigating robot for complex obstacle courses",
-			image: "/projects/kri-robot.jpg",
-			technologies: ["Arduino", "C++", "Sensor Integration"],
-			category: "robotics",
-			featured: true
-		},
-		{
+        {
 			title: "JATS Editor Platform",
 			description: "Full-featured editor for scientific publication XML files",
 			image: "/projects/jats-editor.jpg",
 			technologies: ["PHP", "Laravel", "JavaScript", "JATS/XML"],
-			category: "web",
+			category: ["web"],
 			featured: true,
 			link: "https://jatseditor.com"
 		},
 		{
+			title: "Autonomous Navigation Robot - KRI 2024",
+			description: "Self-navigating robot for complex obstacle courses with advanced sensors",
+			image: "/projects/kri-robot-krai.png",
+			technologies: ["Raspberry Pi", "Python", "OpenCV", "Machine Learning"],
+			category: "robotics",
+			featured: true,
+			achievement: "3rd Place"
+		},
+		{
+			title: "Autonomous Navigation Robot - KRI 2023",
+			description: "Self-navigating robot for complex obstacle courses",
+			image: "/projects/kri-robot.jpeg",
+			technologies: ["Arduino", "C++", "Sensor Integration"],
+			category: "robotics",
+			featured: true,
+            achievement: "National Competition Participant"
+		},
+		{
 			title: "AI Document Processing System",
 			description: "Intelligent JATS file conversion with NLP and LLMs",
-			image: "/projects/ai-processing.jpg",
+			image: "/projects/project_digital_printing_web.png",
 			technologies: ["Python", "NLP", "LLMs", "Machine Learning"],
-			category: "ai",
+			category: "web",
 			featured: true
 		},
 		{
