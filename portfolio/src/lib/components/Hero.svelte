@@ -62,45 +62,224 @@
 		<div class="absolute inset-0 bg-gradient-radial opacity-30"></div>
 	</div>
 	
-	<!-- Animated grid background -->
-	<div class="absolute inset-0 cyber-grid"></div>
+	<!-- Animated ocean wave background -->
+	<div class="absolute inset-0 ocean-waves"></div>
 	
-	<!-- Parallax orbs -->
-	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		<div 
-			class="absolute w-96 h-96 bg-secondary/20 rounded-full blur-3xl animate-pulse-slow"
-			style="top: 20%; left: 10%; transform: translate({mouseX}px, {mouseY}px);"
-		></div>
-		<div 
-			class="absolute w-80 h-80 bg-highlight/20 rounded-full blur-3xl animate-pulse-slow"
-			style="top: 60%; right: 10%; animation-delay: 1s; transform: translate({-mouseX}px, {-mouseY}px);"
-		></div>
-		<div 
-			class="absolute w-72 h-72 bg-accent/20 rounded-full blur-3xl animate-pulse-slow"
-			style="top: 40%; left: 50%; animation-delay: 2s; transform: translate({mouseX * 0.5}px, {mouseY * 0.5}px);"
-		></div>
-	</div>
+	<!-- Ocean depth gradient overlay -->
+	<div class="absolute inset-0 ocean-gradient"></div>
 	
-	<!-- Floating particles with varied effects -->
+	<!-- Animated light rays from surface (multiple rays) - More spread out -->
 	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		{#each Array(30) as _, i}
+		{#each Array(6) as _, i}
 			<div 
-				class="absolute particle-glow"
+				class="light-ray"
 				style="
-					left: {Math.random() * 100}%;
-					top: {Math.random() * 100}%;
-					width: {2 + Math.random() * 4}px;
-					height: {2 + Math.random() * 4}px;
-					animation: float-complex {5 + Math.random() * 10}s linear infinite;
-					animation-delay: {Math.random() * 5}s;
-					opacity: {0.3 + Math.random() * 0.7};
+					left: {i * 18 - 8}%;
+					animation-delay: {i * 1.5}s;
+					opacity: {0.5 + (i % 3) * 0.15};
+					transform: rotate({-8 + i * 2.5}deg);
 				"
 			></div>
 		{/each}
 	</div>
 	
-	<!-- Scanning line effect -->
-	<div class="scan-line"></div>
+	<!-- Floating water bubbles -->
+	<div class="absolute inset-0 overflow-hidden pointer-events-none">
+		<div 
+			class="absolute w-96 h-96 bg-secondary/15 rounded-full blur-3xl animate-float-slow"
+			style="top: 20%; left: 10%; transform: translate({mouseX * 0.3}px, {mouseY * 0.3}px);"
+		></div>
+		<div 
+			class="absolute w-80 h-80 bg-highlight/15 rounded-full blur-3xl animate-float-slow"
+			style="top: 60%; right: 10%; animation-delay: 2s; transform: translate({-mouseX * 0.3}px, {-mouseY * 0.3}px);"
+		></div>
+		<div 
+			class="absolute w-72 h-72 bg-accent/15 rounded-full blur-3xl animate-float-slow"
+			style="top: 40%; left: 50%; animation-delay: 4s; transform: translate({mouseX * 0.2}px, {mouseY * 0.2}px);"
+		></div>
+	</div>
+	
+	<!-- Floating bubbles -->
+	<div class="absolute inset-0 overflow-hidden pointer-events-none">
+		{#each Array(20) as _, i}
+			<div 
+				class="absolute bubble"
+				style="
+					left: {Math.random() * 100}%;
+					top: {Math.random() * 100}%;
+					width: {3 + Math.random() * 8}px;
+					height: {3 + Math.random() * 8}px;
+					animation: bubble-rise {8 + Math.random() * 12}s ease-in infinite;
+					animation-delay: {Math.random() * 8}s;
+					opacity: {0.4 + Math.random() * 0.6};
+				"
+			></div>
+		{/each}
+	</div>
+	
+	<!-- Swimming sea creatures -->
+	<div class="absolute inset-0 overflow-hidden pointer-events-none z-20">
+		<!-- Fish swimming left to right - starting at different positions -->
+		{#each Array(3) as _, i}
+			<div 
+				class="sea-creature"
+				style="
+					top: {20 + i * 25}%;
+					animation: swim-right {15 + i * 5}s linear infinite;
+					animation-delay: -{i * 5}s;
+					font-size: {1.5 + i * 0.5}rem;
+				"
+			>
+				𓆟
+			</div>
+		{/each}
+		
+		<!-- Fish swimming right to left -->
+		{#each Array(2) as _, i}
+			<div 
+				class="sea-creature"
+				style="
+					top: {35 + i * 30}%;
+					animation: swim-left {18 + i * 6}s linear infinite;
+					animation-delay: -{i * 6 + 3}s;
+					font-size: {1.3 + i * 0.4}rem;
+				"
+			>
+				𓆝
+			</div>
+		{/each}
+		
+		<!-- Turtles swimming slowly -->
+		{#each Array(2) as _, i}
+			<div 
+				class="sea-creature"
+				style="
+					top: {50 + i * 20}%;
+					animation: swim-right {25 + i * 5}s linear infinite;
+					animation-delay: -{i * 10}s;
+					font-size: {1.8 + i * 0.3}rem;
+				"
+			>
+				𓆉
+			</div>
+		{/each}
+		
+		<!-- Small fish group -->
+		<div 
+			class="sea-creature"
+			style="
+				top: 15%;
+				animation: swim-right 12s linear infinite;
+				animation-delay: 0s;
+				font-size: 2rem;
+			"
+		>
+			𓆞
+		</div>
+		
+		<!-- Extra swimming fish -->
+		<div 
+			class="sea-creature"
+			style="
+				top: 50%;
+				animation: swim-right 14s linear infinite;
+				animation-delay: 1s;
+				font-size: 3rem;
+			"
+		>
+			𓆟
+		</div>
+		
+		<!-- Another swimming fish -->
+		<div 
+			class="sea-creature"
+			style="
+				top: 30%;
+				animation: swim-left 16s linear infinite;
+				animation-delay: 2s;
+				font-size: 2.5rem;
+			"
+		>
+			𓆝
+		</div>
+		
+		<!-- Visible fish swimming across the hero -->
+		<div 
+			class="sea-creature"
+			style="
+				top: 25%;
+				animation: swim-right 15s linear infinite;
+				font-size: 2.5rem;
+			"
+		>
+			𓆟
+		</div>
+		
+		<div 
+			class="sea-creature"
+			style="
+				top: 40%;
+				animation: swim-right 20s linear infinite;
+				animation-delay: 5s;
+				font-size: 2.2rem;
+			"
+		>
+			𓆉
+		</div>
+		
+		<!-- More swimming fish at different levels -->
+		<div 
+			class="sea-creature"
+			style="
+				top: 35%;
+				animation: swim-left 14s linear infinite;
+				animation-delay: 7s;
+				font-size: 2.3rem;
+			"
+		>
+			𓆝
+		</div>
+		
+		<div 
+			class="sea-creature"
+			style="
+				top: 60%;
+				animation: swim-right 22s linear infinite;
+				animation-delay: 4s;
+				font-size: 1.9rem;
+			"
+		>
+			𓆉
+		</div>
+		
+		<!-- Decorative shells floating -->
+		<div 
+			class="sea-creature shell"
+			style="
+				top: 70%;
+				left: 20%;
+				animation: float-shell 8s ease-in-out infinite;
+				font-size: 1.5rem;
+			"
+		>
+			𓇼
+		</div>
+		<div 
+			class="sea-creature shell"
+			style="
+				top: 80%;
+				left: 70%;
+				animation: float-shell 10s ease-in-out infinite;
+				animation-delay: 3s;
+				font-size: 1.3rem;
+			"
+		>
+			𓇼
+		</div>
+	</div>
+	
+	<!-- Light rays from surface -->
+	<div class="light-rays"></div>
 	
 	<div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-8">
 		<!-- Decorative top element -->
@@ -236,32 +415,51 @@
 </section>
 
 <style>
-	/* Holographic text effect - Custom for WAHNI ADNANI */
+	/* Ocean shimmer text effect - Custom for WAHNI ADNANI */
 	.holographic-text {
 		background: linear-gradient(
 			135deg,
-			#60a5fa 0%,
-			#a78bfa 20%,
-			#c084fc 40%,
-			#e879f9 60%,
-			#60a5fa 80%,
-			#a78bfa 100%
+			#0466c8 0%,
+			#0077b6 20%,
+			#00b4d8 40%,
+			#33d9ff 60%,
+			#48cae4 80%,
+			#0466c8 100%
 		);
 		background-size: 300% 300%;
 		-webkit-background-clip: text;
-		background-clip: text;
 		-webkit-text-fill-color: transparent;
-		animation: holographic-shift 4s ease-in-out infinite;
+		background-clip: text;
+		color: transparent;
+		animation: ocean-shimmer 6s ease-in-out infinite;
 	}
 	
-	@keyframes holographic-shift {
+	/* Light theme adjustments */
+	:global(.light) .holographic-text {
+		background: linear-gradient(
+			135deg,
+			#001d3d 0%,
+			#023e8a 20%,
+			#0353a4 40%,
+			#0466c8 60%,
+			#0077b6 80%,
+			#001d3d 100%
+		);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		color: transparent;
+		filter: brightness(1.1) contrast(1.2);
+	}
+	
+	@keyframes ocean-shimmer {
 		0%, 100% { 
 			background-position: 0% 50%;
 			filter: brightness(1);
 		}
 		33% { 
 			background-position: 50% 0%;
-			filter: brightness(1.1);
+			filter: brightness(1.15);
 		}
 		66% { 
 			background-position: 100% 50%;
@@ -279,74 +477,317 @@
 		filter: brightness(1.3);
 	}
 	
-	/* Cyber grid background */
-	.cyber-grid {
-		background-image: 
-			linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
-		background-size: 50px 50px;
-		animation: grid-move 20s linear infinite;
+	/* Ocean waves background - Enhanced visibility */
+	.ocean-waves {
+		background: 
+			linear-gradient(
+				180deg,
+				rgba(0, 100, 150, 0.15) 0%,
+				rgba(4, 102, 200, 0.12) 30%,
+				rgba(0, 180, 216, 0.08) 60%,
+				rgba(0, 20, 40, 0.3) 100%
+			);
+		animation: wave-motion 15s ease-in-out infinite;
 	}
 	
-	@keyframes grid-move {
-		0% { transform: translate(0, 0); }
-		100% { transform: translate(50px, 50px); }
+	:global(.light) .ocean-waves {
+		background: 
+			linear-gradient(
+				180deg,
+				rgba(72, 202, 228, 0.15) 0%,
+				rgba(0, 150, 199, 0.12) 30%,
+				rgba(0, 119, 182, 0.1) 60%,
+				rgba(3, 62, 138, 0.08) 100%
+			);
 	}
 	
-	/* Radial gradient */
-	.bg-gradient-radial {
-		background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1), transparent 70%);
-		animation: pulse-radial 4s ease-in-out infinite;
-	}
-	
-	@keyframes pulse-radial {
-		0%, 100% { opacity: 0.3; transform: scale(1); }
-		50% { opacity: 0.6; transform: scale(1.1); }
-	}
-	
-	/* Particle glow */
-	.particle-glow {
-		background: radial-gradient(circle, rgba(59, 130, 246, 0.8), rgba(139, 92, 246, 0.4), transparent);
-		border-radius: 50%;
-	}
-	
-	/* Complex floating animation */
-	@keyframes float-complex {
-		0%, 100% {
-			transform: translate(0, 0) rotate(0deg);
-			opacity: 0.3;
+	@keyframes wave-motion {
+		0%, 100% { 
+			background-position: 0% 0%;
+			transform: translateY(0);
 		}
-		25% {
-			transform: translate(30px, -40px) rotate(90deg);
-			opacity: 0.8;
+		50% { 
+			background-position: 100% 100%;
+			transform: translateY(-10px);
+		}
+	}
+	
+	/* Ocean depth gradient - Enhanced for light rays effect */
+	.ocean-gradient {
+		background: radial-gradient(
+			ellipse at 50% -20%,
+			rgba(51, 217, 255, 0.15) 0%,
+			rgba(72, 202, 228, 0.1) 25%,
+			rgba(4, 102, 200, 0.08) 50%,
+			rgba(0, 50, 100, 0.1) 75%,
+			transparent 100%
+		);
+		animation: depth-pulse 10s ease-in-out infinite;
+	}
+	
+	:global(.light) .ocean-gradient {
+		background: radial-gradient(
+			ellipse at 50% -20%,
+			rgba(144, 224, 239, 0.3) 0%,
+			rgba(72, 202, 228, 0.2) 25%,
+			rgba(0, 180, 216, 0.15) 50%,
+			rgba(4, 102, 200, 0.1) 75%,
+			transparent 100%
+		);
+	}
+	
+	@keyframes depth-pulse {
+		0%, 100% { opacity: 0.6; }
+		50% { opacity: 1; }
+	}
+	
+	/* Bubble effect */
+	.bubble {
+		background: radial-gradient(
+			circle at 30% 30%,
+			rgba(51, 217, 255, 0.8),
+			rgba(72, 202, 228, 0.4),
+			rgba(4, 102, 200, 0.1)
+		);
+		border-radius: 50%;
+		box-shadow: 
+			inset -2px -2px 4px rgba(255, 255, 255, 0.3),
+			0 0 10px rgba(51, 217, 255, 0.4);
+	}
+	
+	:global(.light) .bubble {
+		background: radial-gradient(
+			circle at 30% 30%,
+			rgba(144, 224, 239, 0.9),
+			rgba(72, 202, 228, 0.6),
+			rgba(0, 180, 216, 0.3)
+		);
+		box-shadow: 
+			inset -2px -2px 4px rgba(255, 255, 255, 0.5),
+			0 0 8px rgba(0, 180, 216, 0.5);
+	}
+	
+	/* Bubble rising animation */
+	@keyframes bubble-rise {
+		0% {
+			transform: translateY(0) translateX(0) scale(0.8);
+			opacity: 0;
+		}
+		10% {
+			opacity: 0.6;
 		}
 		50% {
-			transform: translate(-20px, -80px) rotate(180deg);
+			transform: translateY(-50vh) translateX(20px) scale(1);
+			opacity: 0.8;
+		}
+		100% {
+			transform: translateY(-100vh) translateX(-30px) scale(0.6);
+			opacity: 0;
+		}
+	}
+	
+	/* Gentle floating animation */
+	@keyframes float-slow {
+		0%, 100% {
+			transform: translate(0, 0) scale(1);
 			opacity: 0.4;
 		}
-		75% {
-			transform: translate(-40px, -40px) rotate(270deg);
+		50% {
+			transform: translate(0, -20px) scale(1.05);
 			opacity: 0.7;
 		}
 	}
 	
-	/* Scanning line effect */
-	.scan-line {
+	/* Sea creatures styling */
+	.sea-creature {
+		position: absolute;
+		left: 0;
+		color: rgba(51, 217, 255, 0.9);
+		text-shadow: 
+			0 0 15px rgba(51, 217, 255, 0.8),
+			0 0 30px rgba(72, 202, 228, 0.6),
+			0 0 45px rgba(4, 102, 200, 0.4);
+		filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.5));
+		will-change: transform, left;
+		z-index: 5;
+	}
+	
+	:global(.light) .sea-creature {
+		color: rgba(4, 102, 200, 0.85);
+		text-shadow: 
+			0 0 10px rgba(0, 180, 216, 0.6),
+			0 0 20px rgba(72, 202, 228, 0.5),
+			0 0 30px rgba(4, 102, 200, 0.3);
+		filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+	}
+	
+	.sea-creature.shell {
+		animation: float-shell 8s ease-in-out infinite !important;
+	}
+	
+	/* Fish swimming from right to left (reversed) */
+	@keyframes -global-swim-right {
+		0% {
+			left: 110%;
+			transform: translateY(0) rotate(0deg);
+		}
+		25% {
+			left: 80%;
+			transform: translateY(-15px) rotate(-2deg);
+		}
+		50% {
+			left: 50%;
+			transform: translateY(0) rotate(0deg);
+		}
+		75% {
+			left: 20%;
+			transform: translateY(15px) rotate(2deg);
+		}
+		100% {
+			left: -10%;
+			transform: translateY(0) rotate(0deg);
+		}
+	}
+	
+	/* Fish swimming from left to right (reversed) */
+	@keyframes -global-swim-left {
+		0% {
+			left: -10%;
+			transform: translateY(0) rotate(0deg) scaleX(-1);
+		}
+		25% {
+			left: 20%;
+			transform: translateY(-15px) rotate(2deg) scaleX(-1);
+		}
+		50% {
+			left: 50%;
+			transform: translateY(0) rotate(0deg) scaleX(-1);
+		}
+		75% {
+			left: 80%;
+			transform: translateY(15px) rotate(-2deg) scaleX(-1);
+		}
+		100% {
+			left: 110%;
+			transform: translateY(0) rotate(0deg) scaleX(-1);
+		}
+	}
+	
+	/* Gentle swimming in place */
+	@keyframes gentle-swim {
+		0%, 100% {
+			transform: translate(0, 0) rotate(0deg) scale(1);
+		}
+		25% {
+			transform: translate(20px, -20px) rotate(-5deg) scale(1.05);
+		}
+		50% {
+			transform: translate(0, -30px) rotate(0deg) scale(1.1);
+		}
+		75% {
+			transform: translate(-20px, -20px) rotate(5deg) scale(1.05);
+		}
+	}
+	
+	.animate-gentle-swim {
+		animation: gentle-swim 5s ease-in-out infinite;
+	}
+	
+	/* Shell floating in place */
+	@keyframes float-shell {
+		0%, 100% {
+			transform: translateY(0) rotate(0deg);
+			opacity: 0.5;
+		}
+		25% {
+			transform: translateY(-10px) rotate(5deg);
+			opacity: 0.7;
+		}
+		50% {
+			transform: translateY(-5px) rotate(0deg);
+			opacity: 0.6;
+		}
+		75% {
+			transform: translateY(-15px) rotate(-5deg);
+			opacity: 0.8;
+		}
+	}
+	
+	/* Test pulse animation */
+	@keyframes pulse-creature {
+		0%, 100% {
+			transform: scale(1);
+			opacity: 1;
+		}
+		50% {
+			transform: scale(1.2);
+			opacity: 0.8;
+		}
+	}
+	
+	/* Individual light ray from surface - More subtle and diffused */
+	.light-ray {
+		position: absolute;
+		top: -20%;
+		width: 200px;
+		height: 180%;
+		background: linear-gradient(
+			to bottom,
+			rgba(51, 217, 255, 0.12) 0%,
+			rgba(72, 202, 228, 0.08) 15%,
+			rgba(4, 102, 200, 0.05) 30%,
+			rgba(0, 180, 216, 0.03) 50%,
+			rgba(0, 100, 150, 0.02) 70%,
+			transparent 100%
+		);
+		filter: blur(40px);
+		transform-origin: top center;
+		animation: light-ray-sway 18s ease-in-out infinite;
+		pointer-events: none;
+		mix-blend-mode: screen;
+	}
+	
+	:global(.light) .light-ray {
+		background: linear-gradient(
+			to bottom,
+			rgba(144, 224, 239, 0.25) 0%,
+			rgba(72, 202, 228, 0.18) 15%,
+			rgba(0, 180, 216, 0.12) 30%,
+			rgba(0, 150, 199, 0.08) 50%,
+			rgba(4, 102, 200, 0.05) 70%,
+			transparent 100%
+		);
+		mix-blend-mode: overlay;
+	}
+	
+	@keyframes light-ray-sway {
+		0%, 100% { 
+			transform: translateX(0) scaleY(1) scaleX(1) rotate(0deg);
+			opacity: 0.4;
+		}
+		25% { 
+			transform: translateX(25px) scaleY(1.08) scaleX(0.95) rotate(1deg);
+			opacity: 0.6;
+		}
+		50% { 
+			transform: translateX(0) scaleY(0.92) scaleX(1.05) rotate(0deg);
+			opacity: 0.3;
+		}
+		75% { 
+			transform: translateX(-25px) scaleY(1.08) scaleX(0.95) rotate(-1deg);
+			opacity: 0.5;
+		}
+	}
+	
+	/* Old light rays (keep for backward compatibility if needed) */
+	.light-rays {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: 2px;
-		background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.8), transparent);
-		animation: scan 4s linear infinite;
+		height: 100%;
+		opacity: 0;
 		pointer-events: none;
-	}
-	
-	@keyframes scan {
-		0% { transform: translateY(0); opacity: 0; }
-		10% { opacity: 1; }
-		90% { opacity: 1; }
-		100% { transform: translateY(100vh); opacity: 0; }
 	}
 	
 	/* Shimmer effect */
@@ -359,14 +800,24 @@
 		animation: shimmer 3s ease-in-out infinite;
 	}
 	
-	/* Pulse slow */
+	/* Ocean pulse - slower and calmer */
 	@keyframes pulse-slow {
-		0%, 100% { opacity: 0.15; transform: scale(1); }
-		50% { opacity: 0.25; transform: scale(1.05); }
+		0%, 100% { opacity: 0.3; transform: scale(1); }
+		50% { opacity: 0.5; transform: scale(1.02); }
 	}
 	
 	.animate-pulse-slow {
-		animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+		animation: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	}
+	
+	/* Floating slow for ocean effect */
+	@keyframes animate-float-slow {
+		0%, 100% { transform: translateY(0px); }
+		50% { transform: translateY(-15px); }
+	}
+	
+	.animate-float-slow {
+		animation: animate-float-slow 6s ease-in-out infinite;
 	}
 	
 	/* Fade in animations */
@@ -404,18 +855,22 @@
 		animation: fade-in-up 1s ease-out;
 	}
 	
-	/* Role change animation */
+	/* Role change animation - Ocean glow */
 	.role-change {
-		animation: role-glow 3s ease-in-out infinite;
+		animation: ocean-glow 4s ease-in-out infinite;
 	}
 	
-	@keyframes role-glow {
+	@keyframes ocean-glow {
 		0%, 100% { 
-			filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+			filter: drop-shadow(0 0 15px rgba(4, 102, 200, 0.6));
 		}
 		50% { 
-			filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.8));
+			filter: drop-shadow(0 0 25px rgba(51, 217, 255, 0.8));
 		}
+	}
+	
+	:global(.light) .role-change {
+		filter: drop-shadow(0 0 8px rgba(4, 102, 200, 0.4));
 	}
 	
 	/* Blinking cursor */

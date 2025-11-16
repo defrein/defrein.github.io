@@ -2,16 +2,16 @@
 @import 'tailwindcss';
 
 @theme {
-	/* Dark Mode Colors (default) */
-	--color-primary: #0f172a;
-	--color-secondary: #3b82f6;
-	--color-accent: #10b981;
-	--color-highlight: #8b5cf6;
-	--color-background: #020617;
-	--color-surface: #1e293b;
-	--color-text: #f1f5f9;
-	--color-text-muted: #94a3b8;
-	--color-border: #334155;
+	/* Deep Ocean Theme - Dark Mode (default) */
+	--color-primary: #001427;
+	--color-secondary: #0466c8;
+	--color-accent: #33d9ff;
+	--color-highlight: #00b4d8;
+	--color-background: #000814;
+	--color-surface: #001d3d;
+	--color-text: #e0f4ff;
+	--color-text-muted: #90c8e0;
+	--color-border: #003566;
 	
 	/* Fonts */
 	--font-heading: 'Space Grotesk', sans-serif;
@@ -19,17 +19,17 @@
 	--font-mono: 'JetBrains Mono', monospace;
 }
 
-/* Light Mode Theme */
+/* Deep Ocean Theme - Light Mode */
 .light {
-	--color-primary: #f8fafc;
-	--color-secondary: #2563eb;
-	--color-accent: #059669;
-	--color-highlight: #7c3aed;
-	--color-background: #ffffff;
-	--color-surface: #f1f5f9;
-	--color-text: #0f172a;
-	--color-text-muted: #475569;
-	--color-border: #cbd5e1;
+	--color-primary: #e0f4ff;
+	--color-secondary: #0466c8;
+	--color-accent: #48cae4;
+	--color-highlight: #00b4d8;
+	--color-background: #f0f9ff;
+	--color-surface: #d9f0ff;
+	--color-text: #001d3d;
+	--color-text-muted: #023e8a;
+	--color-border: #90e0ef;
 }
 
 @layer base {
@@ -55,14 +55,15 @@
 	}
 
 	.glass-effect {
-		background-color: rgb(30 41 59 / 0.3);
-		backdrop-filter: blur(12px);
+		background-color: rgb(0 29 61 / 0.4);
+		backdrop-filter: blur(16px);
 		border: 1px solid var(--color-border);
 		transition: all 0.3s ease;
+		box-shadow: 0 8px 32px 0 rgba(4, 102, 200, 0.1);
 	}
 	
 	.light .glass-effect {
-		background-color: rgb(241 245 249 / 0.6);
+		background-color: rgb(217 240 255 / 0.7);
 	}
 
 	.card-hover {
@@ -70,14 +71,14 @@
 	}
 	
 	.card-hover:hover {
-		transform: scale(1.05);
-		box-shadow: 0 25px 50px -12px rgb(59 130 246 / 0.2);
+		transform: translateY(-5px);
+		box-shadow: 0 25px 50px -12px rgb(4 102 200 / 0.3), 0 0 40px rgb(51 217 255 / 0.2);
 	}
 
 	.grid-pattern {
 		background-image: 
-			linear-gradient(to right, rgba(51, 65, 85, 0.1) 1px, transparent 1px),
-			linear-gradient(to bottom, rgba(51, 65, 85, 0.1) 1px, transparent 1px);
+			linear-gradient(to right, rgba(0 53 102 / 0.15) 1px, transparent 1px),
+			linear-gradient(to bottom, rgba(0 53 102 / 0.15) 1px, transparent 1px);
 		background-size: 50px 50px;
 	}
 	
