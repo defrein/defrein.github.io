@@ -111,25 +111,24 @@ export const resumeData = {
 	featuredProjects: [
         {
 			title: "JATS Editor Platform",
-			description: "Full-featured editor for scientific publication XML files",
+			description: "The #first JATS editor. Creating JATS file for your scholar publication never been easier & most affordable as before. With the JATS editor, you/your team can create, modify and publish JATS file with ease.  Creating JATS file as easy as uploading docx file to the editor. For OJS user, plugin also included, you can import the essential metadata to the editor seamlessly with single-click import.",
 			image: "/projects/jats-editor.jpg",
-			technologies: ["PHP", "Laravel", "JavaScript", "JATS/XML"],
+			technologies: ["PHP", "Laravel", "JavaScript", "JATS/XML", "NLP", "AI", "LLMs", "Machine Learning"],
 			category: ["web"],
 			featured: true,
 			link: "https://jatseditor.com"
 		},
 		{
 			title: "Autonomous Navigation Robot - KRI 2024",
-			description: "Self-navigating robot for complex obstacle courses with advanced sensors",
+			description: "This robot has a mission to go to a certain area to pick up a ball of a certain color and then put it in a silo according to the rules of Abu Robocon 2024.",
 			image: "/projects/kri-robot-krai.png",
 			technologies: ["Raspberry Pi", "Python", "OpenCV", "Machine Learning"],
 			category: "robotics",
 			featured: true,
-			achievement: "3rd Place"
 		},
 		{
 			title: "Autonomous Navigation Robot - KRI 2023",
-			description: "Self-navigating robot for complex obstacle courses",
+			description: "This robot simulates real-life rescue missions in earthquake and landslide scenarios, aiming to help in disaster situations.",
 			image: "/projects/kri-robot.jpeg",
 			technologies: ["Arduino", "C++", "Sensor Integration"],
 			category: "robotics",
@@ -137,32 +136,32 @@ export const resumeData = {
             achievement: "National Competition Participant"
 		},
 		{
-			title: "AI Document Processing System",
-			description: "Intelligent JATS file conversion with NLP and LLMs",
+			title: "Sistem Informasi Percetakan Digital Berbasis Web",
+			description: "Platform for managing and tracking printing orders. The site provides real-time order status updates, detailed job tracking, and secure employee access. It features intuitive interfaces that enhance user experience, streamline operations, and improve customer engagement. The project involved integrating order management systems, ensuring secure login functionalities, and optimizing the user interface for efficient navigation.",
 			image: "/projects/project_digital_printing_web.png",
-			technologies: ["Python", "NLP", "LLMs", "Machine Learning"],
+			technologies: ["PHP", "Laravel", "MySQL", "JavaScript"],
 			category: "web",
 			featured: true
 		},
 		{
 			title: "Fuzzy Logic Production System",
-			description: "Book production forecasting with intelligent algorithms",
+			description: "Web-based system for predicting book production that uses CodeIgniter 3 and fuzzy logic algorithm. It forecasts production based on remaining stock and demand data.",
 			image: "/projects/fuzzy-logic.jpg",
 			technologies: ["Python", "Fuzzy Logic", "Data Analysis"],
 			category: "ai",
 			featured: false
 		},
 		{
-			title: "Government Monitoring System",
-			description: "Infrastructure management for district and provincial levels",
-			image: "/projects/gov-system.jpg",
+			title: "Term Payment Management App",
+			description: "The Term Payment Management Application is a system designed to manage and track installment-based payments efficiently.",
+			image: "/projects/term-payment-management.jpg",
 			technologies: ["PHP", "Laravel", "MySQL", "JavaScript"],
 			category: "web",
 			featured: false
 		},
         {
-			title: "Government Monitoring System",
-			description: "Infrastructure management for district and provincial levels",
+			title: "Analisis Kerusakan Bangunan App",
+			description: "This application helps the in recording, analyzing, and managing information related to building conditions, especially public facilities.",
 			image: "/projects/gov-system.jpg",
 			technologies: ["PHP", "Laravel", "MySQL", "JavaScript"],
 			category: "web",

@@ -106,12 +106,12 @@
 						<h3 class="text-xl font-heading font-bold text-text mb-3 group-hover:text-secondary transition-colors">
 							{project.title}
 						</h3>
-						<p class="text-text-muted mb-4 flex-1">
+						<p class="text-text-muted mb-4 line-clamp-3">
 							{project.description}
 						</p>
 						
 						<!-- Technologies -->
-						<div class="flex flex-wrap gap-2">
+						<div class="flex flex-wrap gap-2 mt-auto">
 							{#each project.technologies as tech}
 								<span class="px-3 py-1 bg-surface/50 text-text-muted text-xs rounded-full border border-border hover:border-secondary/50 transition-colors">
 									{tech}
