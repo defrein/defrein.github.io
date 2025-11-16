@@ -54,12 +54,21 @@
 					{index === 2 ? 'md:col-span-1' : ''}
 					{index === 3 ? 'md:col-span-2' : ''}"
 				>
-					<!-- Project Image Placeholder -->
+					<!-- Project Image -->
 					<div class="relative overflow-hidden bg-gradient-to-br from-secondary/20 via-highlight/20 to-accent/20 h-48 flex-shrink-0"
 					>
-						<div class="absolute inset-0 flex items-center justify-center text-text-muted/20 text-6xl font-heading">
-							{project.title.charAt(0)}
-						</div>
+						{#if project.image}
+							<img 
+								src={project.image} 
+								alt={project.title}
+								class="w-full h-full object-cover"
+								loading="lazy"
+							/>
+						{:else}
+							<div class="absolute inset-0 flex items-center justify-center text-text-muted/20 text-6xl font-heading">
+								{project.title.charAt(0)}
+							</div>
+						{/if}
 						
 						<!-- Overlay on hover -->
 						<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
