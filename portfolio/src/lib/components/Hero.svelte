@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { Linkedin, Github, Mail, ArrowDown, Sparkles, Zap, Code2 } from 'lucide-svelte';
+	import { Linkedin, Github, Mail, ArrowDown, Sparkles, Zap, Code2, Download, FileText } from 'lucide-svelte';
 	import { resumeData } from '$lib/data/resume.js';
 	
 	let currentRoleIndex = $state(0);
@@ -353,16 +353,18 @@
 				</span>
 				<div class="absolute inset-0 bg-linear-to-r from-secondary to-highlight opacity-0 group-hover:opacity-100 transition-opacity"></div>
 			</button>
-			<button
-				onclick={() => scrollToSection('contact')}
+			<a
+				href="/assets/documents/WAHNI_ADNANI_NOVEMBER_2025.pdf"
+				data-fancybox
+				data-caption="CV Wahni Adnani - November 2025"
 				class="group relative px-8 py-4 bg-accent text-white font-bold rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-accent/50 glow-button"
 			>
 				<span class="relative z-10 flex items-center gap-2">
-					<Zap class="w-4 h-4" />
-					Contact Me
+					<FileText class="w-4 h-4" />
+					View CV
 				</span>
 				<div class="absolute inset-0 bg-linear-to-r from-accent to-highlight opacity-0 group-hover:opacity-100 transition-opacity"></div>
-			</button>
+			</a>
 		</div>
 		
 		<!-- Social Links with enhanced animations -->
@@ -953,6 +955,60 @@
 	
 	.animate-bounce-slow {
 		animation: bounce-slow 2s ease-in-out infinite;
+	}
+	
+	/* Fancy CV Button Styles */
+	.fancy-cv-button {
+		position: relative;
+		background: linear-gradient(135deg, #48cae4 0%, #00b4d8 50%, #0096c7 100%);
+		box-shadow: 
+			0 4px 15px rgba(72, 202, 228, 0.4),
+			0 0 30px rgba(0, 180, 216, 0.3),
+			inset 0 1px 0 rgba(255, 255, 255, 0.2);
+		border: 2px solid rgba(255, 255, 255, 0.2);
+	}
+	
+	.fancy-cv-button:hover {
+		box-shadow: 
+			0 6px 25px rgba(72, 202, 228, 0.6),
+			0 0 50px rgba(0, 180, 216, 0.5),
+			inset 0 1px 0 rgba(255, 255, 255, 0.3);
+		border-color: rgba(255, 255, 255, 0.4);
+	}
+	
+	.fancy-cv-button::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: inherit;
+		background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+		opacity: 0;
+		transition: opacity 0.3s;
+	}
+	
+	.fancy-cv-button:hover::before {
+		opacity: 1;
+	}
+	
+	/* Shine effect animation */
+	.shine-effect {
+		pointer-events: none;
+	}
+	
+	/* Light theme adjustments for CV button */
+	:global(.light) .fancy-cv-button {
+		background: linear-gradient(135deg, #0096c7 0%, #0077b6 50%, #023e8a 100%);
+		box-shadow: 
+			0 4px 15px rgba(0, 119, 182, 0.4),
+			0 0 30px rgba(4, 102, 200, 0.3),
+			inset 0 1px 0 rgba(255, 255, 255, 0.3);
+	}
+	
+	:global(.light) .fancy-cv-button:hover {
+		box-shadow: 
+			0 6px 25px rgba(0, 119, 182, 0.6),
+			0 0 50px rgba(4, 102, 200, 0.5),
+			inset 0 1px 0 rgba(255, 255, 255, 0.4);
 	}
 	
 	/* Perspective for 3D effects */
