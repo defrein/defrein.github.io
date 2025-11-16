@@ -2,7 +2,7 @@
 @import 'tailwindcss';
 
 @theme {
-	/* Colors */
+	/* Dark Mode Colors (default) */
 	--color-primary: #0f172a;
 	--color-secondary: #3b82f6;
 	--color-accent: #10b981;
@@ -19,11 +19,25 @@
 	--font-mono: 'JetBrains Mono', monospace;
 }
 
+/* Light Mode Theme */
+.light {
+	--color-primary: #f8fafc;
+	--color-secondary: #2563eb;
+	--color-accent: #059669;
+	--color-highlight: #7c3aed;
+	--color-background: #ffffff;
+	--color-surface: #f1f5f9;
+	--color-text: #0f172a;
+	--color-text-muted: #475569;
+	--color-border: #cbd5e1;
+}
+
 @layer base {
 	body {
 		background-color: var(--color-background);
 		color: var(--color-text);
 		font-family: var(--font-body);
+		transition: background-color 0.3s ease, color 0.3s ease;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -44,6 +58,11 @@
 		background-color: rgb(30 41 59 / 0.3);
 		backdrop-filter: blur(12px);
 		border: 1px solid var(--color-border);
+		transition: all 0.3s ease;
+	}
+	
+	.light .glass-effect {
+		background-color: rgb(241 245 249 / 0.6);
 	}
 
 	.card-hover {
@@ -60,5 +79,11 @@
 			linear-gradient(to right, rgba(51, 65, 85, 0.1) 1px, transparent 1px),
 			linear-gradient(to bottom, rgba(51, 65, 85, 0.1) 1px, transparent 1px);
 		background-size: 50px 50px;
+	}
+	
+	.light .grid-pattern {
+		background-image: 
+			linear-gradient(to right, rgba(203, 213, 225, 0.3) 1px, transparent 1px),
+			linear-gradient(to bottom, rgba(203, 213, 225, 0.3) 1px, transparent 1px);
 	}
 }

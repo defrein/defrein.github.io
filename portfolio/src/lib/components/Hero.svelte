@@ -8,7 +8,7 @@
 	let mouseY = $state(0);
 	let letterAnimations = $state([]);
 	
-	const roles = ['AI Engineer', 'Software Engineer', 'Robotics Specialist', 'ML Developer'];
+	const roles = ['AI Engineer', 'Software Engineer', 'Robotics Enthusiast'];
 	const name = "WAHNI ADNANI";
 	const letters = name.split('');
 	
@@ -132,7 +132,7 @@
 			
 			<!-- Glowing underline effect -->
 			<div class="mx-auto w-3/4 h-1 mt-6 relative overflow-hidden rounded-full">
-				<div class="absolute inset-0 bg-linear-to-r from-secondary via-highlight to-accent animate-shimmer"></div>
+				<div class="absolute inset-0 bg-linear-to-r from-secondary via-highlight to-accent"></div>
 			</div>
 		</div>
 		

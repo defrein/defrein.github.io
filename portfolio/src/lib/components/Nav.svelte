@@ -1,9 +1,11 @@
 <script>
-	import { Menu, X } from 'lucide-svelte';
+	import { Menu, X, Sun, Moon } from 'lucide-svelte';
 	import { resumeData } from '$lib/data/resume.js';
+	import { onMount } from 'svelte';
 	
 	let mobileMenuOpen = $state(false);
 	let activeSection = $state('hero');
+	let isDarkMode = $state(true);
 	
 	const navLinks = [
 		{ href: '#about', label: 'About' },
@@ -12,6 +14,33 @@
 		{ href: '#skills', label: 'Skills' },
 		{ href: '#contact', label: 'Contact' }
 	];
+	
+	onMount(() => {
+		// Check for saved theme preference or default to dark
+		const savedTheme = localStorage.getItem('theme');
+		if (savedTheme === 'light') {
+			isDarkMode = false;
+			document.documentElement.classList.remove('dark');
+			document.documentElement.classList.add('light');
+		} else {
+			isDarkMode = true;
+			document.documentElement.classList.add('dark');
+			document.documentElement.classList.remove('light');
+		}
+	});
+	
+	function toggleTheme() {
+		isDarkMode = !isDarkMode;
+		if (isDarkMode) {
+			document.documentElement.classList.add('dark');
+			document.documentElement.classList.remove('light');
+			localStorage.setItem('theme', 'dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+			document.documentElement.classList.add('light');
+			localStorage.setItem('theme', 'light');
+		}
+	}
 	
 	function toggleMobileMenu() {
 		mobileMenuOpen = !mobileMenuOpen;
@@ -79,6 +108,19 @@
 						></span>
 					</a>
 				{/each}
+				
+				<!-- Theme Toggle Button -->
+				<button
+					onclick={toggleTheme}
+					class="p-2 rounded-lg glass-effect hover:bg-secondary/20 transition-all duration-300 border border-border hover:border-secondary"
+					aria-label="Toggle theme"
+				>
+					{#if isDarkMode}
+						<Sun class="w-5 h-5 text-text-muted hover:text-secondary transition-colors" />
+					{:else}
+						<Moon class="w-5 h-5 text-text-muted hover:text-secondary transition-colors" />
+					{/if}
+				</button>
 			</div>
 			
 			<!-- Mobile Menu Button -->
@@ -110,6 +152,20 @@
 						{link.label}
 					</a>
 				{/each}
+				
+				<!-- Theme Toggle for Mobile -->
+				<button
+					onclick={toggleTheme}
+					class="flex items-center gap-2 w-full text-text-muted hover:text-text transition-colors duration-300 py-2"
+				>
+					{#if isDarkMode}
+						<Sun class="w-5 h-5" />
+						<span>Light Mode</span>
+					{:else}
+						<Moon class="w-5 h-5" />
+						<span>Dark Mode</span>
+					{/if}
+				</button>
 			</div>
 		</div>
 	{/if}
