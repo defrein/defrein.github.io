@@ -64,19 +64,17 @@
 														{/if}
 													</div>
 												</div>
-												{#if !job.isFreelance}
-													<button
-														onclick={() => toggleJob(index)}
-														class="ml-4 p-2 hover:bg-surface rounded-lg transition-colors"
-														aria-label="Toggle details"
-													>
-														{#if expandedJobs[index]}
-															<ChevronUp class="w-5 h-5 text-text-muted" />
-														{:else}
-															<ChevronDown class="w-5 h-5 text-text-muted" />
-														{/if}
-													</button>
-												{/if}
+												<button
+													onclick={() => toggleJob(index)}
+													class="ml-4 p-2 hover:bg-surface rounded-lg transition-colors"
+													aria-label="Toggle details"
+												>
+													{#if expandedJobs[index]}
+														<ChevronUp class="w-5 h-5 text-text-muted" />
+													{:else}
+														<ChevronDown class="w-5 h-5 text-text-muted" />
+													{/if}
+												</button>
 											</div>
 											
 											{#if !job.isFreelance && expandedJobs[index]}
@@ -100,7 +98,7 @@
 												</div>
 											{/if}
 											
-											{#if job.isFreelance}
+											{#if job.isFreelance && expandedJobs[index]}
 												<div class="mt-4 space-y-4">
 													{#each job.projects as project}
 														<div class="p-4 bg-surface/50 rounded-lg border border-border/50">
@@ -154,19 +152,17 @@
 														{/if}
 													</div>
 												</div>
-												{#if !job.isFreelance}
-													<button
-														onclick={() => toggleJob(index)}
-														class="ml-4 p-2 hover:bg-surface rounded-lg transition-colors"
-														aria-label="Toggle details"
-													>
-														{#if expandedJobs[index]}
-															<ChevronUp class="w-5 h-5 text-text-muted" />
-														{:else}
-															<ChevronDown class="w-5 h-5 text-text-muted" />
-														{/if}
-													</button>
-												{/if}
+												<button
+													onclick={() => toggleJob(index)}
+													class="ml-4 p-2 hover:bg-surface rounded-lg transition-colors"
+													aria-label="Toggle details"
+												>
+													{#if expandedJobs[index]}
+														<ChevronUp class="w-5 h-5 text-text-muted" />
+													{:else}
+														<ChevronDown class="w-5 h-5 text-text-muted" />
+													{/if}
+												</button>
 											</div>
 											
 											{#if !job.isFreelance && expandedJobs[index]}
@@ -190,7 +186,7 @@
 												</div>
 											{/if}
 											
-											{#if job.isFreelance}
+											{#if job.isFreelance && expandedJobs[index]}
 												<div class="mt-4 space-y-4">
 													{#each job.projects as project}
 														<div class="p-4 bg-surface/50 rounded-lg border border-border/50">
