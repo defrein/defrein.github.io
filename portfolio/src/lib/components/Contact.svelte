@@ -43,7 +43,7 @@
 		<!-- Section Header -->
 		<div class="text-center mb-12">
 			<h2 class="text-4xl sm:text-5xl font-heading font-bold text-gradient mb-4">Get In Touch</h2>
-			<div class="w-24 h-1 bg-gradient-to-r from-secondary via-highlight to-accent mx-auto mb-8"></div>
+			<div class="w-24 h-1 bg-linear-to-r from-secondary via-highlight to-accent mx-auto mb-8"></div>
 			<p class="text-lg text-text-muted max-w-2xl mx-auto">
 				Have a project in mind or want to collaborate? Feel free to reach out!
 			</p>

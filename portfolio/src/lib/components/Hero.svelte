@@ -6,6 +6,9 @@
 	let currentRoleIndex = $state(0);
 	let mouseX = $state(0);
 	let mouseY = $state(0);
+	/**
+     * @type {{ rotation: any; }[]}
+     */
 	let letterAnimations = $state([]);
 	
 	const roles = ['AI Engineer', 'Software Engineer', 'Robotics Enthusiast'];
@@ -58,7 +61,7 @@
 
 <section id="hero" class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 pb-16">
 	<!-- Dynamic background layers -->
-	<div class="absolute inset-0 bg-gradient-to-br from-background via-primary to-background">
+	<div class="absolute inset-0 bg-linear-to-br from-background via-primary to-background">
 		<div class="absolute inset-0 bg-gradient-radial opacity-30"></div>
 	</div>
 	
@@ -225,9 +228,9 @@
 	<div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-8">
 		<!-- Decorative top element -->
 		<div class="flex items-center justify-center gap-4 mb-8 animate-fade-in-down">
-			<div class="h-px w-12 bg-gradient-to-r from-transparent via-secondary to-transparent"></div>
+			<div class="h-px w-12 bg-linear-to-r from-transparent via-secondary to-transparent"></div>
 			<Sparkles class="w-5 h-5 text-secondary animate-pulse" />
-			<div class="h-px w-12 bg-gradient-to-r from-transparent via-secondary to-transparent"></div>
+			<div class="h-px w-12 bg-linear-to-r from-transparent via-secondary to-transparent"></div>
 		</div>
 		
 		<!-- Name with advanced animations -->
@@ -739,18 +742,10 @@
 		100% { transform: translateX(100%); }
 	}
 	
-	.animate-shimmer {
-		animation: shimmer 3s ease-in-out infinite;
-	}
-	
 	/* Ocean pulse - slower and calmer */
 	@keyframes pulse-slow {
 		0%, 100% { opacity: 0.3; transform: scale(1); }
 		50% { opacity: 0.5; transform: scale(1.02); }
-	}
-	
-	.animate-pulse-slow {
-		animation: pulse-slow 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 	}
 	
 	/* Floating slow for ocean effect */
@@ -894,64 +889,6 @@
 		}
 	}
 	
-	.animate-bounce-slow {
-		animation: bounce-slow 2s ease-in-out infinite;
-	}
-	
-	/* Fancy CV Button Styles */
-	.fancy-cv-button {
-		position: relative;
-		background: linear-gradient(135deg, #48cae4 0%, #00b4d8 50%, #0096c7 100%);
-		box-shadow: 
-			0 4px 15px rgba(72, 202, 228, 0.4),
-			0 0 30px rgba(0, 180, 216, 0.3),
-			inset 0 1px 0 rgba(255, 255, 255, 0.2);
-		border: 2px solid rgba(255, 255, 255, 0.2);
-	}
-	
-	.fancy-cv-button:hover {
-		box-shadow: 
-			0 6px 25px rgba(72, 202, 228, 0.6),
-			0 0 50px rgba(0, 180, 216, 0.5),
-			inset 0 1px 0 rgba(255, 255, 255, 0.3);
-		border-color: rgba(255, 255, 255, 0.4);
-	}
-	
-	.fancy-cv-button::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: inherit;
-		background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-		opacity: 0;
-		transition: opacity 0.3s;
-	}
-	
-	.fancy-cv-button:hover::before {
-		opacity: 1;
-	}
-	
-	/* Shine effect animation */
-	.shine-effect {
-		pointer-events: none;
-	}
-	
-	/* Light theme adjustments for CV button */
-	:global(.light) .fancy-cv-button {
-		background: linear-gradient(135deg, #0096c7 0%, #0077b6 50%, #023e8a 100%);
-		box-shadow: 
-			0 4px 15px rgba(0, 119, 182, 0.4),
-			0 0 30px rgba(4, 102, 200, 0.3),
-			inset 0 1px 0 rgba(255, 255, 255, 0.3);
-	}
-	
-	:global(.light) .fancy-cv-button:hover {
-		box-shadow: 
-			0 6px 25px rgba(0, 119, 182, 0.6),
-			0 0 50px rgba(4, 102, 200, 0.5),
-			inset 0 1px 0 rgba(255, 255, 255, 0.4);
-	}
-	
 	/* Perspective for 3D effects */
 	.perspective-container {
 		perspective: 1000px;
@@ -1027,10 +964,6 @@
 			filter: none !important;
 		}
 		
-		/* Disable icon animations */
-		.animate-pulse {
-			animation: none !important;
-		}
 	}
 	
 	/* Extra optimization for small mobile devices */

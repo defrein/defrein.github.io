@@ -8,7 +8,7 @@
 		<!-- Section Header -->
 		<div class="text-center mb-12">
 			<h2 class="text-4xl sm:text-5xl font-heading font-bold text-gradient mb-4">Education</h2>
-			<div class="w-24 h-1 bg-gradient-to-r from-secondary via-highlight to-accent mx-auto"></div>
+			<div class="w-24 h-1 bg-linear-to-r from-secondary via-highlight to-accent mx-auto"></div>
 		</div>
 		
 		<!-- Education Cards -->

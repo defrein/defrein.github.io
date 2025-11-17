@@ -17,7 +17,7 @@
 		<!-- Section Header -->
 		<div class="text-center mb-16">
 			<h2 class="text-4xl sm:text-5xl font-heading font-bold text-gradient mb-4">Experience</h2>
-			<div class="w-24 h-1 bg-gradient-to-r from-secondary via-highlight to-accent mx-auto"></div>
+			<div class="w-24 h-1 bg-linear-to-r from-secondary via-highlight to-accent mx-auto"></div>
 		</div>
 		
 		<!-- Timeline -->
@@ -81,7 +81,7 @@
 												<div class="mt-4 space-y-2 border-t border-border pt-4">
 													{#each job.responsibilities as responsibility}
 														<div class="flex items-start gap-2">
-															<div class="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+															<div class="w-1.5 h-1.5 bg-accent rounded-full mt-2 shrink-0"></div>
 															<p class="text-text-muted text-sm">{responsibility}</p>
 														</div>
 													{/each}
@@ -169,7 +169,7 @@
 												<div class="mt-4 space-y-2 border-t border-border pt-4">
 													{#each job.responsibilities as responsibility}
 														<div class="flex items-start gap-2">
-															<div class="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+															<div class="w-1.5 h-1.5 bg-accent rounded-full mt-2 shrink-0"></div>
 															<p class="text-text-muted text-sm">{responsibility}</p>
 														</div>
 													{/each}

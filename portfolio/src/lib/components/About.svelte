@@ -26,7 +26,7 @@
 		<!-- Section Header -->
 		<div class="text-center mb-16">
 			<h2 class="text-4xl sm:text-5xl font-heading font-bold text-gradient mb-4">About Me</h2>
-			<div class="w-24 h-1 bg-gradient-to-r from-secondary via-highlight to-accent mx-auto"></div>
+			<div class="w-24 h-1 bg-linear-to-r from-secondary via-highlight to-accent mx-auto"></div>
 		</div>
 		
 		<div class="grid md:grid-cols-2 gap-12 items-start">
@@ -40,19 +40,19 @@
 					<h3 class="text-2xl font-heading font-bold text-text mb-4">What I Do</h3>
 					<div class="space-y-3">
 						<div class="flex items-start gap-3">
-							<CheckCircle2 class="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+							<CheckCircle2 class="w-6 h-6 text-accent shrink-0 mt-1" />
 							<p class="text-text-muted">Build intelligent AI-driven systems using ML, NLP, and LLMs</p>
 						</div>
 						<div class="flex items-start gap-3">
-							<CheckCircle2 class="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+							<CheckCircle2 class="w-6 h-6 text-accent shrink-0 mt-1" />
 							<p class="text-text-muted">Design and develop full-stack web applications with modern frameworks</p>
 						</div>
 						<div class="flex items-start gap-3">
-							<CheckCircle2 class="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+							<CheckCircle2 class="w-6 h-6 text-accent shrink-0 mt-1" />
 							<p class="text-text-muted">Create autonomous robotics systems with computer vision capabilities</p>
 						</div>
 						<div class="flex items-start gap-3">
-							<CheckCircle2 class="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+							<CheckCircle2 class="w-6 h-6 text-accent shrink-0 mt-1" />
 							<p class="text-text-muted">Optimize algorithms and data processing pipelines for production systems</p>
 						</div>
 					</div>
