@@ -133,7 +133,6 @@ export const resumeData = {
 			technologies: ["Arduino", "C++", "Sensor Integration"],
 			category: "robotics",
 			featured: true,
-            achievement: "National Competition Participant"
 		},
 		{
 			title: "Sistem Informasi Percetakan Digital Berbasis Web",
@@ -146,7 +145,7 @@ export const resumeData = {
 		{
 			title: "Fuzzy Logic Production System",
 			description: "Web-based system for predicting book production that uses CodeIgniter 3 and fuzzy logic algorithm. It forecasts production based on remaining stock and demand data.",
-			// image: "/projects/fuzzy-logic.jpg",
+			image: "/projects/project-web-prediksi-buku.png",
 			technologies: ["Python", "Fuzzy Logic", "Data Analysis"],
 			category: "ai",
 			featured: false
@@ -154,7 +153,7 @@ export const resumeData = {
 		{
 			title: "Term Payment Management App",
 			description: "The Term Payment Management Application is a system designed to manage and track installment-based payments efficiently.",
-			// image: "/projects/term-payment-management.jpg",
+			image: "/projects/termin_management.png",
 			technologies: ["PHP", "Laravel", "MySQL", "JavaScript"],
 			category: "web",
 			featured: false
@@ -162,7 +161,7 @@ export const resumeData = {
         {
 			title: "Analisis Kerusakan Bangunan App",
 			description: "This application helps the in recording, analyzing, and managing information related to building conditions, especially public facilities.",
-			// image: "/projects/gov-system.jpg",
+			image: "/projects/ankrus_app.png",
 			technologies: ["PHP", "Laravel", "MySQL", "JavaScript"],
 			category: "web",
 			featured: false
