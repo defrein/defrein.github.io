@@ -6,6 +6,7 @@
 	let mobileMenuOpen = $state(false);
 	let activeSection = $state('hero');
 	let isDarkMode = $state(true);
+	let toolsDropdownOpen = $state(false);
 	
 	const navLinks = [
 		{ href: '#about', label: 'About' },
@@ -13,6 +14,16 @@
 		{ href: '#projects', label: 'Projects' },
 		{ href: '#skills', label: 'Skills' },
 		{ href: '#contact', label: 'Contact' }
+	];
+	
+	const toolsLinks = [
+		{ href: '/v.1/', label: 'Portfolio v1' },
+		{ href: '/v.2/', label: 'Portfolio v2' },
+		{ href: '/v.3/', label: 'Portfolio v3' },
+		{ href: '/others/roulette-wheel/', label: 'Roulette Wheel' },
+		{ href: '/others/NLM_viewer/', label: 'NLM Viewer' },
+		{ href: '/others/story/', label: 'Story' },
+		{ href: '/others/jadwal/', label: 'MyJadwal' }
 	];
 	
 	onMount(() => {
@@ -46,11 +57,16 @@
 		mobileMenuOpen = !mobileMenuOpen;
 	}
 	
+	function toggleToolsDropdown() {
+		toolsDropdownOpen = !toolsDropdownOpen;
+	}
+	
 	/**
 	 * @param {string} href
 	 */
 	function handleNavClick(href) {
 		mobileMenuOpen = false;
+		toolsDropdownOpen = false;
 		const element = document.querySelector(href);
 		if (element) {
 			element.scrollIntoView({ behavior: 'smooth' });
@@ -109,6 +125,35 @@
 					</a>
 				{/each}
 				
+				<!-- Tools Dropdown -->
+				<div class="relative">
+					<button
+						onclick={toggleToolsDropdown}
+						class="text-text-muted hover:text-text transition-colors duration-300 relative group flex items-center gap-1"
+					>
+						Tools
+						<svg class="w-4 h-4 transition-transform duration-300" class:rotate-180={toolsDropdownOpen} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+						</svg>
+						<span 
+							class="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"
+						></span>
+					</button>
+					
+					{#if toolsDropdownOpen}
+						<div class="absolute top-full mt-2 right-0 w-48 glass-effect rounded-lg border border-border shadow-lg py-2">
+							{#each toolsLinks as tool}
+								<a
+									href={tool.href}
+									class="block px-4 py-2 text-text-muted hover:text-text hover:bg-secondary/20 transition-colors duration-200"
+								>
+									{tool.label}
+								</a>
+							{/each}
+						</div>
+					{/if}
+				</div>
+				
 				<!-- Theme Toggle Button -->
 				<button
 					onclick={toggleTheme}
@@ -152,6 +197,32 @@
 						{link.label}
 					</a>
 				{/each}
+				
+				<!-- Tools Section for Mobile -->
+				<div class="border-t border-border pt-3 mt-3">
+					<button
+						onclick={toggleToolsDropdown}
+						class="flex items-center justify-between w-full text-text-muted hover:text-text transition-colors duration-300 py-2"
+					>
+						<span>Tools</span>
+						<svg class="w-4 h-4 transition-transform duration-300" class:rotate-180={toolsDropdownOpen} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+						</svg>
+					</button>
+					
+					{#if toolsDropdownOpen}
+						<div class="pl-4 space-y-2 mt-2">
+							{#each toolsLinks as tool}
+								<a
+									href={tool.href}
+									class="block text-text-muted hover:text-text transition-colors duration-200 py-1 text-sm"
+								>
+									{tool.label}
+								</a>
+							{/each}
+						</div>
+					{/if}
+				</div>
 				
 				<!-- Theme Toggle for Mobile -->
 				<button
