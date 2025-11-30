@@ -14,5 +14,13 @@
     "image": "images/delay.jpg",
     "excerpt": "Kadang, waktu yang kita pikir masih banyak, ternyata sudah habis.",
     "date": "2025-11-01"
+  },
+  {
+    "id": "the-young-assassin",
+    "title": "The Young Assassin",
+    "file": "the_young_assassin.md",
+    "image": "images/the-young-assassin.jpg",
+    "excerpt": "Tetaplah hidup, meski tanganmu telah berlumuran darah.",
+    "date": "2025-11-30"
   }
 ]
