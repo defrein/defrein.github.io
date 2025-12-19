@@ -300,7 +300,7 @@
 			<a
 				href="/assets/documents/WAHNI_ADNANI_NOVEMBER_2025.pdf"
 				data-fancybox
-				data-caption="CV Wahni Adnani - November 2025"
+				data-caption="CV Wahni Adnani - December 2025"
 				class="group relative px-8 py-4 bg-accent text-white font-bold rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-accent/50 glow-button"
 			>
 				<span class="relative z-10 flex items-center gap-2">
