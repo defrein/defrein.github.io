@@ -26,6 +26,7 @@
 		"vite": "^7.1.10"
 	},
 	"dependencies": {
+		"@fancyapps/ui": "^6.1.14",
 		"lucide-svelte": "^0.553.0",
 		"svelte-motion": "^0.12.2"
 	}

@@ -23,7 +23,8 @@
 		{ href: '/others/roulette-wheel/', label: 'Roulette Wheel' },
 		{ href: '/others/NLM_viewer/', label: 'NLM Viewer' },
 		{ href: '/others/story/', label: 'Story' },
-		{ href: '/others/jadwal/', label: 'MyJadwal' }
+		{ href: '/others/jadwal/', label: 'MyJadwal' },
+		{ href: '/photobooth/', label: 'Photobooth' }
 	];
 	
 	onMount(() => {

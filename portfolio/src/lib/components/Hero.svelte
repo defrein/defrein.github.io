@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { Linkedin, Github, Mail, ArrowDown, Sparkles, Zap, Code2, Download, FileText } from 'lucide-svelte';
+	import '@fancyapps/ui/dist/fancybox/fancybox.css';
 	import { resumeData } from '$lib/data/resume.js';
 	
 	let currentRoleIndex = $state(0);
@@ -16,6 +17,11 @@
 	const letters = name.split('');
 	
 	onMount(() => {
+		// Bind Fancybox client-side (UMD/ESM resolution differs in SSR)
+		import('@fancyapps/ui').then(({ Fancybox }) => {
+			Fancybox.bind('[data-fancybox]', {});
+		});
+
 		// Initialize letter animations
 		letterAnimations = letters.map(() => ({ y: 0, rotation: 0 }));
 		
