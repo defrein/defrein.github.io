@@ -26,6 +26,8 @@ Typography uses a 16px default base, explicitly requested by the user. Body text
 
 The hero uses a 3D Rubik animation of R U R′ U′ repeated six times per loop, explicitly requested by the user. It returns to solved after every six repetitions, with pause/restart controls and a reduced-motion alternative.
 
+The blog uses local Markdown through Astro Content Collections. The first article explains this portfolio's Rubik implementation using its own code, without client-project material. A shared index, article template, and automatically generated table of contents support future posts. Drafts are excluded from public routes.
+
 ## Brand Commitments
 
 Flat, simple, modern, engaging design inspired by https://www.arduino.cc/. Preserve the person's name, real project imagery, source resume facts, and contact details. The user subsequently chose a purple, cyan, white, and black palette based on the supplied code-highlight image; this palette supersedes the original teal colors. The user rejected the saturated rendition; preserve the flat, simple brief when applying these colors.

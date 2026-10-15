@@ -7,8 +7,8 @@ import BrandIcon from '../components/BrandIcon.astro';
 import { personal } from '../data/portfolio';
 import { withBase } from '../lib/paths';
 
-interface Props { title?: string; description?: string; home?: boolean; }
-const { title = 'Wahni Adnani — AI, Software & Robotics', description = 'Wahni Adnani is an AI and software engineer in Banjarmasin, Indonesia. Explore work in intelligent systems, web development, and autonomous robotics.', home = false } = Astro.props;
+interface Props { title?: string; description?: string; home?: boolean; activeSection?: 'blog'; ogType?: 'website' | 'article'; }
+const { title = 'Wahni Adnani — AI, Software & Robotics', description = 'Wahni Adnani is an AI and software engineer in Banjarmasin, Indonesia. Explore work in intelligent systems, web development, and autonomous robotics.', home = false, activeSection, ogType = 'website' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -21,7 +21,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="theme-color" content="#ffffff" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg?v=2')} />
@@ -29,7 +29,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body id="top">
     <a class="skip-link" href="#main">Skip to content</a>
-    <Header home={home} client:load />
+    <Header home={home} {activeSection} client:load />
     <main id="main"><slot /></main>
     <footer class="site-footer">
       <div class="container footer-top">

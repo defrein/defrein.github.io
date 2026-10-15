@@ -3,7 +3,7 @@
   import { onMount } from 'svelte';
   import { withBase } from '../lib/paths';
 
-  let { home = false }: { home?: boolean } = $props();
+  let { home = false, activeSection }: { home?: boolean; activeSection?: 'blog' } = $props();
   let open = $state(false);
   let ready = $state(false);
   onMount(() => { ready = true; });
@@ -36,6 +36,7 @@
       {#each links as link}
         <a href={section(link.id)} onclick={() => open = false}>{link.label}</a>
       {/each}
+      <a href={withBase('blog/')} class:active={activeSection === 'blog'} aria-current={activeSection === 'blog' ? 'location' : undefined} onclick={() => open = false}>Blog</a>
       <a href={section('contact')} class="button button-small">Let's talk <ArrowUpRight size={17} strokeWidth={1.8} /></a>
     </nav>
     <button bind:this={trigger} class="menu-toggle" disabled={!ready} type="button" aria-controls="main-navigation" aria-expanded={open} aria-label={open ? 'Close navigation' : 'Open navigation'} onclick={() => open = !open}>
@@ -57,6 +58,7 @@
   nav { display: flex; gap: 2.4rem; align-items: center; font-size: var(--text-body); font-weight: 600; }
   nav > a:not(.button) { padding-block: .7rem; text-decoration-color: transparent; text-underline-offset: 6px; }
   nav > a:not(.button):hover { color: var(--purple-strong); text-decoration: underline; }
+  nav > a.active { color: var(--purple-strong); text-decoration: underline; }
   .menu-toggle { display: none; color: var(--ink); background: transparent; border: 0; padding: .6rem; cursor: pointer; }
   @media (max-width: 700px) {
     .utility-location { display: none; }

@@ -28,6 +28,7 @@ Browser tests build and verify the production output using an installed Google C
 
 - Shared resume facts: `../portfolio/src/lib/data/resume.js` (imported at build time).
 - Project summaries, categories, and detail copy: `src/data/portfolio.ts`.
+- Blog articles: Markdown files in `src/content/blog/`, validated by `src/content.config.ts`.
 - Original project imagery: copied from `../projects/` into `public/images/projects/`.
 - Downloadable CV: copied from `../assets/documents/` into `public/documents/`.
 - Asset source provenance: `public/images/ORIGINS.md`.
@@ -50,6 +51,32 @@ The existing repository workflow still deploys the original `portfolio/` applica
 ## Features
 
 Responsive navigation, category filters, seven static project detail pages, accessible keyboard controls, working email and social links, email copy with failure feedback, CV download, per-page SEO metadata, and a custom 404 page. Core content and project links are server-rendered; Svelte hydrates the navigation, gallery filters, and copy action.
+
+## Writing a blog post
+
+The blog index is `/wave/blog/`. Each Markdown file in `src/content/blog/` generates an article at `/wave/blog/<filename>/` using a shared layout. For example, `building-a-rubiks-cube.md` is the first article. Content, code blocks, and the table of contents are rendered at build time; the Rubik demo hydrates when visible.
+
+Create a new `.md` file with frontmatter:
+
+```markdown
+---
+title: "Your article title"
+description: "A short summary for the blog index and search engines."
+pubDate: 2026-10-15
+tags: ["Svelte", "CSS"]
+draft: false
+---
+
+Your introduction goes here.
+
+## Your first section
+
+Write with normal Markdown: paragraphs, lists, images, links, and code fences.
+```
+
+The filename determines the URL. Posts are sorted by publication date, newest first. Set `draft: true` to exclude an article from both the index and generated routes, including local previews. Set it to `false` when ready to preview or publish. The optional `demo: rubik` field adds the existing interactive cube above the article; omit it for ordinary posts. Other metadata and the page template are shared, so no page code needs to be copied.
+
+Use `npm run dev` to preview writing. Changes go live after a fresh build and deployment; the repository's existing deployment still targets `portfolio/`, as described above. This setup uses Astro's built-in [Content Collections](https://docs.astro.build/en/guides/content-collections/) and plain Markdown; MDX is not installed.
 
 ## Rubik hero animation
 

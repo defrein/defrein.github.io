@@ -1,0 +1,39 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import RubiksCube from '../../components/RubiksCube.svelte';
+import { ArrowLeft, ArrowUpRight } from '@lucide/svelte';
+import { getBlogPosts, formatPostDate, readingMinutes } from '../../lib/blog';
+import { withBase } from '../../lib/paths';
+import '../../styles/blog.css';
+
+export async function getStaticPaths() {
+  const posts = await getBlogPosts();
+  return posts.map(post => ({ params: { id: post.id }, props: { post } }));
+}
+
+interface Props { post: CollectionEntry<'blog'>; }
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const contents = headings.filter(heading => heading.depth === 2);
+---
+
+<Layout title={`${post.data.title} — Wahni Adnani`} description={post.data.description} activeSection="blog" ogType="article">
+  <article class="container blog-page blog-article">
+    <header class="article-header">
+      <a class="text-link article-back" href={withBase('blog/')}><ArrowLeft size={18} /> All articles</a>
+      <h1>{post.data.title}</h1>
+      <p class="article-description">{post.data.description}</p>
+      <div class="article-meta"><span>Wahni Adnani</span><time datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate)}</time><span>{readingMinutes(post.body)} min read</span></div>
+      <ul class="blog-tags" aria-label="Topics">{post.data.tags.map(tag => <li>{tag}</li>)}</ul>
+    </header>
+    <div class="article-layout">
+      <div class="article-main">
+        {post.data.demo === 'rubik' && <section class="article-demo" aria-label="Rubik animation demo"><RubiksCube client:visible /></section>}
+        <div class="prose"><Content /></div>
+      </div>
+      {contents.length > 0 && <aside class="article-sidebar"><nav class="article-toc" aria-label="Article contents"><h2>On this page</h2><ol>{contents.map(heading => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol></nav></aside>}
+    </div>
+    <footer class="article-end"><a class="text-link" href={withBase('blog/')}><ArrowLeft size={18} /> All articles</a><a class="text-link" href={withBase('#work')}>Explore my work <ArrowUpRight size={18} /></a></footer>
+  </article>
+</Layout>
