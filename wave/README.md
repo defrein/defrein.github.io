@@ -12,6 +12,8 @@ npm run dev
 
 Open **http://127.0.0.1:4321/wave/**.
 
+The paths below use this standalone development base. In the complete deployed site, Wave lives at `/`: use `/tools/`, `/blog/`, and `/projects/<slug>/`. Build and preview both applications together from the [repository root](../README.md).
+
 ## Verify and build
 
 ```powershell
@@ -51,7 +53,7 @@ The **Tools** menu opens `/wave/tools/`, grouped into **Fun**, **Productivity**,
 },
 ```
 
-The eight original destinations are preserved exactly, including domain-root paths outside `/wave/`. The Wave-only development/preview server does not host these separate applications. `/photobooth/` is in the original menu but its files are absent from this checkout; its link is retained as requested.
+The eight original destinations are preserved exactly; Portfolio v4 adds `/portfolio/` as the ninth entry. The Wave-only development/preview server does not host these separate applications. Use the repository's combined preview to open them. Photobooth lives in `../portfolio/src/routes/photobooth/`; the combined build redirects the original `/photobooth/` entry to `/portfolio/photobooth/`.
 
 ## Writing a project
 
@@ -103,7 +105,7 @@ npm run build
 Remove-Item Env:PUBLIC_BASE_PATH
 ```
 
-The existing repository workflow still deploys the original `portfolio/` application. Publishing this new app requires staging the Wave build at the desired path; no existing deployment configuration has been changed.
+The repository workflow runs the **root** `npm run build`, which builds Wave with the `/` override and stages Portfolio v4 under `/portfolio/`. It deploys the combined root `dist/`, preserving older versions, tools, and shared asset URLs. Use the [deployment guide](../docs/deployment.md); do not copy the archived portfolio build over the repository root.
 
 ## Features
 
@@ -137,7 +139,7 @@ The filename determines the URL. Posts are sorted by publication date, newest fi
 
 The blog shows five articles per page at every viewport. Page one stays at `/wave/blog/`; further pages are generated at `/wave/blog/page/2/`, `/wave/blog/page/3/`, and so on when needed. Pagination uses native links and works without JavaScript.
 
-Use `npm run dev` to preview writing. Changes go live after a fresh build and deployment; the repository's existing deployment still targets `portfolio/`, as described above. This setup uses Astro's built-in [Content Collections](https://docs.astro.build/en/guides/content-collections/) and plain Markdown; MDX is not installed.
+Use `npm run dev` to preview writing. Changes go live after the combined root build and deployment described above. This setup uses Astro's built-in [Content Collections](https://docs.astro.build/en/guides/content-collections/) and plain Markdown; MDX is not installed.
 
 `npm run test:content` builds an isolated fixture site to check a two-image slider and six-post blog pagination on desktop/mobile. Its content lives under `tests/fixture-site/`, and generated output stays in `node_modules/.cache/`; these test entries are never added to the production collections or `dist/`.
 

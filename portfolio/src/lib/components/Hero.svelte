@@ -3,6 +3,7 @@
 	import { Linkedin, Github, Mail, ArrowDown, Sparkles, Zap, Code2, Download, FileText } from 'lucide-svelte';
 	import '@fancyapps/ui/dist/fancybox/fancybox.css';
 	import { resumeData } from '$lib/data/resume.js';
+	import { base } from '$app/paths';
 	
 	let currentRoleIndex = $state(0);
 	let mouseX = $state(0);
@@ -304,7 +305,7 @@
 				<div class="absolute inset-0 bg-linear-to-r from-secondary to-highlight opacity-0 group-hover:opacity-100 transition-opacity"></div>
 			</button>
 			<a
-				href="/assets/documents/WAHNI_ADNANI_NOVEMBER_2025.pdf"
+				href={`${base}/assets/documents/WAHNI_ADNANI_NOVEMBER_2025.pdf`}
 				data-fancybox
 				data-caption="CV Wahni Adnani - December 2025"
 				class="group relative px-8 py-4 bg-accent text-white font-bold rounded-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-accent/50 glow-button"

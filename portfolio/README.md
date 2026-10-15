@@ -1,4 +1,6 @@
-# Wahni Adnani - Personal Portfolio
+# Wahni Adnani — Portfolio v4
+
+This folder preserves the previous SvelteKit portfolio as **Portfolio v4**. The locally verified combined publication layout places it at **https://defrein.github.io/portfolio/** and Wave at the homepage; these public paths take effect after deployment succeeds. Source stays in this folder; the repository's root build combines both applications into one deployment. See the [root README](../README.md) and [deployment guide](../docs/deployment.md).
 
 A modern, professional portfolio website built with SvelteKit and TailwindCSS, showcasing my experience as an AI Engineer and Software Engineer specializing in ML, NLP, Computer Vision, and Robotics.
 
@@ -45,7 +47,7 @@ Run the development server:
 npm run dev
 ```
 
-The site will be available at `http://localhost:5173`
+The site will be available at `http://localhost:5173/portfolio/`.
 
 ### Building for Production
 

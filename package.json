@@ -1,0 +1,13 @@
+{
+  "name": "defrein-github-pages",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "setup": "npm ci --prefix wave && npm ci --prefix portfolio",
+    "build": "node scripts/build-site.mjs",
+    "preview": "node scripts/preview-site.mjs",
+    "test": "node --test tests/site.test.mjs",
+    "test:browser": "node scripts/check-site-browser.mjs"
+  }
+}

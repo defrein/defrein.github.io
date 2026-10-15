@@ -11,7 +11,8 @@
 </script>
 
 <svelte:head>
-	<title>Wahni Adnani - AI Engineer | Software Engineer | Portfolio</title>
+	<title>Wahni Adnani — Portfolio v4 | AI Engineer &amp; Software Engineer</title>
+	<link rel="canonical" href="https://defrein.github.io/portfolio/" />
 	<meta name="description" content="Portfolio of Wahni Adnani - Software Engineer with 5+ years building full-stack applications and AI-driven systems. Specialized in ML, NLP, computer vision, and robotics." />
 	<meta name="keywords" content="AI Engineer, Software Engineer, Machine Learning, NLP, Computer Vision, Robotics, Full Stack Developer, Wahni Adnani" />
 	<meta name="author" content="Wahni Adnani" />

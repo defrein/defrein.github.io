@@ -1,6 +1,7 @@
 <script>
 	import { ExternalLink, Award } from 'lucide-svelte';
 	import { resumeData } from '$lib/data/resume.js';
+	import { base } from '$app/paths';
 	
 	let activeFilter = $state('all');
 	let filteredProjects = $derived(
@@ -59,7 +60,7 @@
 					>
 						{#if project.image}
 							<img 
-								src={project.image} 
+								src={`${base}${project.image}`}
 								alt={project.title}
 								class="w-full h-full object-cover"
 								loading="lazy"

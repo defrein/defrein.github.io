@@ -19,38 +19,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
-          cache-dependency-path: portfolio/package-lock.json
+          cache-dependency-path: |
+            wave/package-lock.json
+            portfolio/package-lock.json
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
       - name: Install dependencies
-        working-directory: portfolio
-        run: npm ci
+        run: npm run setup
 
-      - name: Build SvelteKit
-        working-directory: portfolio
+      - name: Build Wave, Portfolio v4, and legacy pages
         run: npm run build
 
-      - name: Stage legacy + static folders
-        # SvelteKit emits portfolio/build/. Layer extra root content (older
-        # versions, non-Svelte tools) on top so the deployed site keeps them.
-        run: |
-          rsync -a others/  portfolio/build/others/
-          rsync -a v.1/     portfolio/build/v.1/
-          rsync -a v.2/     portfolio/build/v.2/
-          rsync -a v.3/     portfolio/build/v.3/
-          [ -f CNAME ] && cp CNAME portfolio/build/CNAME || true
-          [ -f .nojekyll ] && cp .nojekyll portfolio/build/.nojekyll || true
+      - name: Verify published routes and assets
+        run: npm test
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: portfolio/build
+          path: dist
 
   deploy:
     needs: build

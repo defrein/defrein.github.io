@@ -6,3 +6,7 @@ portfolio/dist/
 npm-debug.log
 yarn-error.log
 .idea/
+/dist/
+/node_modules/
+/_app/
+/index.html

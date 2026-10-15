@@ -68,4 +68,11 @@ export const tools: Tool[] = [
     icon: PanelsTopLeft,
     category: 'portfolio-archive',
   },
+  {
+    title: 'Portfolio v4',
+    description: 'Revisit the fourth version of my personal portfolio.',
+    href: '/portfolio/',
+    icon: PanelsTopLeft,
+    category: 'portfolio-archive',
+  },
 ];

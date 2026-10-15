@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Astro and Svelte, explicitly requested by the user. Static output for hosting under `/wave/` with an optional build-time base override.
+Astro and Svelte, explicitly requested by the user. The repository's combined production build publishes Wave at `/` and the previous SvelteKit site at `/portfolio/` as Portfolio v4. Standalone Wave development retains `/wave/`; the root build explicitly overrides the base to `/`.
 
 ## Users
 
@@ -20,7 +20,7 @@ Present real projects, professional experience, skills, education, and an access
 
 ## Capabilities and Constraints
 
-English interface, confirmed by the user. Build directly in code. This is a separate local application in `wave`; other portfolio versions and the existing deployment stay intact.
+English interface, confirmed by the user. Build directly in code. Source remains in `wave`. The user subsequently requested making Wave the default public homepage and preserving the original `portfolio` application as Portfolio v4 at `/portfolio/`; this supersedes the initial unchanged-deployment constraint. Older versions and public tools retain their URLs through the combined artifact.
 
 Typography uses a 16px default base, explicitly requested by the user. Body text, controls, metadata, and captions retain a 1rem minimum on desktop and mobile, while respecting the visitor's browser text preference.
 
@@ -30,7 +30,7 @@ The hero uses a 3D Rubik animation of R U R′ U′ repeated six times per loop,
 
 The blog uses local Markdown through Astro Content Collections. The first article explains this portfolio's Rubik implementation using its own code, without client-project material. A shared index, article template, and automatically generated table of contents support future posts. Drafts are excluded from public routes.
 
-The Tools menu opens a responsive directory of icons, titles, and descriptions, grouped into the user-approved Fun, Productivity, and Portfolio Archive sections. Its five utilities and three earlier portfolios retain the exact destinations of the original portfolio's Tools menu and open in new browser tabs, explicitly requested by the user. Entries and their categories are maintained in `src/data/tools.ts`; no cover images are needed.
+The Tools menu opens a responsive directory of icons, titles, and descriptions, grouped into the user-approved Fun, Productivity, and Portfolio Archive sections. Its five utilities retain the original destinations; the four portfolio entries include v4 at `/portfolio/`. All open in new browser tabs. The original `/photobooth/` link redirects to the SvelteKit route at `/portfolio/photobooth/`. Entries and their categories are maintained in `src/data/tools.ts`; no cover images are needed.
 
 Projects also use local Markdown collections. Each entry supplies its gallery metadata, detail prose, and one or more hero images. The first image is the gallery cover; multi-image detail pages support a keyboard- and touch-accessible slider without autoplay. The original seven projects retain their routes and supplied content.
 
