@@ -7,7 +7,7 @@ import BrandIcon from '../components/BrandIcon.astro';
 import { personal } from '../data/portfolio';
 import { withBase } from '../lib/paths';
 
-interface Props { title?: string; description?: string; home?: boolean; activeSection?: 'blog'; ogType?: 'website' | 'article'; }
+interface Props { title?: string; description?: string; home?: boolean; activeSection?: 'blog' | 'tools'; ogType?: 'website' | 'article'; }
 const { title = 'Wahni Adnani — AI, Software & Robotics', description = 'Wahni Adnani is an AI and software engineer in Banjarmasin, Indonesia. Explore work in intelligent systems, web development, and autonomous robotics.', home = false, activeSection, ogType = 'website' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -24,7 +24,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg?v=2')} />
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg?v=3')} />
     <title>{title}</title>
   </head>
   <body id="top">

@@ -129,6 +129,11 @@ components:
     padding: ".4rem .7rem"
   project-card:
     textColor: "{colors.ink}"
+  tool-link:
+    textColor: "{colors.ink}"
+    padding: "2rem 0 2.5rem"
+  tool-link-hover:
+    textColor: "{colors.purple-strong}"
   pagination-control:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
@@ -250,7 +255,13 @@ Text links have a visible underline offset by (5px), an inline arrow or download
 
 ### Navigation
 
-The identity uses the user's supplied black logo in the header, footer, and favicon. The shared `public/brand/logo.svg` preserves the original PNG and alpha, with an SVG color matrix rendering its visible pixels black. The header logo is (64px) wide on desktop and (56px) on mobile, with automatic height and a (44px) minimum link target; the footer logo is (100px) wide. The favicon centers the same mark in a transparent square. Rebuild these assets with `node scripts/sync-brand.mjs`. Functional and social icons keep their original symbols. Desktop links are open, with generous spacing; hover adds a strong-purple underline. The header is sticky. At the mobile breakpoint, the toggle reveals a paper menu below it, reports its open state with `aria-expanded`, closes when a link is chosen, and closes on Escape while returning focus to the toggle. The toggle is disabled until the component mounts. No active-section treatment is implemented.
+The identity uses the user's supplied logo in black for the header and footer, and white for the browser-tab favicon. The shared `public/brand/logo.svg` preserves the original PNG and alpha, with an SVG color matrix rendering its visible pixels black. The header logo is (64px) wide on desktop and (56px) on mobile, with automatic height and a (44px) minimum link target; the footer logo is (100px) wide. The favicon centers the same mark in a transparent square and applies a white color matrix, independently of the black page logo. Rebuild these assets with `node scripts/sync-brand.mjs`. Functional and social icons keep their original symbols. Desktop links are open, with generous spacing; hover adds a strong-purple underline. The header is sticky. At the mobile breakpoint, the toggle reveals a paper menu below it, reports its open state with `aria-expanded`, closes when a link is chosen, and closes on Escape while returning focus to the toggle. The toggle is disabled until the component mounts. Tools is a native link to `/wave/tools/`; on that route it uses a strong-purple underline and `aria-current="page"`. Between (701px) and (1000px), navigation gaps narrow to (1.2rem) and the header gap to (1.25rem) to accommodate the extra entry.
+
+### Tools directory
+
+Tools entries are open, image-free cells separated by a top rule. Each cell is one full-card native link containing a (30px) Lucide line icon, a muted (22px) arrow, a title at the existing title size, and muted body copy. Hover turns the icon, title, and arrow strong purple and underlines the title; keyboard focus uses the shared outline and purple treatment. No fill, radius, shadow, nested action, or additional image is introduced.
+
+The directory uses three columns above (1100px), two from (701px) through (1100px), and one up to (700px), with (2rem) column gaps. Link padding is (2rem 0 2.5rem), reduced to (1.75rem 0 2rem) on mobile. Entries render statically from `src/data/tools.ts` and work without JavaScript. Preserve each destination's domain-root path and casing rather than applying Wave's base prefix.
 
 ### Discipline filters
 

@@ -33,9 +33,24 @@ Browser tests build and verify the production output using an installed Google C
 - Original project imagery: copied from `../projects/` into `public/images/projects/`.
 - Downloadable CV: copied from `../assets/documents/` into `public/documents/`.
 - Asset source provenance: `public/images/ORIGINS.md`.
-- Black personal logo: `public/brand/logo.svg`, shared by navbar and footer, with the same mark in `public/favicon.svg`. Recreate both from the original supplied image with `node scripts/sync-brand.mjs`.
+- Personal logo: black in `public/brand/logo.svg` for navbar and footer, white in `public/favicon.svg` for the browser tab. Recreate both from the original supplied image with `node scripts/sync-brand.mjs`; the script preserves their separate colors.
 
 The source resume includes present/current markers and education dates as originally provided; review these when updating the profile. The downloadable CV is the existing supplied PDF, retaining its original filename.
+
+## Maintaining the Tools directory
+
+The **Tools** menu opens `/wave/tools/`. Each directory entry opens its destination in a new browser tab. Edit `src/data/tools.ts` to add, remove, or reorder entries. Each entry contains `title`, `description`, `href`, and `icon`; import an icon from `@lucide/svelte` at the top of the same file and reference it directly. The page renders the grid automatically, without images or additional page templates.
+
+```typescript
+{
+  title: 'My tool',
+  description: 'A short explanation of what the tool helps you do.',
+  href: '/others/my-tool/',
+  icon: CalendarDays,
+},
+```
+
+The eight original destinations are preserved exactly, including domain-root paths outside `/wave/`. The Wave-only development/preview server does not host these separate applications. `/photobooth/` is in the original menu but its files are absent from this checkout; its link is retained as requested.
 
 ## Writing a project
 

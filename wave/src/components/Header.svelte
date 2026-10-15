@@ -3,7 +3,7 @@
   import { onMount } from 'svelte';
   import { withBase } from '../lib/paths';
 
-  let { home = false, activeSection }: { home?: boolean; activeSection?: 'blog' } = $props();
+  let { home = false, activeSection }: { home?: boolean; activeSection?: 'blog' | 'tools' } = $props();
   let open = $state(false);
   let ready = $state(false);
   onMount(() => { ready = true; });
@@ -37,6 +37,7 @@
         <a href={section(link.id)} onclick={() => open = false}>{link.label}</a>
       {/each}
       <a href={withBase('blog/')} class:active={activeSection === 'blog'} aria-current={activeSection === 'blog' ? 'location' : undefined} onclick={() => open = false}>Blog</a>
+      <a href={withBase('tools/')} class:active={activeSection === 'tools'} aria-current={activeSection === 'tools' ? 'page' : undefined} onclick={() => open = false}>Tools</a>
       <a href={section('contact')} class="button button-small">Let's talk <ArrowUpRight size={17} strokeWidth={1.8} /></a>
     </nav>
     <button bind:this={trigger} class="menu-toggle" disabled={!ready} type="button" aria-controls="main-navigation" aria-expanded={open} aria-label={open ? 'Close navigation' : 'Open navigation'} onclick={() => open = !open}>
@@ -60,6 +61,10 @@
   nav > a:not(.button):hover { color: var(--purple-strong); text-decoration: underline; }
   nav > a.active { color: var(--purple-strong); text-decoration: underline; }
   .menu-toggle { display: none; color: var(--ink); background: transparent; border: 0; padding: .6rem; cursor: pointer; }
+  @media (min-width: 701px) and (max-width: 1000px) {
+    nav { gap: 1.2rem; }
+    .header-inner { gap: 1.25rem; }
+  }
   @media (max-width: 700px) {
     .utility-location { display: none; }
     .utility-inner { justify-content: center; }

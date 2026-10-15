@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ArrowUpRight } from '@lucide/svelte';
+import { tools } from '../../data/tools';
+---
+
+<Layout title="Tools — Wahni Adnani" description="A collection of useful tools and earlier versions of Wahni Adnani's portfolio, all in one place." activeSection="tools">
+  <div class="container tools-page">
+    <header class="tools-intro">
+      <h1>Tools for<br /><span>everyday things.</span></h1>
+      <p>A few useful tools and earlier versions of my portfolio, all in one place.</p>
+    </header>
+    <ul class="tools-grid" aria-label="Tools and portfolio versions">
+      {tools.map(({ icon: Icon, ...tool }) => (
+        <li>
+          <a class="tool-link" href={tool.href} target="_blank" rel="noopener noreferrer" aria-description="Opens in a new tab" aria-labelledby={`tool-${tool.title.toLowerCase().replaceAll(' ', '-')}`}>
+            <div class="tool-icons" aria-hidden="true"><Icon size={30} strokeWidth={1.6} /><ArrowUpRight class="tool-arrow" size={22} strokeWidth={1.6} /></div>
+            <h2 id={`tool-${tool.title.toLowerCase().replaceAll(' ', '-')}`}>{tool.title}</h2>
+            <p>{tool.description}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout>
+
+<style>
+  .tools-page { padding-block: clamp(2.5rem, 5vw, 5rem) clamp(4rem, 7vw, 7rem); }
+  .tools-intro { display: grid; grid-template-columns: 1.2fr 1fr; align-items: end; gap: 3rem; padding-bottom: 3rem; }
+  h1 { font-size: clamp(2.6rem, 5vw, 4.8rem); line-height: 1.08; margin: 0; }
+  h1 span { color: var(--purple-strong); }
+  .tools-intro p { color: var(--muted); font-size: var(--text-lead); max-width: 40ch; margin: 0; }
+  .tools-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 2rem; list-style: none; margin: 0; padding: 0; }
+  .tools-grid li { min-width: 0; border-top: 1px solid var(--line); }
+  .tool-link { display: block; height: 100%; padding: 2rem 0 2.5rem; }
+  .tool-icons { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; }
+  .tool-icons :global(svg) { flex-shrink: 0; }
+  .tool-icons :global(.tool-arrow) { color: var(--muted); }
+  h2 { font-size: var(--text-title); letter-spacing: -.025em; line-height: 1.3; margin-bottom: .8rem; }
+  .tool-link p { font-size: var(--text-body); color: var(--muted); margin: 0; max-width: 40ch; }
+  .tool-link:hover, .tool-link:focus-visible { color: var(--purple-strong); }
+  .tool-link:hover :global(.tool-arrow), .tool-link:focus-visible :global(.tool-arrow) { color: var(--purple-strong); }
+  .tool-link:hover h2 { text-decoration: underline; text-underline-offset: 5px; }
+  @media (max-width: 1100px) {
+    .tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 700px) {
+    .tools-intro { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; padding-bottom: 2rem; }
+    .tools-grid { grid-template-columns: minmax(0, 1fr); }
+    .tool-link { padding-block: 1.75rem 2rem; }
+    .tool-icons { margin-bottom: 1.5rem; }
+  }
+</style>
