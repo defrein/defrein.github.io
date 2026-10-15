@@ -72,3 +72,37 @@ test('navigation and email copy work', async ({ page, context }, testInfo) => {
   await expect(page.getByRole('button', { name: 'Copied!' })).toBeVisible();
   expect(await page.evaluate(() => navigator.clipboard.readText())).toBe('adnaniwahni@gmail.com');
 });
+
+test('Rubik animation respects reduced motion and supports play, pause, and restart', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/wave/');
+  const cube = page.locator('.rubik');
+  await cube.scrollIntoViewIfNeeded();
+  await expect(cube).toHaveAttribute('data-paused', 'true');
+  await expect(cube).toHaveAttribute('data-solved', 'true');
+  await page.getByRole('button', { name: 'Play Rubik animation' }).click();
+  await expect.poll(async () => Number(await cube.getAttribute('data-turns'))).toBeGreaterThan(0);
+  await page.getByRole('button', { name: 'Pause Rubik animation' }).click();
+  const turns = await cube.getAttribute('data-turns');
+  const angle = await cube.getAttribute('data-angle');
+  await page.waitForTimeout(250);
+  await expect(cube).toHaveAttribute('data-turns', turns!);
+  await expect(cube).toHaveAttribute('data-angle', angle!);
+  await page.getByRole('button', { name: 'Restart Rubik animation' }).click();
+  await expect(cube).toHaveAttribute('data-turns', '0');
+  await expect(cube).toHaveAttribute('data-solved', 'true');
+  await expect(cube).toHaveAttribute('data-paused', 'true');
+});
+
+test('Rubik runs exactly six repetitions, returns to solved, and begins the next loop', async ({ page }) => {
+  test.setTimeout(60_000);
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/wave/');
+  const cube = page.locator('.rubik');
+  await cube.scrollIntoViewIfNeeded();
+  await expect(cube).toHaveAttribute('data-repetitions', '6', { timeout: 45_000 });
+  await expect(cube).toHaveAttribute('data-turns', '24');
+  await expect(cube).toHaveAttribute('data-angle', '0');
+  await expect(cube).toHaveAttribute('data-solved', 'true');
+  await expect(cube).toHaveAttribute('data-cycles', '1', { timeout: 5_000 });
+});

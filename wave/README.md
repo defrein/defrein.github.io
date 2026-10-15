@@ -16,12 +16,13 @@ Open **http://127.0.0.1:4321/wave/**.
 
 ```powershell
 npm run check
+npm run test:cube
 npm test
 npm run build
 npm run preview
 ```
 
-Browser tests build and verify the production output using an installed Google Chrome. To use Playwright's Chromium instead, install it with `npx playwright install chromium` and remove `channel: 'chrome'` from the Playwright configuration.
+Browser tests build and verify the production output using an installed Google Chrome. They start a separate preview on port 4331, so an open development server does not affect the results. Set `PLAYWRIGHT_PORT` to override that port. To use Playwright's Chromium instead, install it with `npx playwright install chromium` and remove `channel: 'chrome'` from the Playwright configuration.
 
 ## Content
 
@@ -49,3 +50,9 @@ The existing repository workflow still deploys the original `portfolio/` applica
 ## Features
 
 Responsive navigation, category filters, seven static project detail pages, accessible keyboard controls, working email and social links, email copy with failure feedback, CV download, per-page SEO metadata, and a custom 404 page. Core content and project links are server-rendered; Svelte hydrates the navigation, gallery filters, and copy action.
+
+## Rubik hero animation
+
+The hero uses `src/components/RubiksCube.svelte`, `RubikCubie.svelte`, and the integer state model in `src/lib/rubiks-cube.ts`. It performs **R U R′ U′ × 6**, rests solved, and repeats. CSS 3D renders the cube without a WebGL dependency or external assets. Play/Pause and Restart are available. Playback stops offscreen and in hidden tabs; reduced motion starts it paused.
+
+`npm run test:cube` verifies physical move direction, stickers, inverse moves, and the exact six-repetition return of every piece and orientation. It uses native TypeScript support in Node.js 24. The browser tests also verify full loops, reduced motion, pause, and restart.

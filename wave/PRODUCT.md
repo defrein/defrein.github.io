@@ -22,6 +22,8 @@ Present real projects, professional experience, skills, education, and an access
 
 English interface, confirmed by the user. Build directly in code. This is a separate local application in `wave`; other portfolio versions and the existing deployment stay intact.
 
+The hero uses a 3D Rubik animation of R U R′ U′ repeated six times per loop, explicitly requested by the user. It returns to solved after every six repetitions, with pause/restart controls and a reduced-motion alternative.
+
 ## Brand Commitments
 
 Flat, simple, modern, engaging design inspired by https://www.arduino.cc/. Preserve the person's name, real project imagery, source resume facts, and contact details. The user subsequently chose a purple, cyan, white, and black palette based on the supplied code-highlight image; this palette supersedes the original teal colors. The user rejected the saturated rendition; preserve the flat, simple brief when applying these colors.

@@ -132,9 +132,9 @@ components:
 
 **Creative North Star: "Useful things, made with curiosity."**
 
-Wave is a modern, simple maker portfolio with the flat composition of the user's Arduino reference and a restrained purple, cyan, white, and black palette. White and near-white reading surfaces carry black typography; a single purple word emphasizes the hero. Actual software and robotics imagery supplies most of the visual character. The same visual language accommodates AI, software engineering, and robotics without assigning one discipline greater visual importance.
+Wave is a modern, simple maker portfolio with the flat composition of the user's Arduino reference and a restrained purple, cyan, white, and black palette. White and near-white reading surfaces carry black typography; a single purple word emphasizes the hero. The hero uses a small CSS 3D Rubik animation; actual software and robotics imagery leads the project gallery. The same visual language accommodates AI, software engineering, and robotics without assigning one discipline greater visual importance.
 
-The material is flat: broad color fields, rectangular artifacts, sparse rules, and no shadows or gradients. Manrope provides both strong, tightly spaced headings and compact functional labels. Small arrow icons connect navigation, project exploration, and contact actions. Cyan is limited to the small hero plus, availability dot, feedback, and transient contact hover. It does not fill large regions or sit behind headlines.
+The material is flat: broad color fields, rectangular artifacts, sparse rules, and no shadows or gradients. Manrope provides both strong, tightly spaced headings and compact functional labels. Small arrow icons connect navigation, project exploration, and contact actions. Cyan is limited to the availability dot, feedback, and transient contact hover. It does not fill large regions or sit behind headlines.
 
 **Key Characteristics:**
 
@@ -155,7 +155,7 @@ Use purple and cyan as accents within a predominantly white-and-black compositio
 - **Ink** is black: primary text, buttons, selected filters, the utility bar, and the contact field.
 - **Purple Strong** emphasizes the final hero word, selected heading phrases, links, hover text, and focus on light surfaces. Primary buttons use this darker purple with white text on hover.
 - **Purple** retains the original bright reference swatch as a brand primitive; the current page does not use it as a large field.
-- **Cyan** is reserved for the small availability dot and hero plus, clipboard feedback, contact focus, and contact-action hover.
+- **Cyan** is reserved for the small availability dot, clipboard feedback, contact focus, and contact-action hover.
 
 ### Secondary
 
@@ -193,19 +193,19 @@ The home hero uses equal columns; about, skills, and experience use a (.9fr / 1.
 
 At widths up to (700px), navigation becomes a disclosure; gallery, content grids, discipline links, and education become single-column layouts. Toolbars and section headings stack. The project-detail aside follows the story and gains a top rule. The header height changes from (68px) to (60px); the utility bar changes from (34px) to (30px). Anchor offsets remain (108px).
 
-Between (701px) and (1000px), the hero and major content gaps narrow while the two-column structure remains. The software artifact caption is hidden at all widths up to (1000px), preventing the overlapping robot artifact from occluding it. At widths from (1440px), the hero art grows from (440px) to (470px) high. These are observed responsive decisions for this implementation, not new universal device classes.
+Between (701px) and (1000px), the hero and major content gaps narrow while the two-column structure remains. The Rubik figure is (440px) high on desktop, (470px) from (1440px), (380px) up to (1000px), and (350px) on mobile. Cubies reduce from (62px) to (54px) and (48px) at those smaller breakpoints, with (3px) gaps. These values preserve perspective and leave space for playback controls.
 
 ## Elevation & Depth
 
-There are no box shadows, gradients, or translucent blur layers. Depth comes from contrasting color fields, one-pixel borders, real images, and the deliberate overlap of two slightly rotated hero artifacts. The sticky header remains an opaque paper field with a bottom rule.
+Interface surfaces remain flat, with no box shadows, gradients, or glass layers. Depth in the hero comes from the requested geometric CSS 3D Rubik object, perspective, visible faces, and a subtle blurred ground ellipse. This local object treatment does not apply to cards or navigation. The sticky header remains an opaque white field with a bottom rule.
 
-Interactive image movement is restrained but present: gallery imagery scales to (1.035); hero artifacts reduce their rotation and rise by (3px). Those transforms use the source ease curve over (300ms). Filled-control color changes use (180ms). Reduced-motion preference removes animations and transitions and disables document-level smooth scrolling.
+Gallery imagery scales to (1.035) over (300ms), and filled-control color changes use (180ms). The Rubik uses sine easing for exact (580ms) quarter turns, holds (150ms) between moves, and rests solved for (1100ms) between loops. Animation stops offscreen or when the document is hidden. Reduced-motion preference starts the cube paused; explicit Play remains available. Other nonessential CSS transitions and smooth scrolling are disabled under reduced motion.
 
 **The Flat Field Rule.** Preserve depth through color, line, and artifact overlap; do not add shadows or gradients to cards or controls.
 
 ## Shapes
 
-Project image fields, artifact panels, and image action tiles are rectangular. Buttons and technology tags share the button radius; filter controls have the slightly larger filter radius. The current-role label uses the smallest radius. Circles are reserved for the small availability and artifact dots and the small cyan plus marker (32px). These exceptions do not change the rectangular panel language.
+Project image fields, artifact panels, and image action tiles are rectangular. Buttons and technology tags share the button radius; filter controls have the slightly larger filter radius. The current-role label uses the smallest radius. The availability dot is circular. The Rubik has small rounded sticker corners as part of the physical object; the interface and project-image fields retain their flat rectangular language.
 
 Rules are generally (1px), including filter borders, tags, section separators, and header dividers. Filled buttons retain a black one-pixel border. Lucide line icons use strokes. The supplied personal logo is rendered in solid black with its original transparency and proportions.
 
@@ -233,9 +233,11 @@ Skill and project-technology tags are small outlined labels with a tiny corner r
 
 Gallery cards use an unboxed image, metadata, linked title, and muted summary. There is no outer border, corner rounding, shadow, or full-card click target. Both the image and title link to the project page. Image hover gently scales the artifact and changes its square arrow tile from white/black to strong-purple/white; title hover changes to strong purple. Images are lazy-loaded in the gallery. Detail-page covers use the same faint purple/cyan tint assignment with fluid padding for interfaces and edge-to-edge robotics images.
 
-### Hero artifact pair
+### Rubik hero
 
-The software artifact has a white frame, a small labeled bar, screenshot field, and caption; its default rotation is (-3deg). The robot artifact overlaps it with a black caption strip and default rotation of (4deg). Hover reduces the respective angles to (-1deg) and (2deg) with a slight lift. These are real linked project artifacts. The caption-hiding rule described in Layout belongs to this overlapping composition.
+`RubiksCube.svelte` renders 26 cubies and 54 visible stickers using CSS perspective and matrix transforms, with no 3D library or downloaded model. The standard six sticker colors are local to the cube, not additions to the UI palette. Only the right or upper layer turns at each step. The sequence is **R U R? U?**, repeated exactly six times; all piece positions and orientations then return to solved before the next loop. Integer matrices track the physical state, so there is no reset jump.
+
+A compact caption shows the current move, repetition (1?6), Play/Pause, and Restart. Controls have (44px) targets and the shared keyboard focus. A static solved cube is server-rendered. Motion preference, intersection visibility, and document visibility govern playback; animation-frame callbacks and listeners are cleaned up on unmount. Explicit playback overrides the initial reduced-motion pause.
 
 ### Contact actions and feedback
 
