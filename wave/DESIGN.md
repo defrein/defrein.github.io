@@ -259,7 +259,9 @@ The identity uses the user's supplied logo in black for the header and footer, a
 
 ### Tools directory
 
-Tools entries are open, image-free cells separated by a top rule. Each cell is one full-card native link containing a (30px) Lucide line icon, a muted (22px) arrow, a title at the existing title size, and muted body copy. Hover turns the icon, title, and arrow strong purple and underlines the title; keyboard focus uses the shared outline and purple treatment. No fill, radius, shadow, nested action, or additional image is introduced.
+The directory has consecutive, semantically named sections in this order: Fun (Roulette Wheel, Photobooth, Story), Productivity (NLM Viewer, MyJadwal), and Portfolio Archive (v1, v2, v3). Category labels and order come from `toolCategories`; each entry's typed `category` field determines its section, and empty categories are omitted. Category headings are h2 elements using a local fluid size of (clamp(1.5rem, 2.4vw, 2rem)), (1.3) leading, and (1.5rem) bottom spacing. Entry titles are h3 elements at the existing title size. Consecutive categories are separated by (clamp(2rem, 4vw, 4rem)); each category retains its own responsive grid.
+
+Tools entries are open, image-free cells separated by a top rule. Each cell is one full-card native link containing a (30px) Lucide line icon, a muted (22px) arrow, a title at the existing title size, and muted body copy. Links preserve `target="_blank"` and `rel="noopener noreferrer"`, with an accessible description announcing the new tab. Hover turns the icon, title, and arrow strong purple and underlines the title; keyboard focus uses the shared outline and purple treatment. No fill, radius, shadow, nested action, or additional image is introduced.
 
 The directory uses three columns above (1100px), two from (701px) through (1100px), and one up to (700px), with (2rem) column gaps. Link padding is (2rem 0 2.5rem), reduced to (1.75rem 0 2rem) on mobile. Entries render statically from `src/data/tools.ts` and work without JavaScript. Preserve each destination's domain-root path and casing rather than applying Wave's base prefix.
 

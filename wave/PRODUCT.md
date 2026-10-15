@@ -28,7 +28,7 @@ The hero uses a 3D Rubik animation of R U R′ U′ repeated six times per loop,
 
 The blog uses local Markdown through Astro Content Collections. The first article explains this portfolio's Rubik implementation using its own code, without client-project material. A shared index, article template, and automatically generated table of contents support future posts. Drafts are excluded from public routes.
 
-The Tools menu opens a responsive directory of icons, titles, and descriptions. Its five utilities and three earlier portfolios retain the exact destinations of the original portfolio's Tools menu and open in new browser tabs, explicitly requested by the user. Entries are maintained in `src/data/tools.ts`; no cover images are needed.
+The Tools menu opens a responsive directory of icons, titles, and descriptions, grouped into the user-approved Fun, Productivity, and Portfolio Archive sections. Its five utilities and three earlier portfolios retain the exact destinations of the original portfolio's Tools menu and open in new browser tabs, explicitly requested by the user. Entries and their categories are maintained in `src/data/tools.ts`; no cover images are needed.
 
 Projects also use local Markdown collections. Each entry supplies its gallery metadata, detail prose, and one or more hero images. The first image is the gallery cover; multi-image detail pages support a keyboard- and touch-accessible slider without autoplay. The original seven projects retain their routes and supplied content.
 

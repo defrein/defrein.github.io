@@ -1,9 +1,11 @@
 import { test, expect } from '@playwright/test';
 
-const destinations = [
-  '/others/roulette-wheel/', '/others/NLM_viewer/', '/others/story/',
-  '/others/jadwal/', '/photobooth/', '/v.1/', '/v.2/', '/v.3/',
-];
+const groups = {
+  Fun: ['/others/roulette-wheel/', '/photobooth/', '/others/story/'],
+  Productivity: ['/others/NLM_viewer/', '/others/jadwal/'],
+  'Portfolio Archive': ['/v.1/', '/v.2/', '/v.3/'],
+};
+const destinations = Object.values(groups).flat();
 
 test('Tools navigation opens the directory and retains the original destinations', async ({ page }, testInfo) => {
   const errors: string[] = [];
@@ -24,6 +26,15 @@ test('Tools navigation opens the directory and retains the original destinations
   const links = page.locator('.tools-grid a');
   await expect(links).toHaveCount(8);
   expect(await links.evaluateAll(items => items.map(item => item.getAttribute('href')))).toEqual(destinations);
+  for (const [category, hrefs] of Object.entries(groups)) {
+    const section = page.getByRole('region', { name: category, exact: true });
+    await expect(section.getByRole('heading', { level: 2 })).toHaveText(category);
+    expect(await section.getByRole('link').evaluateAll(items => items.map(item => item.getAttribute('href')))).toEqual(hrefs);
+  }
+  for (const link of await links.all()) {
+    await expect(link).toHaveAttribute('target', '_blank');
+    await expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  }
   await expect(page.locator('.tools-grid img')).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'NLM Viewer', exact: true })).toHaveAttribute('href', '/others/NLM_viewer/');
   await links.first().focus();
@@ -35,8 +46,8 @@ test('Tools navigation opens the directory and retains the original destinations
   const widths = testInfo.project.name === 'desktop' ? [1440, 1100, 768, 701] : [390, 320];
   for (const width of widths) {
     await page.setViewportSize({ width, height: 1000 });
-    const columns = await page.locator('.tools-grid').evaluate(grid => getComputedStyle(grid).gridTemplateColumns.split(' ').length);
-    expect(columns).toBe(width > 1100 ? 3 : width > 700 ? 2 : 1);
+    const columns = await page.locator('.tools-grid').evaluateAll(grids => grids.map(grid => getComputedStyle(grid).gridTemplateColumns.split(' ').length));
+    expect(columns).toEqual([1, 2, 3].map(() => width > 1100 ? 3 : width > 700 ? 2 : 1));
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), `overflow at ${width}px`).toBe(false);
   }
   expect(errors).toEqual([]);
@@ -50,6 +61,7 @@ test('Tools content and links remain usable without JavaScript', async ({ browse
     await expect(page.locator('.tools-grid a')).toHaveCount(8);
     await expect(page.locator('.tools-grid p')).toHaveCount(8);
     expect(await page.locator('.tools-grid a').evaluateAll(items => items.map(item => item.getAttribute('href')))).toEqual(destinations);
+    await expect(page.locator('.tool-category > h2')).toHaveText(Object.keys(groups));
     expect(await page.locator('.tools-grid p').first().evaluate(node => parseFloat(getComputedStyle(node).fontSize))).toBeGreaterThanOrEqual(16);
   } finally {
     await context.close();

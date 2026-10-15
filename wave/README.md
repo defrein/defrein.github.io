@@ -39,7 +39,7 @@ The source resume includes present/current markers and education dates as origin
 
 ## Maintaining the Tools directory
 
-The **Tools** menu opens `/wave/tools/`. Each directory entry opens its destination in a new browser tab. Edit `src/data/tools.ts` to add, remove, or reorder entries. Each entry contains `title`, `description`, `href`, and `icon`; import an icon from `@lucide/svelte` at the top of the same file and reference it directly. The page renders the grid automatically, without images or additional page templates.
+The **Tools** menu opens `/wave/tools/`, grouped into **Fun**, **Productivity**, and **Portfolio Archive**. Each directory entry opens its destination in a new browser tab. Edit `src/data/tools.ts` to add, remove, or reorder entries. Each entry contains `title`, `description`, `href`, `icon`, and `category`; import an icon from `@lucide/svelte` at the top of the same file and reference it directly. Set `category` to `fun`, `productivity`, or `portfolio-archive`. The page places the entry under its category automatically, without images or additional page templates. Category labels and display order live in `toolCategories` in the same file; categories without entries are omitted.
 
 ```typescript
 {
@@ -47,6 +47,7 @@ The **Tools** menu opens `/wave/tools/`. Each directory entry opens its destinat
   description: 'A short explanation of what the tool helps you do.',
   href: '/others/my-tool/',
   icon: CalendarDays,
+  category: 'productivity',
 },
 ```
 
