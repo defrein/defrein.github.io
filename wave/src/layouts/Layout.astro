@@ -1,0 +1,51 @@
+---
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+import Header from '../components/Header.svelte';
+import { ArrowUpRight, ArrowUp } from '@lucide/svelte';
+import BrandIcon from '../components/BrandIcon.astro';
+import { personal } from '../data/portfolio';
+import { withBase } from '../lib/paths';
+
+interface Props { title?: string; description?: string; home?: boolean; }
+const { title = 'Wahni Adnani — AI, Software & Robotics', description = 'Wahni Adnani is an AI and software engineer in Banjarmasin, Indonesia. Explore work in intelligent systems, web development, and autonomous robotics.', home = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#006b70" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg?v=2')} />
+    <title>{title}</title>
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header home={home} client:load />
+    <main id="main"><slot /></main>
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <a class="footer-brand" href={withBase()} aria-label="Wahni Adnani — home"><img src={withBase('brand/logo.svg')} width="1029" height="549" alt="" /></a>
+        <p>Stay curious. Keep building.</p>
+        <div class="footer-socials">
+          <a href={`https://${personal.github}`} target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in new tab)"><BrandIcon name="github" /></a>
+          <a href={`https://${personal.linkedin}`} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in new tab)"><BrandIcon name="linkedin" /></a>
+          <a href={`mailto:${personal.email}`} aria-label="Email Wahni"><ArrowUpRight size={21} /></a>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© {new Date().getFullYear()} Wahni Adnani</span>
+        <span>Made with curiosity in Banjarmasin.</span>
+        <a href="#top">Back to top <ArrowUp size={14} /></a>
+      </div>
+    </footer>
+  </body>
+</html>
