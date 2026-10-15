@@ -10,7 +10,8 @@
     "check": "astro check && svelte-check --tsconfig ./tsconfig.json",
     "test:cube": "node --test scripts/rubiks-cube.test.mjs",
     "pretest": "npm run test:cube && npm run build",
-    "test": "playwright test"
+    "test": "playwright test",
+    "test:content": "playwright test --config playwright.content.config.ts"
   },
   "dependencies": {
     "@astrojs/svelte": "^9.0.1",

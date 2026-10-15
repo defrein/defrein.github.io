@@ -1,0 +1,19 @@
+---
+import { ArrowLeft, ArrowRight } from '@lucide/svelte';
+import { pageNumbers } from '../lib/pagination';
+import { withBase } from '../lib/paths';
+import '../styles/pagination.css';
+
+interface Props { page: number; pages: number; total: number; size: number; }
+const { page, pages, total, size } = Astro.props;
+const href = (number: number) => withBase(number === 1 ? 'blog/' : `blog/page/${number}/`);
+---
+
+<nav class="pagination" aria-label="Blog pagination">
+  <p class="pagination-info">{total ? (page - 1) * size + 1 : 0}–{Math.min(page * size, total)} of {total} {total === 1 ? 'article' : 'articles'}</p>
+  <div class="page-links">
+    {page > 1 ? <a class="page-control" href={href(page - 1)} aria-label="Previous blog page"><ArrowLeft size={18} /><span>Previous</span></a> : <span class="page-control" aria-disabled="true"><ArrowLeft size={18} /><span>Previous</span></span>}
+    {pageNumbers(page, pages).map(number => number === 'ellipsis' ? <span class="page-ellipsis" aria-hidden="true">…</span> : <a class="page-control" href={href(number)} aria-label={`Blog page ${number}`} aria-current={number === page ? 'page' : undefined}>{number}</a>)}
+    {page < pages ? <a class="page-control" href={href(page + 1)} aria-label="Next blog page"><span>Next</span><ArrowRight size={18} /></a> : <span class="page-control" aria-disabled="true"><span>Next</span><ArrowRight size={18} /></span>}
+  </div>
+</nav>

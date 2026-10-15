@@ -1,31 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { ArrowUpRight } from '@lucide/svelte';
-import { getBlogPosts, formatPostDate, readingMinutes } from '../../lib/blog';
-import { withBase } from '../../lib/paths';
-import '../../styles/blog.css';
+import BlogListing from '../../components/BlogListing.astro';
+import { getBlogPosts } from '../../lib/blog';
+import { BLOG_POSTS_PER_PAGE, pageSlice } from '../../lib/pagination';
 
 const posts = await getBlogPosts();
 ---
 
-<Layout title="Blog — Wahni Adnani" description="Notes on software, creative coding, and making things work. Written from the experiments behind this portfolio." activeSection="blog">
-  <div class="container blog-page">
-    <header class="blog-intro">
-      <h1>Notes from<br /><span>the workbench.</span></h1>
-      <div><p>Small experiments. Useful discoveries.<br />A closer look at how things are built.</p><span class="blog-count">{posts.length} {posts.length === 1 ? 'article' : 'articles'}</span></div>
-    </header>
-    <div class="post-list">
-      {posts.map(post => (
-        <article class="post-row">
-          <div class="post-meta"><time datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate)}</time><span>{readingMinutes(post.body)} min read</span></div>
-          <div class="post-summary">
-            <ul class="blog-tags" aria-label="Topics">{post.data.tags.map(tag => <li>{tag}</li>)}</ul>
-            <h2><a href={withBase(`blog/${post.id}/`)}>{post.data.title}<ArrowUpRight size={26} strokeWidth={1.6} /></a></h2>
-            <p>{post.data.description}</p>
-          </div>
-        </article>
-      ))}
-      {posts.length === 0 && <div class="blog-empty"><p>New notes are on the way.</p><a class="text-link" href={withBase('#work')}>Explore my work <ArrowUpRight size={18} /></a></div>}
-    </div>
-  </div>
-</Layout>
+<BlogListing posts={pageSlice(posts, 1, BLOG_POSTS_PER_PAGE)} total={posts.length} />

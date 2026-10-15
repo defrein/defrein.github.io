@@ -1,0 +1,17 @@
+---
+import BlogListing from '../../../../../src/components/BlogListing.astro';
+import { BLOG_POSTS_PER_PAGE, pageCount, pageSlice } from '../../../../../src/lib/pagination';
+
+export function getStaticPaths() {
+  const posts = Array.from({ length: 6 }, (_, index) => ({
+    id: `fixture-note-${index + 1}`, collection: 'blog' as const, body: 'Isolated pagination test content.',
+    data: { title: `Test note ${index + 1}`, description: 'Isolated test data. This is not a published article.', pubDate: new Date('2026-10-15'), tags: ['Test fixture'], draft: false },
+  }));
+  return Array.from({ length: pageCount(posts.length, BLOG_POSTS_PER_PAGE) }, (_, index) => ({
+    params: { page: index === 0 ? undefined : `page/${index + 1}` },
+    props: { posts: pageSlice(posts, index + 1, BLOG_POSTS_PER_PAGE), total: posts.length, page: index + 1 },
+  }));
+}
+---
+
+<BlogListing {...Astro.props} />

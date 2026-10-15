@@ -28,6 +28,10 @@ The hero uses a 3D Rubik animation of R U R′ U′ repeated six times per loop,
 
 The blog uses local Markdown through Astro Content Collections. The first article explains this portfolio's Rubik implementation using its own code, without client-project material. A shared index, article template, and automatically generated table of contents support future posts. Drafts are excluded from public routes.
 
+Projects also use local Markdown collections. Each entry supplies its gallery metadata, detail prose, and one or more hero images. The first image is the gallery cover; multi-image detail pages support a keyboard- and touch-accessible slider without autoplay. The original seven projects retain their routes and supplied content.
+
+Project pagination shows six cards in a 3-column desktop grid, six cards in a 2-column tablet grid, and five cards in a single mobile column. Blog pagination shows five articles per page on all devices. Project filters reset pagination and preserve selection in the URL; static blog pagination works without JavaScript.
+
 ## Brand Commitments
 
 Flat, simple, modern, engaging design inspired by https://www.arduino.cc/. Preserve the person's name, real project imagery, source resume facts, and contact details. The user subsequently chose a purple, cyan, white, and black palette based on the supplied code-highlight image; this palette supersedes the original teal colors. The user rejected the saturated rendition; preserve the flat, simple brief when applying these colors.

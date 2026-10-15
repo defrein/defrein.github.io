@@ -18,6 +18,7 @@ Open **http://127.0.0.1:4321/wave/**.
 npm run check
 npm run test:cube
 npm test
+npm run test:content
 npm run build
 npm run preview
 ```
@@ -27,7 +28,7 @@ Browser tests build and verify the production output using an installed Google C
 ## Content
 
 - Shared resume facts: `../portfolio/src/lib/data/resume.js` (imported at build time).
-- Project summaries, categories, and detail copy: `src/data/portfolio.ts`.
+- Project metadata and detail copy: Markdown files in `src/content/projects/`.
 - Blog articles: Markdown files in `src/content/blog/`, validated by `src/content.config.ts`.
 - Original project imagery: copied from `../projects/` into `public/images/projects/`.
 - Downloadable CV: copied from `../assets/documents/` into `public/documents/`.
@@ -35,6 +36,46 @@ Browser tests build and verify the production output using an installed Google C
 - Black personal logo: `public/brand/logo.svg`, shared by navbar and footer, with the same mark in `public/favicon.svg`. Recreate both from the original supplied image with `node scripts/sync-brand.mjs`.
 
 The source resume includes present/current markers and education dates as originally provided; review these when updating the profile. The downloadable CV is the existing supplied PDF, retaining its original filename.
+
+## Writing a project
+
+Create a `.md` file in `src/content/projects/`. The filename determines the existing-style URL, for example `my-project.md` becomes `/wave/projects/my-project/`. All seven original projects have been migrated without changing their URLs or factual copy.
+
+```markdown
+---
+title: "My project"
+subtitle: "A short introduction."
+summary: "The description shown in the project gallery."
+order: 8
+categories: ["web"]
+label: "WEB APPLICATION"
+color: "purple-soft"
+technologies: ["Astro", "Svelte"]
+isPhoto: false
+draft: false
+images:
+  - src: "images/projects/my-project/overview.png"
+    alt: "An overview of the application"
+    caption: "The main workspace."
+  - src: "images/projects/my-project/detail.png"
+    alt: "The application detail screen"
+    caption: "A closer look at the workflow."
+---
+
+## The idea
+
+Explain the problem and context.
+
+## The work
+
+- Describe your actual contribution.
+```
+
+Replace the example image paths with your own files under `public/`; write paths without a leading slash or `/wave/`. The first image is the gallery thumbnail. Add more entries under `images` to enable slider controls on the detail page. Images need meaningful `alt` text; `caption` is optional. One-image projects display their cover without extra controls. Multiple images support previous/next, numbered selection, keyboard arrows/Home/End, and native touch scrolling. They do not autoplay. The existing source projects currently have one image each.
+
+Categories are `ai`, `web`, and/or `robotics`; `order` sorts projects ascending. Color is `purple-soft` or `cyan-soft`. Set `isPhoto: true` for edge-to-edge photography and omit it for contained interface screenshots. An optional `link` adds the external website action. Drafts are excluded from both the gallery and detail routes. Shared resume facts and skills remain in the original resume file; project content is now maintained in these Markdown files.
+
+The homepage shows six projects in three columns above 1100px, six in two columns at 701–1100px, and five in one column up to 700px. The final page shows the remaining items. Filtering returns to page one; `discipline` and `projectPage` query parameters preserve selection through reload and browser history. Responsive changes keep the first visible item within the newly selected page. Without JavaScript all project links remain available in the gallery, while filters and pagination require hydration.
 
 ## Deployment
 
@@ -76,7 +117,11 @@ Write with normal Markdown: paragraphs, lists, images, links, and code fences.
 
 The filename determines the URL. Posts are sorted by publication date, newest first. Set `draft: true` to exclude an article from both the index and generated routes, including local previews. Set it to `false` when ready to preview or publish. The optional `demo: rubik` field adds the existing interactive cube above the article; omit it for ordinary posts. Other metadata and the page template are shared, so no page code needs to be copied.
 
+The blog shows five articles per page at every viewport. Page one stays at `/wave/blog/`; further pages are generated at `/wave/blog/page/2/`, `/wave/blog/page/3/`, and so on when needed. Pagination uses native links and works without JavaScript.
+
 Use `npm run dev` to preview writing. Changes go live after a fresh build and deployment; the repository's existing deployment still targets `portfolio/`, as described above. This setup uses Astro's built-in [Content Collections](https://docs.astro.build/en/guides/content-collections/) and plain Markdown; MDX is not installed.
+
+`npm run test:content` builds an isolated fixture site to check a two-image slider and six-post blog pagination on desktop/mobile. Its content lives under `tests/fixture-site/`, and generated output stays in `node_modules/.cache/`; these test entries are never added to the production collections or `dist/`.
 
 ## Rubik hero animation
 

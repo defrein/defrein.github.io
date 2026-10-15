@@ -1,16 +1,18 @@
 import { test, expect } from '@playwright/test';
 
-test('renders the portfolio without missing assets or browser errors', async ({ page }) => {
+test('renders the portfolio without missing assets or browser errors', async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
   await page.goto('/wave/');
   await expect(page).toHaveTitle(/Wahni Adnani/);
   await expect(page.getByRole('heading', { level: 1 })).toContainText('possibility.');
-  await expect(page.locator('.project-grid article')).toHaveCount(7);
+  const perPage = testInfo.project.name === 'mobile' ? 5 : 6;
+  await expect(page.getByRole('button', { name: 'All work', exact: true })).toBeEnabled();
+  await expect(page.locator('.project-grid article')).toHaveCount(perPage);
   await page.locator('img').evaluateAll(images => images.forEach(image => { (image as HTMLImageElement).loading = 'eager'; }));
   await expect.poll(() => page.locator('img').evaluateAll(images => (images as HTMLImageElement[]).every(image => image.complete && image.naturalWidth > 0))).toBe(true);
-  await expect(page.locator('.project-grid img')).toHaveCount(7);
+  await expect(page.locator('.project-grid img')).toHaveCount(perPage);
   const broken = await page.locator('img').evaluateAll(images => (images as HTMLImageElement[]).filter(image => !image.complete || image.naturalWidth === 0).map(image => image.getAttribute('src')));
   expect(broken).toEqual([]);
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
@@ -18,7 +20,7 @@ test('renders the portfolio without missing assets or browser errors', async ({ 
   expect(errors).toEqual([]);
 });
 
-test('filters real projects and resets the gallery', async ({ page }) => {
+test('filters real projects and resets the gallery', async ({ page }, testInfo) => {
   await page.goto('/wave/');
   const filters = page.getByRole('group', { name: 'Filter projects by discipline' });
   await filters.getByRole('button', { name: 'Robotics & IoT' }).click();
@@ -29,7 +31,7 @@ test('filters real projects and resets the gallery', async ({ page }) => {
   await filters.getByRole('button', { name: 'Web & Software' }).click();
   await expect(page.locator('.project-grid article')).toHaveCount(5);
   await filters.getByRole('button', { name: 'All work', exact: true }).click();
-  await expect(page.locator('.project-grid article')).toHaveCount(7);
+  await expect(page.locator('.project-grid article')).toHaveCount(testInfo.project.name === 'mobile' ? 5 : 6);
 });
 
 test('discipline shortcut selects the gallery and project details are addressable', async ({ page }) => {

@@ -129,6 +129,26 @@ components:
     padding: ".4rem .7rem"
   project-card:
     textColor: "{colors.ink}"
+  pagination-control:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.button}"
+    padding: ".5rem .75rem"
+  pagination-control-current:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.white}"
+  pagination-control-disabled:
+    textColor: "{colors.muted}"
+  slider-control:
+    backgroundColor: "transparent"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.button}"
+    padding: ".5rem"
+  slider-control-current:
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.white}"
+  slider-control-disabled:
+    textColor: "{colors.muted}"
   contact-copy:
     backgroundColor: "transparent"
     textColor: "{colors.white}"
@@ -198,11 +218,13 @@ The default root size is 16px (`100%`, preserving the visitor's browser font pre
 
 The shared container is centered, capped at (1280px), and inset by the fluid gutter token on both sides. Section padding uses the section token. Standard layouts combine two columns, generous inter-column gaps, and open space rather than boxed text panels.
 
-The home hero uses equal columns; about, skills, and experience use a (.9fr / 1.1fr) split; contact uses (1.3fr / 1fr). The gallery has two equal columns with gaps of (3.5rem vertically / 2rem horizontally). Detail pages place a narrow technology aside beside a larger story column using (1fr / 2fr) and a (6rem) gap. Images retain their own visual space: gallery image fields use an aspect ratio of (1.65), contain software screenshots, and cover robotics photography without inner padding.
+The home hero uses equal columns; about, skills, and experience use a (.9fr / 1.1fr) split; contact uses (1.3fr / 1fr). The project gallery has three equal columns above (1100px), two columns from (701px) through (1100px), and one column up to (700px). Hydrated pages contain six projects on desktop and tablet and five on mobile, with only the remaining items on the final page. Gallery gaps are (3.5rem vertically / 2rem horizontally), reduced to (2.5rem) between mobile cards. Detail pages place a narrow technology aside beside a larger story column using (1fr / 2fr) and a (6rem) gap. Images retain their own visual space: gallery image fields use an aspect ratio of (1.65), contain software screenshots, and cover robotics photography without inner padding.
 
 At widths up to (700px), navigation becomes a disclosure; gallery, content grids, discipline links, and education become single-column layouts. Toolbars and section headings stack. The project-detail aside follows the story and gains a top rule. The header height changes from (68px) to (60px); the utility bar has a (36px) minimum height with vertical padding. Anchor offsets remain (108px).
 
-Between (701px) and (1000px), the hero and major content gaps narrow while the two-column structure remains. The Rubik figure has a minimum height of (440px) on desktop, (470px) from (1440px), (380px) up to (1000px), and (350px) on mobile. Its height grows with the caption; the toolbar wraps as text is enlarged. Cubies reduce from (62px) to (54px) and (48px) at those smaller breakpoints, with (3px) gaps. These values preserve perspective and leave space for playback controls.
+Between (701px) and (1000px), the hero and major content gaps narrow while those content layouts remain in two columns; the gallery uses its separate (1100px) breakpoint. The Rubik figure has a minimum height of (440px) on desktop, (470px) from (1440px), (380px) up to (1000px), and (350px) on mobile. Its height grows with the caption; the toolbar wraps as text is enlarged. Cubies reduce from (62px) to (54px) and (48px) at those smaller breakpoints, with (3px) gaps. These values preserve perspective and leave space for playback controls.
+
+Blog listings contain five articles per static page at every viewport. Their pager follows the article rows and preserves the open reading layout. Project detail image tracks use rectangular (16:9) frames, with fluid inner padding for software interfaces and edge-to-edge photography when the entry enables its photo treatment.
 
 ## Elevation & Depth
 
@@ -232,7 +254,7 @@ The identity uses the user's supplied black logo in the header, footer, and favi
 
 ### Discipline filters
 
-Unselected filter buttons have a transparent ground, muted text, and a line-colored border. Hover makes the text and border strong purple. The selected filter has a black ground, white text, and black border; `aria-pressed` exposes selection. Buttons are disabled until the gallery mounts, using the wait cursor without a separate faded style. The adjacent project count is a polite live status with tabular numerals. Small screens reduce filter padding while keeping (1rem) type and the (44px) minimum height.
+Unselected filter buttons have a transparent ground, muted text, and a line-colored border. Hover makes the text and border strong purple. The selected filter has a black ground, white text, and black border; `aria-pressed` exposes selection. Buttons are disabled until the gallery mounts, using the wait cursor without a separate faded style. The adjacent project count uses tabular numerals; the pager announces the visible range as a polite live status. Choosing a discipline resets pagination to page one. Small screens reduce filter padding while keeping (1rem) type and the (44px) minimum height.
 
 ### Tags
 
@@ -240,7 +262,21 @@ Skill and project-technology tags are outlined labels with a tiny corner radius,
 
 ### Project cards and covers
 
-Gallery cards use an unboxed image, metadata, linked title, and muted summary. There is no outer border, corner rounding, shadow, or full-card click target. Both the image and title link to the project page. Image hover gently scales the artifact and changes its square arrow tile from white/black to strong-purple/white; title hover changes to strong purple. Images are lazy-loaded in the gallery. Detail-page covers use the same faint purple/cyan tint assignment with fluid padding for interfaces and edge-to-edge robotics images.
+Gallery cards use an unboxed image, metadata, linked title, and muted summary. There is no outer border, corner rounding, shadow, or full-card click target. Both the image and title link to the project page. Image hover gently scales the artifact and changes its square arrow tile from white/black to strong-purple/white; title hover changes to strong purple. Images are lazy-loaded in the gallery. The first image in each Markdown entry supplies the gallery thumbnail. Detail image tracks retain the same faint purple/cyan tint assignment, with fluid padding for interfaces and edge-to-edge photo treatment.
+
+### Pagination
+
+Project and blog pagers share flat outlined controls, a one-pixel line border, the button radius, and minimum (44px) width and height. Text remains at the body size. Hover makes the border and text strong purple; the current page uses black with white text. Disabled boundaries use muted text, a line-colored border, and the default cursor. Keyboard focus retains the shared purple outline. A quiet tabular range label sits opposite the controls; the layout stacks up to (700px), and control rows wrap.
+
+Project pagination uses buttons after hydration. The selected discipline and page are restored from `discipline` and `projectPage` query parameters; filter changes return to page one, browser history restores the selection, and a page-size change retains the formerly first visible item within its new page. Page selection scrolls to the work section and focuses the results region. Before hydration and without JavaScript, all non-draft project links remain visible and the pager is absent.
+
+Blog pagination uses native links: page one is `/wave/blog/`, and subsequent pages use `/wave/blog/page/<number>/`. The current link exposes `aria-current="page"`; unavailable previous/next actions are non-link elements with `aria-disabled="true"`. These static pages work without JavaScript.
+
+### Project image slider
+
+The image track uses native horizontal scrolling with mandatory snap alignment. Images are full-width figures; optional captions use muted body text. Multiple images add a wrapping toolbar below the track, with a polite image-count status, previous/next arrows, and numbered buttons. Controls use the same flat border, body size, button radius, selected black/white state, strong-purple hover, visible keyboard focus, and (44px) minimum targets as the pager.
+
+Previous and next actions stop at the boundaries and are disabled there. The focused track supports Left/Right, Home, and End; numbered buttons select directly, touch scrolling updates the selected number, and resize preserves the current image. Programmatic selection is immediate. There is no autoplay. A single image has no extra controls or focusable track. Without JavaScript, the native image scroller remains available while the toolbar is absent. Each of the seven supplied projects currently contains one image; multi-image states are verified with an isolated test fixture rather than invented project assets.
 
 ### Rubik hero
 
@@ -252,7 +288,7 @@ A compact caption shows the current move, repetition (1?6), Play/Pause, and Rest
 
 The white email link with black text is paired with a transparent white-text copy control on the black contact field. Hover underlines the copy label. Success changes the icon from copy to check and the label to “Copied!”, announces “Email copied to clipboard.”, and resets after (3000ms). Failure announces the available selection and email-link alternatives. The polite status paragraph reserves vertical space. This surface has no input fields or forms, and no input component is specified.
 
-**The Visible State Rule.** Preserve the implemented focus outlines, selected filter contrast, and announced copy/filter feedback when reusing these controls.
+**The Visible State Rule.** Preserve the implemented focus outlines, selected filter/page/image contrast, and announced copy, project-range, and image-count feedback when reusing these controls.
 
 ## Do's and Don'ts
 

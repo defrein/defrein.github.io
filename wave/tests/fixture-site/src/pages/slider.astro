@@ -1,0 +1,10 @@
+---
+import Layout from '../../../../src/layouts/Layout.astro';
+import ProjectImageSlider from '../../../../src/components/ProjectImageSlider.svelte';
+const images = [
+  { src: 'images/projects/kri-robot-krai.png', alt: 'First isolated test image', caption: 'First test image' },
+  { src: 'images/projects/kri-robot.jpeg', alt: 'Second isolated test image', caption: 'Second test image' },
+];
+---
+
+<Layout title="Slider test fixture"><div class="container section"><h1>Slider test fixture</h1><p>Isolated test data, excluded from the production site.</p><ProjectImageSlider {images} title="Test fixture" isPhoto client:load /></div></Layout>

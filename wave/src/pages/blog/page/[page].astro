@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BlogListing from '../../../components/BlogListing.astro';
+import { getBlogPosts } from '../../../lib/blog';
+import { BLOG_POSTS_PER_PAGE, pageCount, pageSlice } from '../../../lib/pagination';
+
+export async function getStaticPaths() {
+  const posts = await getBlogPosts();
+  return Array.from({ length: pageCount(posts.length, BLOG_POSTS_PER_PAGE) - 1 }, (_, index) => {
+    const page = index + 2;
+    return { params: { page: String(page) }, props: { posts: pageSlice(posts, page, BLOG_POSTS_PER_PAGE), total: posts.length, page } };
+  });
+}
+
+interface Props { posts: CollectionEntry<'blog'>[]; total: number; page: number; }
+---
+
+<BlogListing {...Astro.props} />
