@@ -24,7 +24,7 @@ English interface, confirmed by the user. Build directly in code. This is a sepa
 
 ## Brand Commitments
 
-Flat, simple, modern, engaging design inspired by https://www.arduino.cc/. Preserve the person's name, real project imagery, source resume facts, and contact details.
+Flat, simple, modern, engaging design inspired by https://www.arduino.cc/. Preserve the person's name, real project imagery, source resume facts, and contact details. The user subsequently chose a purple, cyan, white, and black palette based on the supplied code-highlight image; this palette supersedes the original teal colors. The user rejected the saturated rendition; preserve the flat, simple brief when applying these colors.
 
 Use the supplied personal logo in black for the favicon, navbar, and footer. The original image is `../v.2/img/d8p.png`. The user explicitly limited this replacement to site identity; functional and social icons keep their existing symbols.
 

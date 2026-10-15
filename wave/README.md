@@ -1,6 +1,6 @@
 # Wave — Wahni Adnani
 
-A modern, flat portfolio inspired by Arduino. Built with Astro and Svelte 5, with self-hosted Manrope typography and Lucide icons.
+A modern, flat portfolio inspired by Arduino, using the requested purple, cyan, white, and black palette. Built with Astro and Svelte 5, with self-hosted Manrope typography and Lucide icons.
 
 ## Run locally
 

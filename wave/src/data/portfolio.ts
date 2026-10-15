@@ -21,7 +21,7 @@ const editorial = [
     summary: 'Making scientific publishing simpler with an intelligent platform for creating, editing, and converting JATS/XML documents.',
     categories: ['ai', 'web'],
     label: 'AI + WEB PLATFORM',
-    color: 'mint',
+    color: 'purple-soft',
     context: 'Scientific publishers need structured, publication-ready XML. JATS Editor brings document editing, conversion, and publication workflows into one platform.',
     contributions: [
       'Built the platform for creating and editing JATS/XML files for scientific publications.',
@@ -36,7 +36,7 @@ const editorial = [
     summary: 'An autonomous robot built to pick up colored balls and place them into silos for the Abu Robocon 2024 challenge.',
     categories: ['robotics', 'ai'],
     label: 'ROBOTICS + COMPUTER VISION',
-    color: 'peach',
+    color: 'cyan-soft',
     context: 'The Abu Robocon 2024 challenge asks a robot to navigate a competition field, collect balls of specific colors, and place them into the correct silos.',
     contributions: [
       'Worked on autonomous navigation for the competition environment.',
@@ -51,7 +51,7 @@ const editorial = [
     summary: 'Sensor-driven navigation for a robot simulating rescue missions in earthquake and landslide scenarios at KRI 2023.',
     categories: ['robotics'],
     label: 'ROBOTICS + AUTONOMOUS NAVIGATION',
-    color: 'sand',
+    color: 'purple-soft',
     context: 'This KRI National 2023 project simulates rescue missions following earthquakes and landslides, with obstacle courses and multiple physical tasks.',
     contributions: [
       'Engineered autonomous navigation using compass and distance sensors.',
@@ -66,7 +66,7 @@ const editorial = [
     summary: 'A web platform that connects printing orders, job tracking, and real-time status updates in one clear workflow.',
     categories: ['web'],
     label: 'WEB APPLICATION',
-    color: 'lavender',
+    color: 'cyan-soft',
     context: 'A printing business needs a clear view of incoming orders and production progress. This platform brings order management and employee access into one web application.',
     contributions: [
       'Implemented order management and detailed print job tracking.',
@@ -81,7 +81,7 @@ const editorial = [
     summary: 'A production forecasting system that uses fuzzy logic to turn stock and demand data into book production estimates.',
     categories: ['ai', 'web'],
     label: 'APPLIED AI + DATA',
-    color: 'yellow',
+    color: 'purple-soft',
     context: 'Book production planning must balance existing inventory against demand. The system applies fuzzy logic to support those manufacturing decisions.',
     contributions: [
       'Developed a web-based book production prediction system.',
@@ -96,7 +96,7 @@ const editorial = [
     summary: 'An application for organizing and tracking installment-based payments using a structured management workflow.',
     categories: ['web'],
     label: 'BUSINESS SOFTWARE',
-    color: 'blue',
+    color: 'cyan-soft',
     context: 'The Term Payment Management Application is designed to manage and track installment-based payments efficiently.',
     contributions: [
       'Developed a web application for managing installment-based payments.',
@@ -110,7 +110,7 @@ const editorial = [
     summary: 'Helping teams record, analyze, and manage building condition information for public facilities.',
     categories: ['web'],
     label: 'PUBLIC INFRASTRUCTURE SOFTWARE',
-    color: 'mint',
+    color: 'purple-soft',
     context: 'Building condition records help teams understand the state of public facilities. This application supports recording, analysis, and management of that information.',
     contributions: [
       'Built a web application for recording and analyzing building conditions.',
@@ -124,6 +124,7 @@ export const projects = resume.featuredProjects.map((project, index) => ({
   ...project,
   ...editorial[index],
   image: project.image.replace('/projects/', 'images/projects/'),
+  isPhoto: editorial[index].categories.some(category => category === 'robotics'),
   link: 'link' in project ? project.link : undefined,
 }));
 

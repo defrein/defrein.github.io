@@ -15,7 +15,7 @@ const { project, next } = Astro.props;
     <a class="text-link back-link" href={withBase('#work')}><ArrowLeft size={17} /> Back to all work</a>
     <div class="intro-row"><h1>{project.title}</h1>{project.link && <a class="button" href={project.link} target="_blank" rel="noopener noreferrer">Visit website <ArrowUpRight size={18} /></a>}</div>
     <p class="project-subtitle">{project.subtitle}</p>
-    <div class={`project-cover ${project.color}`}><img src={withBase(project.image)} alt={`${project.title} — ${project.slug.includes('robot') ? 'robot on the competition field' : 'application interface'}`} width="1280" height="720" fetchpriority="high" /></div>
+    <div class:list={['project-cover', project.color, { photo: project.isPhoto }]}><img src={withBase(project.image)} alt={`${project.title} — ${project.slug.includes('robot') ? 'robot on the competition field' : 'application interface'}`} width="1280" height="720" fetchpriority="high" /></div>
   </section>
   <section class="container project-story">
     <aside><h2>Made with</h2><ul class="technologies">{project.technologies.map(tech => <li>{tech}</li>)}</ul><a class="text-link" href={`mailto:${personal.email}?subject=${encodeURIComponent(`Let's talk about ${project.title}`)}`}>Talk about this project <ArrowUpRight size={16} /></a></aside>
@@ -33,8 +33,8 @@ const { project, next } = Astro.props;
   .project-subtitle { color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.3rem); margin-bottom: 2.5rem; }
   .project-cover { padding: clamp(1.25rem, 4vw, 4rem); }
   .project-cover img { width: 100%; height: auto; max-height: 650px; object-fit: contain; margin-inline: auto; }
-  .project-cover.peach, .project-cover.sand { padding: 0; }
-  .project-cover.peach img, .project-cover.sand img { object-fit: cover; max-height: 620px; }
+  .project-cover.photo { padding: 0; }
+  .project-cover.photo img { object-fit: cover; max-height: 620px; }
   .project-story { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; padding-block: 4rem 5rem; }
   .project-story h2 { font-size: 1.5rem; margin-bottom: 1.2rem; }
   .technologies { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem; }
@@ -47,9 +47,9 @@ const { project, next } = Astro.props;
   .next-project { border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-block: 3rem 4rem; }
   .next-project p { color: var(--muted); font-size: .75rem; margin-bottom: .7rem; }
   .next-project h2 { font-size: clamp(1.6rem, 3vw, 2.5rem); margin-bottom: 0; }
-  .next-project h2 a:hover { color: var(--teal); }
-  .next-arrow { flex-shrink: 0; background: var(--mint); padding: 1rem; }
-  .next-arrow:hover { background: var(--teal); color: white; }
+  .next-project h2 a:hover { color: var(--purple-strong); }
+  .next-arrow { flex-shrink: 0; background: var(--surface-cyan); padding: 1rem; }
+  .next-arrow:hover { background: var(--purple-strong); color: white; }
   @media (max-width: 700px) {
     .project-intro { padding-top: 1.5rem; }
     .back-link { margin-bottom: 1.5rem; }

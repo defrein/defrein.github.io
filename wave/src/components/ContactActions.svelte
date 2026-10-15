@@ -32,5 +32,5 @@
   .contact-actions { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
   .copy-button { display: flex; align-items: center; gap: .5rem; min-height: 44px; padding: .6rem .2rem; border: 0; background: transparent; color: white; font: inherit; font-size: .82rem; cursor: pointer; text-underline-offset: 5px; }
   .copy-button:hover { text-decoration: underline; }
-  .copy-status { min-height: 1.5rem; max-width: 50ch; margin: .6rem 0 0; color: var(--mint); font-size: .75rem; }
+  .copy-status { min-height: 1.5rem; max-width: 50ch; margin: .6rem 0 0; color: var(--cyan); font-size: .75rem; }
 </style>
