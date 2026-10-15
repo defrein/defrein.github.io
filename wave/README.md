@@ -109,6 +109,8 @@ The existing repository workflow still deploys the original `portfolio/` applica
 
 Responsive navigation, category filters, seven static project detail pages, accessible keyboard controls, working email and social links, email copy with failure feedback, CV download, per-page SEO metadata, and a custom 404 page. Core content and project links are server-rendered; Svelte hydrates the navigation, gallery filters, and copy action.
 
+The missing-page design lives in `src/pages/404.astro`; `npm run build` regenerates `dist/404.html`. Customize the source rather than the generated HTML. The page has a static Rubik-inspired 404 graphic and native recovery links to home, Projects, Blog, and Tools, and includes `noindex` metadata. The hosting service must serve the generated `404.html` for missing URLs; the Wave build does not change the repository's existing deployment configuration.
+
 ## Writing a blog post
 
 The blog index is `/wave/blog/`. Each Markdown file in `src/content/blog/` generates an article at `/wave/blog/<filename>/` using a shared layout. For example, `building-a-rubiks-cube.md` is the first article. Content, code blocks, and the table of contents are rendered at build time; the Rubik demo hydrates when visible.

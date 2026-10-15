@@ -1,9 +1,66 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { withBase } from '../lib/paths';
-import { ArrowLeft } from '@lucide/svelte';
+import { ArrowLeft, ArrowUpRight } from '@lucide/svelte';
+
+const destinations = [
+  { title: 'Projects', description: 'Explore AI, software, and robotics.', href: withBase('#work') },
+  { title: 'Blog', description: 'Notes on code and experiments.', href: withBase('blog/') },
+  { title: 'Tools', description: 'Useful things for everyday tasks.', href: withBase('tools/') },
+];
 ---
-<Layout title="Page not found — Wahni Adnani">
-  <section class="container not-found"><h1>A small detour.</h1><p>This page doesn't exist. Let's get back to the things I've built.</p><a class="button" href={withBase()}><ArrowLeft size={18} /> Back to the portfolio</a></section>
+
+<Layout title="404 — Page not found — Wahni Adnani" description="This page could not be found. Head back to Wahni Adnani's portfolio or explore projects, blog posts, and tools." noindex>
+  <div class="container not-found">
+    <section class="error-hero" aria-labelledby="error-title">
+      <div class="error-copy">
+        <h1 id="error-title">Page not <br /><span>found.</span></h1>
+        <p>You might have followed an old link or typed an address that doesn't exist. Let's find your way back.</p>
+        <a class="button" href={withBase()}><ArrowLeft size={19} aria-hidden="true" /> Back to home</a>
+      </div>
+      <div class="error-art" aria-hidden="true">
+        <div class="error-code"><span>4</span><span class="tile-zero">{Array.from({ length: 9 }, () => <span></span>)}</span><span>4</span></div>
+      </div>
+    </section>
+    <nav class="recovery" aria-labelledby="recovery-title">
+      <h2 id="recovery-title">Keep exploring.</h2>
+      <ul>
+        {destinations.map(destination => (
+          <li><a href={destination.href}><div class="destination-title"><h3>{destination.title}</h3><ArrowUpRight size={22} strokeWidth={1.6} aria-hidden="true" /></div><p>{destination.description}</p></a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
 </Layout>
-<style>.not-found { min-height: 65vh; display: flex; flex-direction: column; align-items: start; justify-content: center; padding-block: 4rem; } h1 { font-size: clamp(3rem, 7vw, 6rem); margin-bottom: 1.5rem; } p { color: var(--muted); max-width: 45ch; margin-bottom: 2rem; }</style>
+
+<style>
+  .not-found { padding-block: clamp(3rem, 6vw, 6rem) clamp(4rem, 7vw, 7rem); }
+  .error-hero { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: clamp(2rem, 6vw, 6rem); }
+  .error-copy { min-width: 0; }
+  h1 { font-size: clamp(2.8rem, 5vw, 4.8rem); line-height: 1.08; margin-bottom: 1.5rem; }
+  h1 span { color: var(--purple-strong); }
+  .error-copy p { max-width: 42ch; color: var(--muted); font-size: var(--text-lead); margin-bottom: 2rem; }
+  .error-art { min-width: 0; min-height: clamp(14rem, 27vw, 22rem); display: grid; place-items: center; padding: 1.5rem; background: var(--surface-soft); }
+  .error-code { display: flex; align-items: center; justify-content: center; gap: .18em; font-size: min(6rem, 16vw); font-weight: 800; line-height: 1; letter-spacing: -.04em; }
+  .tile-zero { display: grid; grid-template-columns: repeat(3, 1fr); gap: .05em; width: .82em; aspect-ratio: 1; }
+  .tile-zero > span { background: var(--ink); }
+  .tile-zero > span:nth-child(3) { background: var(--purple-strong); }
+  .tile-zero > span:nth-child(5) { background: transparent; }
+  .tile-zero > span:nth-child(7) { background: var(--cyan); }
+  .recovery { margin-top: clamp(3rem, 5vw, 5rem); }
+  .recovery h2 { font-size: var(--text-title); letter-spacing: -.025em; margin-bottom: 1.5rem; }
+  .recovery ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 2rem; list-style: none; margin: 0; padding: 0; }
+  .recovery li { min-width: 0; border-top: 1px solid var(--line); }
+  .recovery a { display: block; height: 100%; padding-block: 1.5rem; }
+  .destination-title { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: .65rem; }
+  .destination-title :global(svg) { flex-shrink: 0; }
+  .recovery h3 { font-size: var(--text-subtitle); line-height: 1.3; margin: 0; }
+  .recovery p { color: var(--muted); font-size: var(--text-body); margin: 0; }
+  .recovery a:hover { color: var(--purple-strong); }
+  .recovery a:hover h3 { text-decoration: underline; text-underline-offset: 5px; }
+  @media (max-width: 700px) {
+    .error-hero { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .error-art { order: -1; min-height: 10rem; }
+    .recovery ul { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>

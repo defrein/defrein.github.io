@@ -7,8 +7,8 @@ import BrandIcon from '../components/BrandIcon.astro';
 import { personal } from '../data/portfolio';
 import { withBase } from '../lib/paths';
 
-interface Props { title?: string; description?: string; home?: boolean; activeSection?: 'blog' | 'tools'; ogType?: 'website' | 'article'; }
-const { title = 'Wahni Adnani — AI, Software & Robotics', description = 'Wahni Adnani is an AI and software engineer in Banjarmasin, Indonesia. Explore work in intelligent systems, web development, and autonomous robotics.', home = false, activeSection, ogType = 'website' } = Astro.props;
+interface Props { title?: string; description?: string; home?: boolean; activeSection?: 'blog' | 'tools'; ogType?: 'website' | 'article'; noindex?: boolean; }
+const { title = 'Wahni Adnani — AI, Software & Robotics', description = 'Wahni Adnani is an AI and software engineer. Explore work in intelligent systems, web development, and autonomous robotics.', home = false, activeSection, ogType = 'website', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -18,6 +18,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#ffffff" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -43,7 +44,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       </div>
       <div class="container footer-bottom">
         <span>© {new Date().getFullYear()} Wahni Adnani</span>
-        <span>Made with curiosity in Banjarmasin.</span>
+        <span>Made with ♡ and curiosity.</span>
         <a href="#top">Back to top <ArrowUp size={14} /></a>
       </div>
     </footer>

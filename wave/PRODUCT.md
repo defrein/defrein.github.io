@@ -24,6 +24,8 @@ English interface, confirmed by the user. Build directly in code. This is a sepa
 
 Typography uses a 16px default base, explicitly requested by the user. Body text, controls, metadata, and captions retain a 1rem minimum on desktop and mobile, while respecting the visitor's browser text preference.
 
+Geographic mentions of Banjarmasin and Indonesia are omitted from the interface and page metadata except within the Experience section, as requested by the user. This includes removing the header location, About location badge, and Contact location line; the footer retains only "Made with curiosity." The Experience section includes the existing education entries and preserves their institution names.
+
 The hero uses a 3D Rubik animation of R U R′ U′ repeated six times per loop, explicitly requested by the user. It returns to solved after every six repetitions, with pause/restart controls and a reduced-motion alternative.
 
 The blog uses local Markdown through Astro Content Collections. The first article explains this portfolio's Rubik implementation using its own code, without client-project material. A shared index, article template, and automatically generated table of contents support future posts. Drafts are excluded from public routes.
@@ -33,6 +35,8 @@ The Tools menu opens a responsive directory of icons, titles, and descriptions, 
 Projects also use local Markdown collections. Each entry supplies its gallery metadata, detail prose, and one or more hero images. The first image is the gallery cover; multi-image detail pages support a keyboard- and touch-accessible slider without autoplay. The original seven projects retain their routes and supplied content.
 
 Project pagination shows six cards in a 3-column desktop grid, six cards in a 2-column tablet grid, and five cards in a single mobile column. Blog pagination shows five articles per page on all devices. Project filters reset pagination and preserve selection in the URL; static blog pagination works without JavaScript.
+
+The custom 404 provides a clear missing-page message, a static Rubik-inspired graphic, and native recovery links to home, Projects, Blog, and Tools. It works without JavaScript and opts out of search indexing. Its source is `src/pages/404.astro`; generated `dist/404.html` is refreshed by the build.
 
 ## Brand Commitments
 

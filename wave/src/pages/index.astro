@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ProjectGallery from '../components/ProjectGallery.svelte';
 import ContactActions from '../components/ContactActions.svelte';
 import RubiksCube from '../components/RubiksCube.svelte';
-import { ArrowUpRight, ArrowDown, Download, MapPin, CodeXml, Cpu, BrainCircuit } from '@lucide/svelte';
+import { ArrowUpRight, ArrowDown, Download, CodeXml, Cpu, BrainCircuit } from '@lucide/svelte';
 import BrandIcon from '../components/BrandIcon.astro';
 import { personal, resume, cvPath, skillGroups } from '../data/portfolio';
 import { withBase } from '../lib/paths';
@@ -43,7 +43,7 @@ const projects = projectCards(await getProjects());
 
   <section id="about" class="section about-section" aria-labelledby="about-title">
     <div class="container about-grid">
-      <div class="about-heading"><h2 id="about-title">An engineer.<br />A maker.<br /><span>Always curious.</span></h2><span class="location"><MapPin size={17} strokeWidth={1.7} /> {personal.location}</span></div>
+      <div class="about-heading"><h2 id="about-title">An engineer.<br />A maker.<br /><span>Always curious.</span></h2></div>
       <div class="about-copy">
         <p class="about-lead">I like figuring out how things work.<br />And then making them work better.</p>
         <p>I'm Wahni, an AI and software engineer with {resume.stats.yearsExperience} years of experience building full-stack applications and intelligent systems. My work lives at the intersection of software, machine learning, and robotics.</p>
@@ -76,7 +76,7 @@ const projects = projectCards(await getProjects());
   <section id="contact" class="contact-section" aria-labelledby="contact-title">
     <div class="container contact-grid">
       <div><h2 id="contact-title">Have a good problem?<br /><span>Let's build something.</span></h2><p>A project, an opportunity, or just a conversation.<br />I'd love to hear what you're thinking.</p><ContactActions email={personal.email} client:load /></div>
-      <div class="contact-details"><a class="email-address" href={`mailto:${personal.email}`}>{personal.email}<ArrowUpRight size={23} /></a><div class="contact-socials"><a href={`https://${personal.github}`} target="_blank" rel="noopener noreferrer"><BrandIcon name="github" size={18} /> GitHub <ArrowUpRight size={15} /></a><a href={`https://${personal.linkedin}`} target="_blank" rel="noopener noreferrer"><BrandIcon name="linkedin" size={18} /> LinkedIn <ArrowUpRight size={15} /></a></div><p>Based in Banjarmasin, Indonesia.<br />Open to wherever a good idea takes us.</p></div>
+      <div class="contact-details"><a class="email-address" href={`mailto:${personal.email}`}>{personal.email}<ArrowUpRight size={23} /></a><div class="contact-socials"><a href={`https://${personal.github}`} target="_blank" rel="noopener noreferrer"><BrandIcon name="github" size={18} /> GitHub <ArrowUpRight size={15} /></a><a href={`https://${personal.linkedin}`} target="_blank" rel="noopener noreferrer"><BrandIcon name="linkedin" size={18} /> LinkedIn <ArrowUpRight size={15} /></a></div><p>Open to wherever a good idea takes us.</p></div>
     </div>
   </section>
 </Layout>
@@ -114,9 +114,8 @@ const projects = projectCards(await getProjects());
   .work-close { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: var(--text-body); color: var(--muted); }
   .about-section { background: var(--surface-soft); }
   .about-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 5rem; }
-  .about-heading h2 { line-height: 1.16; }
+  .about-heading h2 { line-height: 1.16; margin-bottom: 0; }
   .about-heading h2 span { color: var(--purple-strong); }
-  .location { display: inline-flex; align-items: center; gap: .5rem; font-size: var(--text-body); color: var(--muted); margin-top: .8rem; }
   .about-copy > p { color: var(--muted); font-size: var(--text-body); line-height: 1.75; max-width: 65ch; margin-bottom: 1.1rem; }
   .about-copy > p.about-lead { font-size: var(--text-title); font-weight: 650; color: var(--ink); line-height: 1.5; margin-bottom: 1.5rem; letter-spacing: -.025em; }
   .about-links { display: flex; gap: 2rem; flex-wrap: wrap; padding-top: .5rem; }
@@ -174,7 +173,6 @@ const projects = projectCards(await getProjects());
     .disciplines > a > svg { width: 20px; }
     .work-close { align-items: start; flex-direction: column; gap: .4rem; margin-top: 2.5rem; }
     .about-grid, .skill-row, .experience-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .about-heading h2 { margin-bottom: 1rem; }
     .about-copy > p.about-lead { font-size: var(--text-subtitle); }
     .skill-row { gap: 1.2rem; padding-block: 1.8rem; }
     .experience-grid { gap: 2.5rem; }

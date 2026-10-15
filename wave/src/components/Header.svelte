@@ -24,7 +24,6 @@
 <div class="utility-bar">
   <div class="container utility-inner">
     <span class="availability"><span class="status-dot"></span> Available for opportunities</span>
-    <span class="utility-location">Banjarmasin, Indonesia <span aria-hidden="true">↗</span></span>
   </div>
 </div>
 <header class="site-header">
@@ -48,10 +47,9 @@
 
 <style>
   .utility-bar { background: var(--ink); color: var(--white); font-size: var(--text-body); }
-  .utility-inner { min-height: 36px; padding-block: .25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .utility-inner { min-height: 36px; padding-block: .25rem; display: flex; justify-content: center; align-items: center; }
   .availability { display: flex; align-items: center; gap: .55rem; }
   .status-dot { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; }
-  .utility-location { display: flex; gap: 1rem; }
   .site-header { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 30; }
   .header-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
   .wordmark { display: inline-flex; align-items: center; min-height: 44px; flex-shrink: 0; }
@@ -66,8 +64,6 @@
     .header-inner { gap: 1.25rem; }
   }
   @media (max-width: 700px) {
-    .utility-location { display: none; }
-    .utility-inner { justify-content: center; }
     .header-inner { min-height: 60px; }
     .wordmark img { width: 56px; }
     .menu-toggle { display: grid; place-items: center; }
