@@ -51,9 +51,9 @@
   .status-dot { width: 6px; height: 6px; background: var(--mint); border-radius: 50%; }
   .utility-location { display: flex; gap: 1rem; }
   .site-header { background: var(--paper); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 30; }
-  .header-inner { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+  .header-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
   .wordmark { display: inline-flex; align-items: center; min-height: 44px; flex-shrink: 0; }
-  .wordmark img { width: 100px; height: auto; }
+  .wordmark img { width: 64px; height: auto; }
   nav { display: flex; gap: 2.4rem; align-items: center; font-size: .85rem; font-weight: 600; }
   nav > a:not(.button) { padding-block: .7rem; text-decoration-color: transparent; text-underline-offset: 6px; }
   nav > a:not(.button):hover { color: var(--teal); text-decoration: underline; }
@@ -61,8 +61,8 @@
   @media (max-width: 700px) {
     .utility-location { display: none; }
     .utility-inner { justify-content: center; min-height: 30px; }
-    .header-inner { min-height: 72px; }
-    .wordmark img { width: 84px; }
+    .header-inner { min-height: 60px; }
+    .wordmark img { width: 56px; }
     .menu-toggle { display: grid; place-items: center; }
     nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; padding: 1.2rem var(--gutter) 1.5rem; background: var(--paper); border-bottom: 1px solid var(--line); gap: .35rem; align-items: stretch; }
     nav.menu-open { display: flex; flex-direction: column; }
