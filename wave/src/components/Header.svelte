@@ -45,8 +45,8 @@
 </header>
 
 <style>
-  .utility-bar { background: var(--ink); color: var(--white); font-size: .72rem; }
-  .utility-inner { min-height: 34px; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+  .utility-bar { background: var(--ink); color: var(--white); font-size: var(--text-body); }
+  .utility-inner { min-height: 36px; padding-block: .25rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
   .availability { display: flex; align-items: center; gap: .55rem; }
   .status-dot { width: 6px; height: 6px; background: var(--cyan); border-radius: 50%; }
   .utility-location { display: flex; gap: 1rem; }
@@ -54,13 +54,13 @@
   .header-inner { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
   .wordmark { display: inline-flex; align-items: center; min-height: 44px; flex-shrink: 0; }
   .wordmark img { width: 64px; height: auto; }
-  nav { display: flex; gap: 2.4rem; align-items: center; font-size: .85rem; font-weight: 600; }
+  nav { display: flex; gap: 2.4rem; align-items: center; font-size: var(--text-body); font-weight: 600; }
   nav > a:not(.button) { padding-block: .7rem; text-decoration-color: transparent; text-underline-offset: 6px; }
   nav > a:not(.button):hover { color: var(--purple-strong); text-decoration: underline; }
   .menu-toggle { display: none; color: var(--ink); background: transparent; border: 0; padding: .6rem; cursor: pointer; }
   @media (max-width: 700px) {
     .utility-location { display: none; }
-    .utility-inner { justify-content: center; min-height: 30px; }
+    .utility-inner { justify-content: center; }
     .header-inner { min-height: 60px; }
     .wordmark img { width: 56px; }
     .menu-toggle { display: grid; place-items: center; }

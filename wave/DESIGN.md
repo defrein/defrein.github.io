@@ -41,27 +41,36 @@ typography:
     letterSpacing: "-.04em"
   title:
     fontFamily: "'Manrope Variable', sans-serif"
-    fontSize: "1.45rem"
+    fontSize: "1.5rem"
     fontWeight: 750
-    lineHeight: 1.13
-    letterSpacing: "-.035em"
+    lineHeight: 1.25
+    letterSpacing: "-.025em"
   body:
     fontFamily: "'Manrope Variable', sans-serif"
     fontSize: "1rem"
-    lineHeight: 1.65
+    lineHeight: 1.7
+  lead:
+    fontFamily: "'Manrope Variable', sans-serif"
+    fontSize: "1.125rem"
+    lineHeight: 1.75
+  subtitle:
+    fontFamily: "'Manrope Variable', sans-serif"
+    fontSize: "1.25rem"
+    fontWeight: 650
+    lineHeight: 1.35
   project-body:
     fontFamily: "'Manrope Variable', sans-serif"
-    fontSize: ".88rem"
+    fontSize: "1rem"
     lineHeight: 1.75
   label:
     fontFamily: "'Manrope Variable', sans-serif"
-    fontSize: ".78rem"
+    fontSize: "1rem"
     fontWeight: 600
   project-meta:
     fontFamily: "'Manrope Variable', sans-serif"
-    fontSize: ".6rem"
-    fontWeight: 700
-    letterSpacing: ".065em"
+    fontSize: "1rem"
+    fontWeight: 600
+    lineHeight: 1.5
 rounded:
   button: "3px"
   filter: "4px"
@@ -174,14 +183,14 @@ Use purple and cyan as accents within a predominantly white-and-black compositio
 
 **Display and body font:** Manrope Variable, with a sans-serif fallback. `Layout.astro` imports the self-hosted `@fontsource-variable/manrope` package. There is no separate mono or serif family.
 
-The hierarchy uses fluid display and section sizes rather than a single fixed scale ratio. Balanced headings and tight negative tracking create the strong voice; smaller summaries use a looser reading rhythm.
+The default root size is 16px (`100%`, preserving the visitor's browser font preference). Ordinary text, navigation, buttons, filters, metadata, tags, captions, and footer text use the shared `--text-body: 1rem` floor on every device. Lead copy uses `--text-lead: 1.125rem` (18px); subheadings use `--text-subtitle: 1.25rem` (20px); card and role titles use `--text-title: 1.5rem` (24px). Fluid display and section sizes retain the existing identity. Hierarchy comes from weight, spacing, and tone as well as size.
 
 - **Display** is the home hero title. The mobile variant takes over at the small-screen breakpoint.
 - **Headline** is the shared section-heading role. The about heading adjusts its leading to (1.16), and contact uses a narrower fluid size and leading of (1.2).
 - **Project headline** is the detail-page title, limited to (17ch).
-- **Title** is the project-gallery heading, reduced to (1.3rem) on mobile.
-- **Body** is the base document style. Gallery summaries use the project-body role and a maximum of (60ch). About and project-story copy use a maximum of (65ch), with their locally defined reading sizes and leading.
-- **Label** is the filter-control role. Project metadata uses a smaller, tracked label; the technology string removes that tracking and uses a lighter weight.
+- **Title** is the project-gallery and experience-role heading, retained at (1.5rem) on mobile.
+- **Body** is the base document style with (1.7) leading. Gallery summaries use the project-body role and a maximum of (60ch). About and project-story copy use a maximum of (65ch) with (1.75) leading.
+- **Label** is the filter-control role at the same 16px floor. Project metadata uses (600) weight and (1.5) leading; technology text uses (500) weight. Metadata and toolbars wrap rather than shrinking on narrow screens.
 
 **The One Family Rule.** Use Manrope for interface text and editorial headings; hierarchy comes from size, weight, tracking, and spacing.
 
@@ -191,9 +200,9 @@ The shared container is centered, capped at (1280px), and inset by the fluid gut
 
 The home hero uses equal columns; about, skills, and experience use a (.9fr / 1.1fr) split; contact uses (1.3fr / 1fr). The gallery has two equal columns with gaps of (3.5rem vertically / 2rem horizontally). Detail pages place a narrow technology aside beside a larger story column using (1fr / 2fr) and a (6rem) gap. Images retain their own visual space: gallery image fields use an aspect ratio of (1.65), contain software screenshots, and cover robotics photography without inner padding.
 
-At widths up to (700px), navigation becomes a disclosure; gallery, content grids, discipline links, and education become single-column layouts. Toolbars and section headings stack. The project-detail aside follows the story and gains a top rule. The header height changes from (68px) to (60px); the utility bar changes from (34px) to (30px). Anchor offsets remain (108px).
+At widths up to (700px), navigation becomes a disclosure; gallery, content grids, discipline links, and education become single-column layouts. Toolbars and section headings stack. The project-detail aside follows the story and gains a top rule. The header height changes from (68px) to (60px); the utility bar has a (36px) minimum height with vertical padding. Anchor offsets remain (108px).
 
-Between (701px) and (1000px), the hero and major content gaps narrow while the two-column structure remains. The Rubik figure is (440px) high on desktop, (470px) from (1440px), (380px) up to (1000px), and (350px) on mobile. Cubies reduce from (62px) to (54px) and (48px) at those smaller breakpoints, with (3px) gaps. These values preserve perspective and leave space for playback controls.
+Between (701px) and (1000px), the hero and major content gaps narrow while the two-column structure remains. The Rubik figure has a minimum height of (440px) on desktop, (470px) from (1440px), (380px) up to (1000px), and (350px) on mobile. Its height grows with the caption; the toolbar wraps as text is enlarged. Cubies reduce from (62px) to (54px) and (48px) at those smaller breakpoints, with (3px) gaps. These values preserve perspective and leave space for playback controls.
 
 ## Elevation & Depth
 
@@ -213,7 +222,7 @@ Rules are generally (1px), including filter borders, tags, section separators, a
 
 ### Buttons and text links
 
-Filled buttons are compact rectangles with a black ground, white text, a minimum height of (48px), and (700) weight at (.82rem). The small navigation variant uses a (43px) minimum height. Hover uses deep purple with white text. The contact variant uses white and black and changes to cyan on hover. No pressed transform or disabled visual variant is implemented for these links.
+Filled buttons are compact rectangles with a black ground, white text, a minimum height of (48px), and (700) weight at (1rem), with (1.5) leading. The small navigation variant uses a (43px) minimum height and grows with its content. Hover uses deep purple with white text. The contact variant uses white and black and changes to cyan on hover. No pressed transform or disabled visual variant is implemented for these links.
 
 Text links have a visible underline offset by (5px), an inline arrow or download icon, and a minimum height of (44px). Hover changes to strong purple. Keyboard focus uses the shared outline: (3px solid strong purple), offset by (5px). The neutral hero uses the shared purple focus, and the black contact section uses cyan focus. Native links retain their destination behavior.
 
@@ -223,11 +232,11 @@ The identity uses the user's supplied black logo in the header, footer, and favi
 
 ### Discipline filters
 
-Unselected filter buttons have a transparent ground, muted text, and a line-colored border. Hover makes the text and border strong purple. The selected filter has a black ground, white text, and black border; `aria-pressed` exposes selection. Buttons are disabled until the gallery mounts, using the wait cursor without a separate faded style. The adjacent project count is a polite live status with tabular numerals. Small screens reduce filter padding and type size while retaining the (44px) minimum height.
+Unselected filter buttons have a transparent ground, muted text, and a line-colored border. Hover makes the text and border strong purple. The selected filter has a black ground, white text, and black border; `aria-pressed` exposes selection. Buttons are disabled until the gallery mounts, using the wait cursor without a separate faded style. The adjacent project count is a polite live status with tabular numerals. Small screens reduce filter padding while keeping (1rem) type and the (44px) minimum height.
 
 ### Tags
 
-Skill and project-technology tags are small outlined labels with a tiny corner radius, no fill, and no interaction states. Skill tags use (.72rem) type and project-detail technology tags use (.7rem). The current-role badge is a separate pale-cyan-and-black status treatment; it is not an interactive filter.
+Skill and project-technology tags are outlined labels with a tiny corner radius, no fill, and no interaction states. Both use (1rem) type and wrap when space is limited. The current-role badge uses the same text floor with a separate pale-cyan-and-black status treatment; it is not an interactive filter.
 
 ### Project cards and covers
 

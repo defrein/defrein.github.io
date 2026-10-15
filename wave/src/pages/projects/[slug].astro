@@ -26,11 +26,11 @@ const { project, next } = Astro.props;
 
 <style>
   .project-intro { padding-top: 2.5rem; }
-  .back-link { color: var(--muted); font-size: .75rem; margin-bottom: 2rem; }
+  .back-link { color: var(--muted); font-size: var(--text-body); margin-bottom: 2rem; }
   .intro-row { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
   h1 { font-size: clamp(2.4rem, 5vw, 4.8rem); margin-bottom: 1rem; max-width: 17ch; }
   .intro-row .button { flex-shrink: 0; }
-  .project-subtitle { color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.3rem); margin-bottom: 2.5rem; }
+  .project-subtitle { color: var(--muted); font-size: var(--text-lead); margin-bottom: 2.5rem; }
   .project-cover { padding: clamp(1.25rem, 4vw, 4rem); }
   .project-cover img { width: 100%; height: auto; max-height: 650px; object-fit: contain; margin-inline: auto; }
   .project-cover.photo { padding: 0; }
@@ -38,14 +38,14 @@ const { project, next } = Astro.props;
   .project-story { display: grid; grid-template-columns: 1fr 2fr; gap: 6rem; padding-block: 4rem 5rem; }
   .project-story h2 { font-size: 1.5rem; margin-bottom: 1.2rem; }
   .technologies { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem; }
-  .technologies li { padding: .35rem .65rem; border: 1px solid var(--line); font-size: .7rem; border-radius: 3px; }
-  .story-copy > p, .story-copy > ul { color: var(--muted); font-size: .92rem; line-height: 1.95; max-width: 65ch; }
+  .technologies li { max-width: 100%; overflow-wrap: anywhere; padding: .35rem .65rem; border: 1px solid var(--line); font-size: var(--text-body); border-radius: 3px; }
+  .story-copy > p, .story-copy > ul { color: var(--muted); font-size: var(--text-body); line-height: 1.75; max-width: 65ch; }
   .story-copy h2:not(:first-child) { margin-top: 2.4rem; }
   .story-copy > ul { padding-left: 1.2rem; }
   .story-copy li { padding-left: .4rem; margin-bottom: .65rem; }
-  .story-copy .project-source { margin-top: 2rem; font-size: .75rem; }
+  .story-copy .project-source { margin-top: 2rem; font-size: var(--text-body); }
   .next-project { border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding-block: 3rem 4rem; }
-  .next-project p { color: var(--muted); font-size: .75rem; margin-bottom: .7rem; }
+  .next-project p { color: var(--muted); font-size: var(--text-body); margin-bottom: .7rem; }
   .next-project h2 { font-size: clamp(1.6rem, 3vw, 2.5rem); margin-bottom: 0; }
   .next-project h2 a:hover { color: var(--purple-strong); }
   .next-arrow { flex-shrink: 0; background: var(--surface-cyan); padding: 1rem; }

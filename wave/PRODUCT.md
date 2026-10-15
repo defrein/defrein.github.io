@@ -22,6 +22,8 @@ Present real projects, professional experience, skills, education, and an access
 
 English interface, confirmed by the user. Build directly in code. This is a separate local application in `wave`; other portfolio versions and the existing deployment stay intact.
 
+Typography uses a 16px default base, explicitly requested by the user. Body text, controls, metadata, and captions retain a 1rem minimum on desktop and mobile, while respecting the visitor's browser text preference.
+
 The hero uses a 3D Rubik animation of R U R′ U′ repeated six times per loop, explicitly requested by the user. It returns to solved after every six repetitions, with pause/restart controls and a reduced-motion alternative.
 
 ## Brand Commitments
