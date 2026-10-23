@@ -1,21 +1,23 @@
 <script>
-	import { Camera as CameraIcon, Heart, Image as ImageIcon } from 'lucide-svelte';
+	import { Camera as CameraIcon, Heart, SlidersHorizontal, Frame as FrameIcon, Smile } from 'lucide-svelte';
 	import Camera from '$lib/components/photobooth/Camera.svelte';
-	import ControlTabs from '$lib/components/photobooth/ControlTabs.svelte';
+	import SetupView from '$lib/components/photobooth/SetupView.svelte';
 	import ResultView from '$lib/components/photobooth/ResultView.svelte';
 	import { FILTERS, FRAMES, LAYOUTS, TEMPLATES } from '$lib/components/photobooth/config.js';
 
 	let template = $state(TEMPLATES[0]);
-	let layout   = $state(LAYOUTS.find((l) => l.id === template.layoutId) || LAYOUTS[0]);
-	let filter   = $state(FILTERS[0]);
-	let frame    = $state(FRAMES[0]);
+	let layout = $state(LAYOUTS.find((l) => l.id === template.layoutId) || LAYOUTS[0]);
+	let filter = $state(FILTERS[0]);
+	let frame = $state(FRAMES[0]);
 	let countdown = $state(3);
 	let mirrored = $state(true);
+	let stickers = $state([]);
 
 	let photos = $state([]);
-	let stage = $state('capture'); // 'capture' | 'between' | 'result'
+	let stage = $state('setup'); // 'setup' | 'capture' | 'between' | 'result'
 	let busy = $state(false);
 
+	// Keep layout in sync with the chosen template.
 	let prevTemplateId;
 	$effect(() => {
 		const id = template.id;
@@ -26,19 +28,28 @@
 		prevTemplateId = id;
 	});
 
+	// Changing the collage changes how many shots are needed, so clear captures.
 	let prevLayoutId;
 	$effect(() => {
 		const id = layout.id;
 		if (prevLayoutId !== undefined && prevLayoutId !== id) {
 			photos = [];
-			stage = 'capture';
+			if (stage === 'result' || stage === 'between') stage = 'capture';
 		}
 		prevLayoutId = id;
 	});
 
+	function startShooting() {
+		photos = [];
+		stage = 'capture';
+	}
+
+	function editSetup() {
+		stage = 'setup';
+	}
+
 	function handleCapture(e) {
-		const { dataUrl } = e;
-		photos = [...photos, dataUrl];
+		photos = [...photos, e.dataUrl];
 		if (photos.length >= layout.count) {
 			stage = 'result';
 		} else {
@@ -55,11 +66,14 @@
 		photos = [];
 		stage = 'capture';
 	}
+
+	let stickerCount = $derived(stickers.length);
 </script>
 
 <svelte:head>
 	<title>Photobooth · Wahni Adnani</title>
-	<meta name="description" content="Photobooth lucu — pilih tema, filter, bingkai, dan kolase." />
+	<meta name="description" content="Photobooth lucu — pilih filter, bingkai, dan stiker gambar tangan, lalu foto." />
+	<meta name="theme-color" content="#f0f9ff" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" />
@@ -68,9 +82,7 @@
 <div class="pb-root">
 	<header class="topbar">
 		<div class="brand">
-			<span class="logo">
-				<CameraIcon size={22} color="white" />
-			</span>
+			<span class="logo"><CameraIcon size={22} color="white" /></span>
 			<div>
 				<h1>Photobooth</h1>
 				<p class="tag">cute moments, pretty memories</p>
@@ -79,10 +91,35 @@
 	</header>
 
 	<main class="main">
-		{#if stage === 'result'}
-			<ResultView {photos} {layout} {frame} {template} onretake={retake} />
+		{#if stage === 'setup'}
+			<SetupView
+				bind:filter
+				bind:frame
+				bind:template
+				bind:layout
+				bind:countdown
+				bind:stickers
+				onstart={startShooting}
+			/>
+		{:else if stage === 'result'}
+			<ResultView
+				{photos}
+				bind:layout
+				bind:frame
+				bind:template
+				bind:filter
+				bind:stickers
+				onretake={retake}
+			/>
 		{:else}
 			<div class="capture-area">
+				<div class="setup-summary">
+					<button type="button" class="edit-btn" onclick={editSetup}>Atur</button>
+					<span class="sum-chip"><SlidersHorizontal size={13} /> {filter.label}</span>
+					<span class="sum-chip"><FrameIcon size={13} /> {frame.label}</span>
+					<span class="sum-chip"><Smile size={13} /> {stickerCount} stiker</span>
+				</div>
+
 				<Camera
 					filterCss={filter.css}
 					cellAspect={layout.cellAspect}
@@ -91,15 +128,16 @@
 					totalShots={layout.count}
 					{busy}
 					{mirrored}
+					{frame}
 					oncapture={handleCapture}
 				/>
 
-				{#if photos.length > 0}
+				{#if layout.count > 1}
 					<div class="thumb-row" aria-label="Foto yang sudah diambil">
 						{#each Array(layout.count) as _, i (i)}
 							<div class="thumb" class:filled={photos[i]} class:current={i === photos.length}>
 								{#if photos[i]}
-									<img src={photos[i]} alt="Foto {i + 1}" />
+									<img src={photos[i]} alt="Foto {i + 1}" style="filter: {filter.css};" />
 								{:else if i === photos.length}
 									<CameraIcon size={16} color="var(--pb-pink-500)" />
 								{/if}
@@ -108,14 +146,6 @@
 					</div>
 				{/if}
 			</div>
-
-			<ControlTabs
-				bind:filter
-				bind:frame
-				bind:layout
-				bind:template
-				bind:countdown
-			/>
 		{/if}
 	</main>
 
@@ -123,7 +153,7 @@
 		<span>
 			Made with
 			<Heart size={14} color="var(--pb-pink-500)" fill="var(--pb-pink-200)" />
-			for frosty selfies
+			for pretty selfies
 		</span>
 	</footer>
 </div>
@@ -174,6 +204,13 @@
 		letter-spacing: 0.01em;
 		-webkit-font-smoothing: antialiased;
 		overflow-y: auto;
+		overscroll-behavior-y: contain;
+	}
+
+	/* Consistent touch behaviour for every control in the booth. */
+	.pb-root :global(button) {
+		-webkit-tap-highlight-color: transparent;
+		touch-action: manipulation;
 	}
 
 	.topbar {
@@ -181,11 +218,7 @@
 		display: flex;
 		justify-content: center;
 	}
-	.brand {
-		display: flex;
-		align-items: center;
-		gap: 12px;
-	}
+	.brand { display: flex; align-items: center; gap: 12px; }
 	.logo {
 		width: 42px;
 		height: 42px;
@@ -201,23 +234,17 @@
 		font-size: 22px;
 		color: var(--pb-ink);
 		line-height: 1;
-		font-family: var(--pb-font);
 		font-weight: 700;
 		margin: 0;
 	}
-	.tag {
-		margin: 2px 0 0;
-		font-size: 11px;
-		color: var(--pb-ink-soft);
-		font-style: italic;
-	}
+	.tag { margin: 2px 0 0; font-size: 11px; color: var(--pb-ink-soft); font-style: italic; }
 
 	.main {
 		flex: 1;
 		width: 100%;
 		max-width: 600px;
 		margin: 0 auto;
-		padding: 14px 16px 24px;
+		padding: 14px 16px 28px;
 		display: flex;
 		flex-direction: column;
 		gap: 18px;
@@ -232,12 +259,44 @@
 		width: 100%;
 	}
 
-	.thumb-row {
+	.setup-summary {
 		display: flex;
+		align-items: center;
 		gap: 8px;
 		flex-wrap: wrap;
 		justify-content: center;
+		width: 100%;
+		max-width: 480px;
 	}
+	.edit-btn {
+		display: inline-flex;
+		align-items: center;
+		padding: 7px 16px;
+		border-radius: 999px;
+		background: linear-gradient(135deg, var(--pb-pink-400), var(--pb-pink-600));
+		color: white;
+		font-weight: 700;
+		font-size: 13px;
+		border: none;
+		cursor: pointer;
+		box-shadow: var(--pb-shadow-sm);
+		font-family: inherit;
+	}
+	.edit-btn:active { transform: scale(0.96); }
+	.sum-chip {
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+		padding: 7px 12px;
+		border-radius: 999px;
+		background: rgba(255, 255, 255, 0.8);
+		color: var(--pb-ink-soft);
+		font-weight: 700;
+		font-size: 12px;
+		box-shadow: var(--pb-shadow-sm);
+	}
+
+	.thumb-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
 	.thumb {
 		width: 44px;
 		height: 44px;
@@ -250,19 +309,9 @@
 		justify-content: center;
 		box-shadow: var(--pb-shadow-sm);
 	}
-	.thumb.filled {
-		border-style: solid;
-		border-color: var(--pb-pink-300);
-	}
-	.thumb.current {
-		border-color: var(--pb-pink-500);
-		animation: pb-wiggle 1.4s ease-in-out infinite;
-	}
-	.thumb img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+	.thumb.filled { border-style: solid; border-color: var(--pb-pink-300); }
+	.thumb.current { border-color: var(--pb-pink-500); animation: pb-wiggle 1.4s ease-in-out infinite; }
+	.thumb img { width: 100%; height: 100%; object-fit: cover; }
 
 	.foot {
 		text-align: center;
@@ -270,11 +319,7 @@
 		font-size: 12px;
 		color: var(--pb-ink-soft);
 	}
-	.foot span {
-		display: inline-flex;
-		align-items: center;
-		gap: 4px;
-	}
+	.foot span { display: inline-flex; align-items: center; gap: 4px; }
 
 	@media (min-width: 720px) {
 		.topbar { padding-top: 24px; }
@@ -289,5 +334,8 @@
 	@keyframes pb-wiggle {
 		0%, 100% { transform: rotate(-2deg); }
 		50%      { transform: rotate(2deg); }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.logo, .thumb.current { animation: none; }
 	}
 </style>

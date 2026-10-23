@@ -10,8 +10,19 @@
 		shotIndex = 0,
 		totalShots = 1,
 		busy = false,
+		frame = null,
 		oncapture = (_e) => {}
 	} = $props();
+
+	// Nominal viewBox for the live frame overlay. Matches the stage aspect so the
+	// frame's corner decorations land in the corners without distortion.
+	const OVERLAY_W = 480;
+	let overlayH = $derived(Math.round(OVERLAY_W / cellAspect));
+	let overlayInner = $derived(
+		frame && frame.id !== 'none' && typeof frame.svg === 'function'
+			? frame.svg(OVERLAY_W, overlayH)
+			: ''
+	);
 
 	let video = $state(null);
 	let stream = $state(null);
@@ -104,7 +115,8 @@
 			ctx.translate(outW, 0);
 			ctx.scale(-1, 1);
 		}
-		ctx.filter = filterCss && filterCss !== 'none' ? filterCss : 'none';
+		// Capture the raw frame — the filter is applied later (and stays editable)
+		// in the result view, so the photo is never permanently baked.
 		ctx.drawImage(video, sx, sy, sw, sh, 0, 0, outW, outH);
 
 		return canvas.toDataURL('image/jpeg', 0.92);
@@ -185,6 +197,17 @@
 			</div>
 		{/if}
 
+		{#if permissionState === 'ready' && overlayInner}
+			<svg
+				class="frame-overlay"
+				viewBox="0 0 {OVERLAY_W} {overlayH}"
+				preserveAspectRatio="none"
+				aria-hidden="true"
+			>
+				{@html overlayInner}
+			</svg>
+		{/if}
+
 		{#if countdown > 0}
 			{#key countdown}
 				<div class="countdown">{countdown}</div>
@@ -205,9 +228,9 @@
 			<RefreshCw size={20} />
 		</button>
 
-		<div class="counter-pill">
-			<ImageIcon size={14} />
-			<span>{shotIndex + 1} / {totalShots}</span>
+		<div class="counter-pill" role="status" aria-live="polite">
+			<ImageIcon size={14} aria-hidden="true" />
+			<span aria-label="Foto {shotIndex + 1} dari {totalShots}">{shotIndex + 1} / {totalShots}</span>
 		</div>
 	</div>
 
@@ -293,12 +316,21 @@
 		animation: pb-pop 0.85s ease;
 		pointer-events: none;
 	}
+	.frame-overlay {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		z-index: 2;
+	}
 	.flash {
 		position: absolute;
 		inset: 0;
 		background: white;
 		animation: pb-flash 0.35s ease;
 		pointer-events: none;
+		z-index: 4;
 	}
 	.flip-btn {
 		position: absolute;
