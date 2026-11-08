@@ -22,5 +22,13 @@
     "image": "images/the-young-assassin.jpg",
     "excerpt": "Tetaplah hidup, meski tanganmu telah berlumuran darah.",
     "date": "2025-11-30"
+  },
+  {
+    "id": "the-weight-of-nine",
+    "title": "The Weight of Nine",
+    "file": "the_weight_of_nine.md",
+    "image": "images/the-weight-of-nine.jpg",
+    "excerpt": "Tentang dua orang yang mencoba saling menemani, bahkan ketika hidup membuat mereka merasa tidak lagi sepadan.",
+    "date": "2026-11-09"
   }
 ]
