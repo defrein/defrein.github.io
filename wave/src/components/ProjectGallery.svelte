@@ -89,7 +89,7 @@
   {#each visible as project (project.slug)}
     <article class="project">
       <a class="project-image {project.color}" class:photo={project.isPhoto} href={withBase(`projects/${project.slug}/`)} aria-label={`Explore ${project.title}`}>
-        <img src={withBase(project.image.src)} alt={project.image.alt} width="800" height="500" loading="lazy" decoding="async" />
+        <img class:screenshot={project.image.src.includes('/showcase/')} src={withBase(project.image.src)} alt={project.image.alt} width="800" height="500" loading="lazy" decoding="async" />
         <span class="image-action" aria-hidden="true"><ArrowUpRight size={22} strokeWidth={1.7} /></span>
       </a>
       <div class="project-meta"><span>{project.label}</span><span>{project.technologies.slice(0, 2).join(' / ')}</span></div>
@@ -127,6 +127,7 @@
   .project { min-width: 0; }
   .project-image { display: block; position: relative; aspect-ratio: 1.65; overflow: hidden; padding: 1.65rem; }
   .project-image img { width: 100%; height: 100%; object-fit: contain; transition: transform 300ms var(--ease); }
+  .project-image img.screenshot { border-radius: 4px; filter: drop-shadow(0 8px 12px rgb(25 30 50 / .14)); }
   .project-image.photo { padding: 0; }
   .project-image.photo img { object-fit: cover; }
   .project-image:hover img { transform: scale(1.035); }

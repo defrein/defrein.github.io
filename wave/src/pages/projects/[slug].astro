@@ -20,7 +20,7 @@ const { Content } = await render(entry);
 <Layout title={`${project.title} — Wahni Adnani`} description={project.summary}>
   <section class="project-intro container">
     <a class="text-link back-link" href={withBase('#work')}><ArrowLeft size={17} /> Back to all work</a>
-    <div class="intro-row"><h1>{project.title}</h1>{project.link && <a class="button" href={project.link} target="_blank" rel="noopener noreferrer">Visit website <ArrowUpRight size={18} /></a>}</div>
+    <div class="intro-row"><h1>{project.title}</h1>{project.link && <a class="button" href={project.link} target="_blank" rel="noopener noreferrer">{project.linkLabel ?? 'Visit website'} <ArrowUpRight size={18} /></a>}</div>
     <p class="project-subtitle">{project.subtitle}</p>
     <ProjectImageSlider images={project.images} title={project.title} color={project.color} isPhoto={project.isPhoto} client:load />
   </section>

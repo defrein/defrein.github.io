@@ -2,7 +2,7 @@
 title: "Payment Management"
 subtitle: "A clearer picture of every payment."
 summary: "An application for organizing and tracking installment-based payments using a structured management workflow."
-order: 6
+order: 11
 categories: ["web"]
 label: "BUSINESS SOFTWARE"
 color: "cyan-soft"

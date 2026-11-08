@@ -2,7 +2,7 @@
 title: "Fuzzy Logic Forecasting"
 subtitle: "Turning uncertainty into a plan."
 summary: "A production forecasting system that uses fuzzy logic to turn stock and demand data into book production estimates."
-order: 5
+order: 10
 categories: ["ai","web"]
 label: "APPLIED AI + DATA"
 color: "purple-soft"

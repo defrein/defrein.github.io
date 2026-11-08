@@ -37,7 +37,7 @@
   <div class="slide-viewport" bind:this={viewport} tabindex={images.length > 1 ? 0 : undefined} role="group" aria-label={images.length > 1 ? 'Project images. Use left and right arrow keys to navigate.' : 'Project image'} onkeydown={handleKey} onscroll={syncPosition}>
     {#each images as image, index}
       <figure class="slide" aria-hidden={ready && current !== index ? 'true' : undefined}>
-        <div class="image-frame {color}" class:photo={isPhoto}><img src={withBase(image.src)} alt={image.alt} width="1280" height="720" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} decoding="async" /></div>
+        <div class="image-frame {color}" class:photo={isPhoto}><img class:screenshot={image.src.includes('/showcase/')} src={withBase(image.src)} alt={image.alt} width="1280" height="720" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} decoding="async" /></div>
         {#if image.caption}<figcaption>{image.caption}</figcaption>{/if}
       </figure>
     {/each}
@@ -60,6 +60,7 @@
   .slide { flex: 0 0 100%; min-width: 0; margin: 0; scroll-snap-align: start; }
   .image-frame { aspect-ratio: 16 / 9; padding: clamp(1rem, 4vw, 4rem); }
   .image-frame img { width: 100%; height: 100%; object-fit: contain; }
+  .image-frame img.screenshot { border-radius: 6px; filter: drop-shadow(0 12px 24px rgb(25 30 50 / .14)); }
   .image-frame.photo { padding: 0; }
   .image-frame.photo img { object-fit: cover; }
   figcaption { color: var(--muted); font-size: var(--text-body); padding-top: .8rem; }

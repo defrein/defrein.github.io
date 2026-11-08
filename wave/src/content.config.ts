@@ -28,6 +28,7 @@ const projects = defineCollection({
     isPhoto: z.boolean().default(false),
     draft: z.boolean().default(false),
     link: z.url().optional(),
+    linkLabel: z.string().optional(),
     images: z.array(z.object({
       src: z.string().min(1),
       alt: z.string().min(1),

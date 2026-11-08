@@ -2,7 +2,7 @@
 title: "Digital Printing Platform"
 subtitle: "From order to delivery, connected."
 summary: "A web platform that connects printing orders, job tracking, and real-time status updates in one clear workflow."
-order: 4
+order: 9
 categories: ["web"]
 label: "WEB APPLICATION"
 color: "cyan-soft"
