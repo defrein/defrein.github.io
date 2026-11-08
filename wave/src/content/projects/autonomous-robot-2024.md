@@ -2,7 +2,7 @@
 title: "Autonomous Robot"
 subtitle: "A little vision. A lot of precision."
 summary: "An autonomous robot built to pick up colored balls and place them into silos for the Abu Robocon 2024 challenge."
-order: 7
+order: 12
 categories: ["robotics","ai"]
 label: "ROBOTICS + COMPUTER VISION"
 color: "cyan-soft"

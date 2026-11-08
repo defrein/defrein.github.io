@@ -2,7 +2,7 @@
 title: "Rescue Robot"
 subtitle: "Engineering for the real world."
 summary: "Sensor-driven navigation for a robot simulating rescue missions in earthquake and landslide scenarios at KRI 2023."
-order: 8
+order: 13
 categories: ["robotics"]
 label: "ROBOTICS + AUTONOMOUS NAVIGATION"
 color: "purple-soft"

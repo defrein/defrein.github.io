@@ -2,7 +2,7 @@
 title: "Building Condition Analysis"
 subtitle: "Better records. Informed decisions."
 summary: "Helping teams record, analyze, and manage building condition information for public facilities."
-order: 12
+order: 17
 categories: ["web"]
 label: "PUBLIC INFRASTRUCTURE SOFTWARE"
 color: "purple-soft"

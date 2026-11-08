@@ -24,10 +24,10 @@ test('filters real projects and resets the gallery', async ({ page }, testInfo) 
   await page.goto('/wave/');
   const filters = page.getByRole('group', { name: 'Filter projects by discipline' });
   await filters.getByRole('button', { name: 'Robotics & IoT' }).click();
-  await expect(page.locator('.project-grid article')).toHaveCount(2);
-  await expect(page.getByRole('status').filter({ hasText: '2 projects' })).toBeVisible();
+  await expect(page.locator('.project-grid article')).toHaveCount(3);
+  await expect(page.getByRole('status').filter({ hasText: '3 projects' })).toBeVisible();
   await filters.getByRole('button', { name: 'AI & Machine Learning' }).click();
-  await expect(page.locator('.project-grid article')).toHaveCount(5);
+  await expect(page.locator('.project-grid article')).toHaveCount(testInfo.project.name === 'mobile' ? 5 : 6);
   await filters.getByRole('button', { name: 'Web & Software' }).click();
   await expect(page.locator('.project-grid article')).toHaveCount(testInfo.project.name === 'mobile' ? 5 : 6);
   await filters.getByRole('button', { name: 'All work', exact: true }).click();
@@ -37,7 +37,7 @@ test('filters real projects and resets the gallery', async ({ page }, testInfo) 
 test('discipline shortcut selects the gallery and project details are addressable', async ({ page }) => {
   await page.goto('/wave/');
   await page.locator('.disciplines').getByRole('link', { name: 'Robotics & IoT' }).click();
-  await expect(page.locator('.project-grid article')).toHaveCount(2);
+  await expect(page.locator('.project-grid article')).toHaveCount(3);
   await page.getByRole('heading', { name: 'Autonomous Robot', exact: true }).getByRole('link').click();
   await expect(page).toHaveURL('/wave/projects/autonomous-robot-2024/');
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Autonomous Robot');
@@ -48,7 +48,7 @@ test('discipline shortcut selects the gallery and project details are addressabl
 });
 
 test('CV and every project route resolve', async ({ request }) => {
-  const slugs = ['enexre', 'plant-shop', 'jats-viewer', 'jats-scholar', 'journal-metadata-extractor', 'jats-editor', 'autonomous-robot-2024', 'rescue-robot-2023', 'digital-printing', 'fuzzy-production', 'payment-management', 'building-condition'];
+  const slugs = ['videf-voice-controlled-robot', 'laravel-social-platform', 'deffrenn-publishing-platform', 'laravel-multicategory-blog', 'school-administration-system', 'enexre', 'plant-shop', 'jats-viewer', 'jats-scholar', 'journal-metadata-extractor', 'jats-editor', 'autonomous-robot-2024', 'rescue-robot-2023', 'digital-printing', 'fuzzy-production', 'payment-management', 'building-condition'];
   for (const slug of slugs) {
     const response = await request.get(`/wave/projects/${slug}/`);
     expect(response.status(), slug).toBe(200);
