@@ -10,18 +10,18 @@ technologies: ["PHP", "Laravel 11", "Filament 3", "MySQL", "Tailwind CSS"]
 isPhoto: false
 draft: false
 images:
-  - src: "images/projects/showcase/plant-dashboard.webp"
-    alt: "Plant Shop Management dashboard with revenue charts and inventory indicators."
-    caption: "Local dashboard using the repository seed data, from commit 65028d1."
-  - src: "images/projects/showcase/plant-inventory.webp"
-    alt: "Plant Shop Management inventory with loaded plant photographs, categories, stock, and care levels."
-    caption: "Plant inventory with demonstration records and representative plant photographs."
   - src: "images/projects/showcase/plant-storefront.webp"
-    alt: "Public Plant Shop homepage with a peace lily photograph, catalog link, and shop services."
-    caption: "Public storefront introducing the shop and its plant collection."
+    alt: "Redesigned Plant Shop homepage with a curated hero, catalog call to action, and service highlights."
+    caption: "Redesigned public storefront from the redesign-and-catalog-photo branch."
   - src: "images/projects/showcase/plant-catalog.webp"
-    alt: "Public plant catalog with product photographs, prices, stock, categories, and care-level filters."
-    caption: "Customer-facing catalog with plant photographs, product information, and filter controls."
+    alt: "Redesigned plant catalog with species photographs, prices, stock, categories, ratings, and care-level filters."
+    caption: "Customer-facing catalog with real species photographs and expanded filtering."
+  - src: "images/projects/showcase/plant-detail.webp"
+    alt: "Plant detail page for Monstera Deliciosa with a species photograph, price, stock, care details, and customer rating."
+    caption: "Product detail view with plant care information and review summary."
+  - src: "images/projects/showcase/plant-about.webp"
+    alt: "Plant Shop about page with a seedling photograph, company story, and experience callout."
+    caption: "Redesigned about page presenting the shop's story and service promise."
 ---
 
 ## The idea
@@ -38,4 +38,4 @@ Running a plant shop involves more than maintaining a product catalog. Stock, su
 
 ## About the preview
 
-These captures use an isolated local database populated by the repository's seeders. They show the latest inspected commit, `65028d1` (8 November 2026), including its updated menu seeder. All displayed records are demonstration data. Representative stock plant photographs were added to the local demo, including the homepage hero; they do not identify every listed cultivar. The source repository is private.
+These captures use an isolated local database populated by the repository's seeders. They show commit `aadff1b` from the `redesign-and-catalog-photo` branch (12 November 2026). All displayed records are demonstration data. The catalog uses the species photographs configured by that branch; the source repository is private.

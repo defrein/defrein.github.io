@@ -5,7 +5,7 @@ Five projects added to the current Wave portfolio in November 2026. Portfolio v4
 ## Sources inspected
 
 - ENEXRE: `defrein/enexre`, `204b5bde982a1207ef806933857f3cf8a49ec672`.
-- Plant Shop Management: `defrein/management-plant-shop`, `65028d1` (latest inspected commit, 8 November 2026; “change menu seeder”). Private source is not linked from the public project page.
+- Plant Shop Management: `defrein/management-plant-shop`, branch `redesign-and-catalog-photo`, `aadff1b` (latest inspected commit, 12 November 2026; “Redesign public pages and add catalog plant photos”). Private source is not linked from the public project page.
 - Better JATS Viewer: `openjournalteam/jats-viewer`, `2f6c1482ed5b7ee70e6390dc8e90561a9af8e2c7`.
 - JATS Scholar: `openjournalteam/jats-scholar`, `73f042804d0f3c1a2e00ee1297da8a75d1e9f328`; screenshots from the public site, https://scholar.jatseditor.com. The public deployment's commit was not independently verified.
 - Journal Metadata Extractor: `defrein/metadata_extractor`, `9c801283b6aa5574bb23cb3e7f44b5d7d172a8f9`.
